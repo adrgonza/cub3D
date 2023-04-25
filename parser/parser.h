@@ -22,6 +22,14 @@
 # include <math.h>
 # include "../libs/libft/libft.h"
 
+// Struct for util find_map
+typedef struct s_fmap
+{
+	int			l_start;
+	int			l_end;
+	int			height;
+}				t_fmap;
+
 // Struct for save color in rgb mode
 typedef struct s_rgbcol
 {
@@ -57,6 +65,7 @@ typedef struct s_mapdata
 {
 	t_rawdata	raw_data;
 	t_dac		dac;
+	t_fmap		fmap;
 	int			fd_map;
 	int			init;
 }				t_mapdata;
@@ -75,6 +84,12 @@ void	errmsg_two_ids(char *type_err);
 //	read_file.c
 ///////////////////////////////////////////
 void	read_file(int file_fd, t_mapdata *map_data);
+
+///////////////////////////////////////////
+//	find_map.c
+///////////////////////////////////////////
+int		check_read_line(char *dataline);
+t_fmap	find_map(int nb_line);
 
 ///////////////////////////////////////////
 //	data_assigner.c
