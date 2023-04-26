@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:22:36 by marvin            #+#    #+#             */
-/*   Updated: 2023/03/05 23:22:36 by marvin           ###   ########.fr       */
+/*   Updated: 2023/04/26 19:36:36 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	read_file(int file_fd, t_mapdata *map_data)
 	c = 0;
 	map_data->fmap.height = 0;
 	//printf("------------------------------\n");
+	data_line = "a";
 	init_checker_dac(map_data);
 	while (data_line /*&& c < 1*/)
 	{
@@ -35,10 +36,10 @@ void	read_file(int file_fd, t_mapdata *map_data)
 		c++;
 	}
 	find_map(map_data->filename);
-	//if (map_compatible_line("   111  0  00") == 1)
-	//	printf("dataline COMPATIBLE\n");
-	//else
-	//	printf("dataline --> NO <-- COMPATIBLE\n");
+	// if (map_compatible_line("   111  0  00") == 1)
+		// printf("dataline COMPATIBLE\n");
+	// else
+		// printf("dataline --> NO <-- COMPATIBLE\n");
 
 	//printf("map_height --> %d\n", map_data->fmap.height);
 	// data_line = get_next_line(file_fd);
