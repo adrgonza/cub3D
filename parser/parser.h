@@ -88,7 +88,7 @@ void	read_file(int file_fd, t_mapdata *map_data);
 ///////////////////////////////////////////
 //	find_map.c
 ///////////////////////////////////////////
-int		check_read_line(char *dataline);
+int		check_read_line(char *data_line);
 t_fmap	find_map(int nb_line);
 
 ///////////////////////////////////////////
