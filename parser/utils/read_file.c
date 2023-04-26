@@ -28,13 +28,14 @@ void	read_file(int file_fd, t_mapdata *map_data)
 		data_line = get_next_line(file_fd);
 		//printf("check_line int --> %d\n", check_read_line(data_line));
 		//printf("Line %d is --> %s \n",c, data_line);
-		if (data_line != NULL)
+		if (data_line != NULL && check_read_line(data_line) == 1)
 		{
-			if (check_read_line(data_line) == 1)
-				printf("line compatible with map\n");
-			else if (data_assigner(data_line, map_data) == 0)
-				printf("[Read_file] Line --> %s\n", data_line);
-		}		
+			printf("line compatible with map --> %s\n", data_line);
+			//printf("l_map --> '%s'\n", data_line);
+			find_map(c - 1, map_data->filename);
+		}
+		else if (data_line != NULL && data_assigner(data_line, map_data) == 0)
+			printf("[Read_file] Line --> %s\n", data_line);
 		//printf("------------------------------\n");
 		free(data_line);
 		c++;

@@ -46,12 +46,11 @@ void	parser(char *cub_file)
 
 	map_data.init = 1;
 	printf("Parser\n");
+	map_data.filename = cub_file;
 	fd_map = open_file_and_check_ext(cub_file, ".cub");
 	//printf("Map fd --> %d\n", fd_map);
 	read_file(fd_map, &map_data);
 	data_printer(map_data);
 	close_file(fd_map);
 	datafree(map_data);
-	(void)map_data;
-	(void)cub_file;
 }

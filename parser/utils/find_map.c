@@ -33,7 +33,17 @@ int	check_read_line(char *data_line)
 }
 
 // Find map. Return a struct with init map, end map (nb_line) and height
-//t_fmap	find_map(int nb_line, int file_fd)
-//{
-//
-//}
+t_fmap	find_map(int nb_line, char *filename)
+{
+	t_fmap	f_map;
+	//int		nb_lines;
+	//int		ffd;
+
+	f_map.l_start = nb_line;
+	//ffd = open_file_and_check_ext()
+	printf("filename --> %s\n", filename);
+	printf("nb_line --> %d\n", nb_line);
+
+
+	return (f_map);
+}
