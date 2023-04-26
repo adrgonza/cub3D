@@ -25,12 +25,7 @@ int	data_assigner(char *data, t_mapdata *map_data)
 		assigner(split_data[0], split_data[1], map_data);
 		return (1);
 	}
-	else
-	{
-		/*printf("Data_assigner\n\t[DATA][0]  --> %s\n\t[DATA][1]  --> %s\n"\
-, split_data[0], split_data[1]);*/
-		return (0);
-	}
+	return (0);
 	freedom(split_data);
 }
 
