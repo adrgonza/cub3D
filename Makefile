@@ -68,15 +68,15 @@ all: $(NAME)
 #### LINUX PARSER
 
 $(NAME): $(OBJ_MAIN) $(OBJ_PARSER) $(OBJ_RAYCAST) $(SEARCH)
-	@make -C libs/Libft
+	@make -C libs/libft
 	$(CC) $(CFLAGS) $(OBJ_MAIN) $(OBJ_PARSER) $(OBJ_RAYCAST) $(LIBFT_SRC) -L. $(CFNAME)
 
 clean:
-	@make clean -C libs/Libft
+	@make clean -C libs/libft
 	$(RM) $(OBJ_MAIN) $(OBJ_PARSER) $(OBJ_RAYCAST)
 
 fclean: clean
-	@rm -f libs/Libft/libft.a
+	@rm -f libs/libft/libft.a
 	$(RM) $(NAME) $(OBJ)
 
 re: fclean all
