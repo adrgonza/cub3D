@@ -3,30 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   find_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 00:56:57 by marvin            #+#    #+#             */
-/*   Updated: 2023/04/26 19:47:19 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/05/01 17:10:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../parser.h"
-
-int ft_hasany(char c, char *set)
-{
-	int	i;
-
-	if (!set)
-		return (0);
-	i = 0;
-	while(set[i])
-	{
-		if (set[i] == c)
-			return (1);
-		i++;
-	}
-	return (0);
-}
 
 // Check if the line contains a time of line compatible with a map
 // If data_line is "\n" return 0
@@ -62,39 +46,44 @@ int	compare_line_size(int l_len, char *data_line)
 	return (0);
 }
 
+// Initialize find_map parameters to 0
+void	init_find_map_params(t_fmap *f_map, t_fmu *fmu, char *filename)
+{
+	fmu->i = 0;
+	fmu->flm_f = 0;
+	fmu->ffd = open_file_and_check_ext(filename, ".cub");
+	f_map->width = 0;
+	f_map->height = 0;
+}
+
 // Find map. Return a struct with init map, end map (nb_line) and height
 t_fmap	find_map(char *filename)
 {
 	t_fmap	f_map;
-	int		i;
-	int		ffd;
-	int		flm_f;
+	t_fmu	fmu;
 	char	*data_line;
 
-	i = 0;
-	f_map.width = 0;
-	f_map.height = 0;
-	flm_f = 0;
+	init_find_map_params(&f_map, &fmu, filename);
 	data_line = NULL;
-	ffd = open_file_and_check_ext(filename, ".cub");
-	while (data_line || i == 0)
+	while (data_line || fmu.i == 0)
 	{
-		data_line = get_next_line(ffd);
+		data_line = get_next_line(fmu.ffd);
 		if (map_compatible_line(data_line) == 1)
 		{
-			if (flm_f == 0)
-			{
-				f_map.l_start = i;
-				flm_f = 1;
-			}
+			if (fmu.flm_f == 0)
+				f_map.l_start = fmu.i;
+			fmu.flm_f = 1;
 			f_map.width = compare_line_size(f_map.width, data_line);
 			f_map.height++;
 		}
-		else if (map_compatible_line(data_line) != 1 && flm_f == 1)
+		else if (map_compatible_line(data_line) != 1 && fmu.flm_f == 1)
+		{
+			free(data_line);
+			close(fmu.ffd);
 			return (f_map);
+		}
 		free(data_line);
-		i++;
+		fmu.i++;
 	}
-	close(ffd);
 	return (f_map);
 }

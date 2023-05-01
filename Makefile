@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 14:59:15 by mcordoba          #+#    #+#              #
-#    Updated: 2022/03/15 14:59:15 by mcordoba         ###   ########.fr        #
+#    Updated: 2023/05/01 17:04:28 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC_PARSER =	parser/parser.c \
 				parser/utils/data_assigner.c \
 				parser/utils/assigner_checkers.c \
 				parser/utils/parser_err_msg.c \
-				parser/utils/find_map.c
+				parser/utils/find_map.c \
+				parser/utils/other_utils.c
 
 SRC_RAYCAST =	
 
