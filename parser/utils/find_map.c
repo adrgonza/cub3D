@@ -29,6 +29,7 @@ int ft_hasany(char c, char *set)
 }
 
 // Check if the line contains a time of line compatible with a map
+// If data_line is "\n" return 0
 // If its true return(1) if not, return(0)
 int	map_compatible_line(char *data_line)
 {
@@ -36,6 +37,8 @@ int	map_compatible_line(char *data_line)
 
 	i = 0;
 	if (!data_line)
+		return (0);
+	if (ft_strncmp(data_line, "\n", (int)ft_strlen(data_line)) == 0)
 		return (0);
 	while (data_line[i])
 	{
@@ -70,6 +73,6 @@ t_fmap	find_map(char *filename)
 		free(data_line);
 		i++;
 	}
-
+	close(ffd);
 	return (f_map);
 }

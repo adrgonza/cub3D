@@ -28,6 +28,7 @@ typedef struct s_fmap
 	int			l_start;
 	int			l_end;
 	int			height;
+	int			width;
 }				t_fmap;
 
 // Struct for save color in rgb mode
