@@ -52,6 +52,21 @@ int	map_compatible_line(char *data_line)
 	return (1);
 }
 
+// Compare size of the last line and current line. Return the max size of line
+int	compare_line_size(int l_len, char *data_line)
+{
+	int	d_line_size;
+
+	d_line_size = (int)ft_strlen(data_line);
+	printf("line --> '%s' is %d length\n", data_line, d_line_size);
+	if (d_line_size > l_len)
+		return (d_line_size);
+	else
+		return (l_len);
+	//printf("L_len --> %d, data_line len --> %d\n", l_len, (int)ft_strlen(data_line));
+	return (0);
+}
+
 // Find map. Return a struct with init map, end map (nb_line) and height
 t_fmap	find_map(char *filename)
 {
@@ -60,19 +75,28 @@ t_fmap	find_map(char *filename)
 	int		ffd;
 	char	*data_line;
 
-	f_map.height = 0;
 	i = 0;
+	f_map.width = 0;
+	f_map.height = 0;
+	data_line = NULL;
 	ffd = open_file_and_check_ext(filename, ".cub");
-	data_line = "a";
-	while (data_line)
+	//printf("-->      MAP      <--\n");
+	while (data_line || i == 0)
 	{
 		data_line = get_next_line(ffd);
 		//printf("FIND_MAP dataline --> %s\n", data_line);
-		if (map_compatible_line(data_line) == 1)
-			printf("FIND_MAP dataline COMPATIBLE --> %s\n", data_line);
+		if (map_compatible_line(data_line) == 1 )
+		{
+			//printf("%s\n", data_line);
+			f_map.width = compare_line_size(f_map.width, data_line);
+			f_map.height++;
+		}
 		free(data_line);
 		i++;
 	}
+	//printf("-->    MAP END    <--\n");
+	printf("Map_height --> %d\n", f_map.height);
+	printf("Map_lenght --> %d\n", f_map.width);
 	close(ffd);
 	return (f_map);
 }
