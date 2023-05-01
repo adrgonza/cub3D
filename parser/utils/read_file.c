@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:22:36 by marvin            #+#    #+#             */
-/*   Updated: 2023/04/26 19:36:36 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/05/01 21:15:45 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,13 @@ void	read_file(int file_fd, t_mapdata *map_data)
 
 	c = 0;
 	map_data->fmap.height = 0;
-	//printf("------------------------------\n");
 	data_line = "a";
 	init_checker_dac(map_data);
-	while (data_line /*&& c < 1*/)
+	while (data_line)
 	{
-		//printf("FILE READER\n");
 		data_line = get_next_line(file_fd);
-		//printf("check_line int --> %d\n", check_read_line(data_line));
-		//printf("Line %d is --> %s \n",c, data_line);
 		if (data_line != NULL)
 			data_assigner(data_line, map_data);
-		//printf("------------------------------\n");
 		free(data_line);
 		c++;
 	}

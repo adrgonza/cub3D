@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/05/01 17:06:21 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/01 21:22:25 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_mapdata
 	t_fmap		fmap;
 	int			fd_map;
 	int			init;
+	int			**map;
 	char		*filename;
 }				t_mapdata;
 
@@ -101,6 +102,11 @@ void	read_file(int file_fd, t_mapdata *map_data);
 int		map_compatible_line(char *data_line);
 int		compare_line_size(int l_len, char *data_line);
 t_fmap	find_map(char *filename);
+
+///////////////////////////////////////////
+//	find_map.c
+///////////////////////////////////////////
+void	save_map(t_mapdata **map_data);
 
 ///////////////////////////////////////////
 //	other_utils.c
