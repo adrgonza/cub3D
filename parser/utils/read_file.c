@@ -35,7 +35,9 @@ void	read_file(int file_fd, t_mapdata *map_data)
 		free(data_line);
 		c++;
 	}
-	find_map(map_data->filename);
+	map_data->fmap = find_map(map_data->filename);
+	printf("Map_height --> %d\n", map_data->fmap.height);
+	printf("Map_width --> %d\n", map_data->fmap.width);
 	// if (map_compatible_line("   111  0  00") == 1)
 		// printf("dataline COMPATIBLE\n");
 	// else

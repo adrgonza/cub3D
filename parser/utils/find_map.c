@@ -42,9 +42,6 @@ int	map_compatible_line(char *data_line)
 		return (0);
 	while (data_line[i])
 	{
-		/*if (data_line[i] != ' ' && data_line[i] != '1' && data_line[i] != '0'
-			&& data_line[i] != 'S' && data_line[i] != 'E' && data_line[i] != 'W'
-			&& data_line[i] != 'N' && data_line[i] != '\n')*/
 		if (!ft_hasany(data_line[i], " 10SEWN\n"))
 			return (0);
 		i++;
@@ -58,12 +55,10 @@ int	compare_line_size(int l_len, char *data_line)
 	int	d_line_size;
 
 	d_line_size = (int)ft_strlen(data_line);
-	printf("line --> '%s' is %d length\n", data_line, d_line_size);
 	if (d_line_size > l_len)
 		return (d_line_size);
 	else
 		return (l_len);
-	//printf("L_len --> %d, data_line len --> %d\n", l_len, (int)ft_strlen(data_line));
 	return (0);
 }
 
@@ -73,30 +68,33 @@ t_fmap	find_map(char *filename)
 	t_fmap	f_map;
 	int		i;
 	int		ffd;
+	int		flm_f;
 	char	*data_line;
 
 	i = 0;
 	f_map.width = 0;
 	f_map.height = 0;
+	flm_f = 0;
 	data_line = NULL;
 	ffd = open_file_and_check_ext(filename, ".cub");
-	//printf("-->      MAP      <--\n");
 	while (data_line || i == 0)
 	{
 		data_line = get_next_line(ffd);
-		//printf("FIND_MAP dataline --> %s\n", data_line);
-		if (map_compatible_line(data_line) == 1 )
+		if (map_compatible_line(data_line) == 1)
 		{
-			//printf("%s\n", data_line);
+			if (flm_f == 0)
+			{
+				f_map.l_start = i;
+				flm_f = 1;
+			}
 			f_map.width = compare_line_size(f_map.width, data_line);
 			f_map.height++;
 		}
+		else if (map_compatible_line(data_line) != 1 && flm_f == 1)
+			return (f_map);
 		free(data_line);
 		i++;
 	}
-	//printf("-->    MAP END    <--\n");
-	printf("Map_height --> %d\n", f_map.height);
-	printf("Map_lenght --> %d\n", f_map.width);
 	close(ffd);
 	return (f_map);
 }
