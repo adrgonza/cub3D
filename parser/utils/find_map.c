@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 00:56:57 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/01 17:10:27 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/01 21:06:43 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,15 @@ int	compare_line_size(int l_len, char *data_line)
 }
 
 // Initialize find_map parameters to 0
-void	init_find_map_params(t_fmap *f_map, t_fmu *fmu, char *filename)
+void	init_find_map_params(t_fmap *f_map, t_fmu *fmu,
+		char *filename, char **dataline)
 {
 	fmu->i = 0;
 	fmu->flm_f = 0;
 	fmu->ffd = open_file_and_check_ext(filename, ".cub");
 	f_map->width = 0;
 	f_map->height = 0;
+	*dataline = NULL;
 }
 
 // Find map. Return a struct with init map, end map (nb_line) and height
@@ -63,20 +65,18 @@ t_fmap	find_map(char *filename)
 	t_fmu	fmu;
 	char	*data_line;
 
-	init_find_map_params(&f_map, &fmu, filename);
-	data_line = NULL;
+	init_find_map_params(&f_map, &fmu, filename, &data_line);
 	while (data_line || fmu.i == 0)
 	{
 		data_line = get_next_line(fmu.ffd);
 		if (map_compatible_line(data_line) == 1)
 		{
-			if (fmu.flm_f == 0)
+			if (fmu.flm_f++ == 0)
 				f_map.l_start = fmu.i;
-			fmu.flm_f = 1;
 			f_map.width = compare_line_size(f_map.width, data_line);
 			f_map.height++;
 		}
-		else if (map_compatible_line(data_line) != 1 && fmu.flm_f == 1)
+		else if (map_compatible_line(data_line) != 1 && fmu.flm_f > 0)
 		{
 			free(data_line);
 			close(fmu.ffd);
