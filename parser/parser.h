@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/05/02 14:45:30 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/02 21:34:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ typedef struct s_rawdata
 	char		*we_route;
 	char		*ea_route;
 	char		play_orient;
+	int			p_pos_x;
+	int			p_pos_y;
 	t_rgbcol	f_col;
 	t_rgbcol	c_col;
 }				t_rawdata;
@@ -90,6 +92,7 @@ void	errmsg_two_ids(char *type_err);
 //	read_file.c
 ///////////////////////////////////////////
 void	read_file(int file_fd, t_mapdata *map_data);
+void	print_map_values(t_mapdata *map_data);
 
 ///////////////////////////////////////////
 //	find_map.c
@@ -104,7 +107,7 @@ t_fmap	find_map(char *filename);
 void	save_map(t_mapdata *map_data);
 void	set_gnl_to_mapinit(char *filename, int init_line, t_smu *smu);
 void	allocate_data_map(t_mapdata *map_data, t_smu *smu);
-int		transform_to_map(char c, t_mapdata *map_data);
+int		transform_to_map(char c, int char_pos, t_mapdata *map_data, t_smu *smu);
 
 ///////////////////////////////////////////
 //	other_utils.c
@@ -126,5 +129,11 @@ void	rute_asign(char **rawmap_id, char *data, int *id_dac);
 void	init_checker_dac(t_mapdata *map_data);
 int		check_identifier(char *identifier);
 int		check_color(char *color);
+
+///////////////////////////////////////////
+//	map_checker.c
+///////////////////////////////////////////
+int		map_checker(t_mapdata *map_data);
+
 
 #endif

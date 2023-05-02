@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 21:15:48 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/02 15:11:31 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/02 21:36:05 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	set_gnl_to_mapinit(char *filename, int init_line, t_smu *smu)
 // If char is ' ', return 2
 // If char is player, return 3 & set orientation in raw_data (play_orient)
 // Program exited id exist duplicated player identifiers
-int	transform_to_map(char c, t_mapdata *map_data)
+int	transform_to_map(char c, int char_pos, t_mapdata *map_data, t_smu *smu)
 {
 	if (ft_isdigit(c) == 1)
 		return (c - '0');
@@ -42,6 +42,8 @@ int	transform_to_map(char c, t_mapdata *map_data)
 		&& map_data->dac.play_or == 0)
 	{
 		map_data->raw_data.play_orient = c;
+		map_data->raw_data.p_pos_x = char_pos;
+		map_data->raw_data.p_pos_y = smu->i;
 		map_data->dac.play_or = 1;
 		return (3);
 	}
@@ -60,7 +62,7 @@ void	allocate_data_map(t_mapdata *map_data, t_smu *smu)
 	while (j < map_data->fmap.width - 1)
 	{
 		//printf("point --> %d\n", smu->map_line[j] - '0');
-		map_data->map[smu->i][j] = transform_to_map(smu->map_line[j], map_data);
+		map_data->map[smu->i][j] = transform_to_map(smu->map_line[j], j, map_data, smu);
 		j++;
 	}
 }
