@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 21:15:48 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/02 14:50:11 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/02 15:11:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,7 @@ void	save_map(t_mapdata *map_data)
 		free(smu.map_line);
 		smu.i++;
 	}
-	(void)map_data;
+	if (map_data->dac.play_or == 0)
+		error_msg_exit("error: map: no player identifier", 1);
+	close(smu.ffd);
 }
