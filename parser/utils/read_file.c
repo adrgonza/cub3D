@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:22:36 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/02 12:34:36 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/02 12:49:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	read_file(int file_fd, t_mapdata *map_data)
 	printf("Map_height --> %d\n", map_data->fmap.height);
 	printf("Map_width --> %d\n", map_data->fmap.width);
 	printf("Map_l_start --> %d\n", map_data->fmap.l_start);
-	save_map(&map_data);
+	save_map(map_data);
 	// if (map_compatible_line("   111  0  00") == 1)
 		// printf("dataline COMPATIBLE\n");
 	// else

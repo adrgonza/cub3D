@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 12:36:39 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/02 12:39:54 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/02 12:45:07 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 // Utils and flags for save_map function
 typedef struct s_smu
 {
-	
+	int			i;
+	int			ffd;
 }				t_smu;
 
 // Utils and flags for find_map_struct
