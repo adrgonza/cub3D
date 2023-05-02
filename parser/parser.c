@@ -25,8 +25,10 @@ static void	data_printer(t_mapdata map_data)
 	printf("EA data from RAW_DATA --> %s\n", map_data.raw_data.ea_route);
 	printf("WE data from RAW_DATA --> %s\n", map_data.raw_data.we_route);
 	printf("SO data from RAW_DATA --> %s\n", map_data.raw_data.so_route);
-	printf("[F] COLOR --> R: %d | G: %d | B: %d\n", f_color.r, f_color.g, f_color.b);
-	printf("[C] COLOR --> R: %d | G: %d | B: %d\n", c_color.r, c_color.g, c_color.b);
+	printf("[F] COLOR --> R: %d | G: %d | B: %d\n", f_color.r, f_color.g,
+		f_color.b);
+	printf("[C] COLOR --> R: %d | G: %d | B: %d\n", c_color.r, c_color.g,
+		c_color.b);
 }
 
 /* Free of data raw_map
@@ -48,7 +50,6 @@ void	parser(char *cub_file)
 	printf("Parser\n");
 	map_data.filename = cub_file;
 	fd_map = open_file_and_check_ext(cub_file, ".cub");
-	//printf("Map fd --> %d\n", fd_map);
 	read_file(fd_map, &map_data);
 	data_printer(map_data);
 	close_file(fd_map);

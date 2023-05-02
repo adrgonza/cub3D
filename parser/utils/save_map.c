@@ -31,6 +31,7 @@ void	set_gnl_to_mapinit(char *filename, int init_line, t_smu *smu)
 // If is digit, return the number 0 or 1
 // If char is ' ', return 2
 // If char is player, return 3 & set orientation in raw_data (play_orient)
+// Program exited id exist duplicated player identifiers
 int	transform_to_map(char c, t_mapdata *map_data)
 {
 	if (ft_isdigit(c) == 1)

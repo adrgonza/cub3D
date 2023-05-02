@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	MAP_FUNCTIONS_DATA_H
+#ifndef MAP_FUNCTIONS_DATA_H
 # define MAP_FUNCTIONS_DATA_H
 
 // Utils and flags for save_map function

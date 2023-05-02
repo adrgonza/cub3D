@@ -13,14 +13,14 @@
 #include "../parser.h"
 
 // Return 1 if char exist in a set of chars. Return 0 if not
-int ft_hasany(char c, char *set)
+int	ft_hasany(char c, char *set)
 {
 	int	i;
 
 	if (!set)
 		return (0);
 	i = 0;
-	while(set[i])
+	while (set[i])
 	{
 		if (set[i] == c)
 			return (1);

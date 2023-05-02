@@ -33,7 +33,6 @@ int	data_assigner(char *data, t_mapdata *map_data)
 */
 void	assigner(char *identifier, char *data, t_mapdata *map_data)
 {
-	//printf("ASSIGNER C_COL_DAC --> %d\n", map_data->dac.c_col);
 	if (ft_strncmp(identifier, "NO", 2) == 0 && data != NULL)
 		rute_asign(&map_data->raw_data.no_route, data, &map_data->dac.no_rut);
 	else if (ft_strncmp(identifier, "EA", 2) == 0 && data != NULL)
