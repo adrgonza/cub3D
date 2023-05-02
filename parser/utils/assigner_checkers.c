@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkers.c                                         :+:      :+:    :+:   */
+/*   assigner_checkers.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:18:52 by marvin            #+#    #+#             */
-/*   Updated: 2023/03/11 18:18:52 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/02 14:47:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_checker_dac(t_mapdata *map_data)
 	map_data->dac.ea_rut = 0;
 	map_data->dac.c_col = 0;
 	map_data->dac.f_col = 0;
+	map_data->dac.play_or = 0;
 }
 
 /* Check if identifier is equal. If its equal, return 1

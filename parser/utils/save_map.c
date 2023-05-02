@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 21:15:48 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/02 14:41:00 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/02 14:50:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,16 @@ int	transform_to_map(char c, t_mapdata *map_data)
 		return (c - '0');
 	else if (c == ' ')
 		return (2);
-	else if (c == 'N' || c == 'W' || c == 'E' || c == 'S')
+	else if ((c == 'N' || c == 'W' || c == 'E' || c == 'S')
+		&& map_data->dac.play_or == 0)
 	{
 		map_data->raw_data.play_orient = c;
+		map_data->dac.play_or = 1;
 		return (3);
 	}
+	else if ((c == 'N' || c == 'W' || c == 'E' || c == 'S')
+		&& map_data->dac.play_or == 1)
+		error_msg_exit("error: map player: more than one identifier", 1);
 	return (0);
 }
 

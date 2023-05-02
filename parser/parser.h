@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/05/02 14:35:18 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/02 14:45:30 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_dac
 	int			ea_rut;
 	int			f_col;
 	int			c_col;
+	int			play_or;
 }				t_dac;
 
 // Struct for save RAW data from .cub file

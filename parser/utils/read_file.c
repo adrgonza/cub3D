@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:22:36 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/02 14:38:18 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/02 14:44:22 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	print_map_values(t_mapdata *map_data)
 
 	h = 0;
 	printf("-->      MAP SAVED      <--\n");
-	printf("\tPLAY ORIENT --> %c <--\n", map_data->raw_data.play_orient);
+	printf("\t\033[0;35mPLAY ORIENT --> %c <--\033[0m\n",
+		map_data->raw_data.play_orient);
 	while (h < map_data->fmap.height)
 	{
 		w = 0;
