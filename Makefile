@@ -6,12 +6,13 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 14:59:15 by mcordoba          #+#    #+#              #
-#    Updated: 2023/05/01 21:16:21 by marvin           ###   ########.fr        #
+#    Updated: 2023/05/02 13:28:07 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_MAIN = 		main.c \
 				main_utils/errmanag.c \
+				main_utils/error_messages.c \
 				main_utils/file_manager.c \
 				main_utils/freedom.c
 

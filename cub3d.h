@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/03/05 18:55:14 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/05/02 13:29:51 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@
 ///////////////////////////////////////////
 void	errmanag(int argc, char *argv[]);
 int		check_file_ext(char *file, char *ext);
+
+///////////////////////////////////////////
+//	error_messages.c
+///////////////////////////////////////////
+void	error_msg_exit(char *err_msg, int exit_code);
 
 ///////////////////////////////////////////
 //	file_manager.c

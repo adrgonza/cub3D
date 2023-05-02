@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:03:50 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/01 17:05:40 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/02 14:22:39 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,10 @@ int ft_hasany(char c, char *set)
 		i++;
 	}
 	return (0);
+}
+
+// Convert char to int
+int	char_to_int(char c)
+{
+	return (c - '0');
 }

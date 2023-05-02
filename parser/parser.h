@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/05/02 12:49:02 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/02 14:35:18 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_rawdata
 	char		*so_route;
 	char		*we_route;
 	char		*ea_route;
+	char		play_orient;
 	t_rgbcol	f_col;
 	t_rgbcol	c_col;
 }				t_rawdata;
@@ -101,11 +102,14 @@ t_fmap	find_map(char *filename);
 ///////////////////////////////////////////
 void	save_map(t_mapdata *map_data);
 void	set_gnl_to_mapinit(char *filename, int init_line, t_smu *smu);
+void	allocate_data_map(t_mapdata *map_data, t_smu *smu);
+int		transform_to_map(char c, t_mapdata *map_data);
 
 ///////////////////////////////////////////
 //	other_utils.c
 ///////////////////////////////////////////
 int		ft_hasany(char c, char *set);
+int		char_to_int(char c);
 
 ///////////////////////////////////////////
 //	data_assigner.c
