@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/05/01 21:22:25 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/02 12:40:59 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,7 @@
 # include <limits.h>
 # include <math.h>
 # include "../libs/libft/libft.h"
-
-// Utils and flags for find_map_struct
-typedef struct s_fmu
-{
-	int			i;
-	int			ffd;
-	int			flm_f;
-}				t_fmu;
+# include "utils/map_functions_data.h"
 
 // Struct for util find_map
 typedef struct s_fmap
@@ -104,9 +97,10 @@ int		compare_line_size(int l_len, char *data_line);
 t_fmap	find_map(char *filename);
 
 ///////////////////////////////////////////
-//	find_map.c
+//	save_map.c
 ///////////////////////////////////////////
 void	save_map(t_mapdata **map_data);
+int		set_gnl_to_mapinit(char *filename, int init_line, t_smu *smu);
 
 ///////////////////////////////////////////
 //	other_utils.c
