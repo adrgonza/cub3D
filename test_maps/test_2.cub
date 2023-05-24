@@ -1,7 +1,7 @@
-NO ./ruta_a_la_textura_norte
-SO ./ruta_a_la_textura_sur
-WE ./ruta_a_la_textura_oeste
-EA ./ruta_a_la_textura_este
+NO ./textures/test/north_spritex64.xpm
+SO ./textures/test/south_spritex64.xpm
+WE ./textures/test/west_spritex64.xpm
+EA ./textures/test/east_spritex64.xpm
 F 220,100,0
 C 225,30,0
         1111111111111111111111111
