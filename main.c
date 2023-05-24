@@ -15,8 +15,10 @@
 int	main(int argc, char *argv[])
 {
 
-	printf("Cub3d\n");
-
+	printf("\t\033[0;35m----> Cub3d <----\033[0m\n");
+	errmanag(argc, argv);
+	//system("leaks cub3d");
+	printf("\033[0;35m      ----> Cub3d END <----\033[0m\n");
 	(void)argc;
 	(void)argv;
 	return (0);

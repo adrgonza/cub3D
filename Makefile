@@ -3,20 +3,39 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 14:59:15 by mcordoba          #+#    #+#              #
-#    Updated: 2022/03/15 14:59:15 by mcordoba         ###   ########.fr        #
+#    Updated: 2023/05/02 13:28:07 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = 	main.c \
+SRC_MAIN = 		main.c \
+				main_utils/errmanag.c \
+				main_utils/error_messages.c \
+				main_utils/file_manager.c \
+				main_utils/freedom.c
+
+SRC_PARSER =	parser/parser.c \
+				parser/utils/read_file.c \
+				parser/utils/data_assigner.c \
+				parser/utils/assigner_checkers.c \
+				parser/utils/parser_err_msg.c \
+				parser/utils/find_map.c \
+				parser/utils/other_utils.c \
+				parser/utils/save_map.c
+
+SRC_RAYCAST =	
 
 NAME = cub3d
 
 SEARCH = cub3d.h
 
-OBJ = $(SRC:%.c=%.o)
+OBJ_MAIN = $(SRC_MAIN:%.c=%.o)
+
+OBJ_PARSER = $(SRC_PARSER:%.c=%.o)
+
+OBJ_RAYCAST = $(SRC_RAYCAST:%.c=%.o)
 
 RM = rm -f
 
@@ -51,16 +70,16 @@ all: $(NAME)
 
 #### LINUX PARSER
 
-$(NAME): $(OBJ) $(SEARCH)
-	@make -C libs/Libft
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT_SRC) -L. $(CFNAME)
+$(NAME): $(OBJ_MAIN) $(OBJ_PARSER) $(OBJ_RAYCAST) $(SEARCH)
+	@make -C libs/libft
+	$(CC) $(CFLAGS) $(OBJ_MAIN) $(OBJ_PARSER) $(OBJ_RAYCAST) $(LIBFT_SRC) -L. $(CFNAME)
 
 clean:
-	@make clean -C libs/Libft
-	$(RM) $(OBJ) $(BONUS_OBJ)
+	@make clean -C libs/libft
+	$(RM) $(OBJ_MAIN) $(OBJ_PARSER) $(OBJ_RAYCAST)
 
 fclean: clean
-	@rm -f libs/Libft/libft.a
+	@rm -f libs/libft/libft.a
 	$(RM) $(NAME) $(OBJ)
 
 re: fclean all
