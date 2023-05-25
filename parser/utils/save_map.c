@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 21:15:48 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/02 21:36:05 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/25 18:27:00 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	allocate_data_map(t_mapdata *map_data, t_smu *smu)
 	while (j < map_data->fmap.width - 1)
 	{
 		//printf("point --> %d\n", smu->map_line[j] - '0');
-		map_data->map[smu->i][j] = transform_to_map(smu->map_line[j], j, map_data, smu);
+		map_data->raw_data.map[smu->i][j] = transform_to_map(smu->map_line[j], j, map_data, smu);
 		j++;
 	}
 }
@@ -74,13 +74,13 @@ void	save_map(t_mapdata *map_data)
 	
 	smu.i = 0;
 	set_gnl_to_mapinit(map_data->filename, map_data->fmap.l_start, &smu);
-	map_data->map = malloc(map_data->fmap.height * sizeof(int *));
-	if (!map_data->map)
+	map_data->raw_data.map = malloc(map_data->fmap.height * sizeof(int *));
+	if (!map_data->raw_data.map)
 		error_msg_exit("error: save_map: cannot allocate memory map", 1);
 	while (smu.i < map_data->fmap.height)
 	{
-		map_data->map[smu.i] = malloc(map_data->fmap.width * sizeof(int) - 1);
-		if (!map_data->map[smu.i])
+		map_data->raw_data.map[smu.i] = malloc(map_data->fmap.width * sizeof(int) - 1);
+		if (!map_data->raw_data.map[smu.i])
 			error_msg_exit("error: save_map: cannot allocate memory map", 1);
 		smu.map_line = get_next_line(smu.ffd);
 		allocate_data_map(map_data, &smu);

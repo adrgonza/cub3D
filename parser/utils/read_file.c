@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:22:36 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/09 17:32:00 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/05/25 18:25:07 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_map_values(t_mapdata *map_data)
 		w = 0;
 		while (w < map_data->fmap.width - 1)
 		{
-			printf("%d", map_data->map[h][w]);
+			printf("%d", map_data->raw_data.map[h][w]);
 			w++;
 		}
 		printf("\n");

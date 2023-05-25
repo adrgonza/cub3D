@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/05/02 21:34:55 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/25 18:27:24 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_rawdata
 	char		play_orient;
 	int			p_pos_x;
 	int			p_pos_y;
+	int			**map;
 	t_rgbcol	f_col;
 	t_rgbcol	c_col;
 }				t_rawdata;
@@ -74,7 +75,6 @@ typedef struct s_mapdata
 	t_fmap		fmap;
 	int			fd_map;
 	int			init;
-	int			**map;
 	char		*filename;
 }				t_mapdata;
 
