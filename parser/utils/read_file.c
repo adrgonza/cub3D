@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:22:36 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/25 18:25:07 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/05/25 18:34:33 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void	read_file(int file_fd, t_mapdata *map_data)
 	printf("Map_l_start --> %d\n", map_data->fmap.l_start);
 	save_map(map_data);
 	print_map_values(map_data);
-	printf("PLAYER: POS_X --> %d POS_Y --> %d\n", map_data->raw_data.p_pos_x, map_data->raw_data.p_pos_y);
+	printf("\033[0;35mPLAYER: POS_X --> %d POS_Y --> %d\033[0m\n",
+		map_data->raw_data.p_pos_x, map_data->raw_data.p_pos_y);
 	//map_checker(map_data);
 	// if (map_compatible_line("   111  0  00") == 1)
 		// printf("dataline COMPATIBLE\n");

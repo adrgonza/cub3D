@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 21:15:48 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/25 18:27:00 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/05/25 18:32:07 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	transform_to_map(char c, int char_pos, t_mapdata *map_data, t_smu *smu)
 	if (ft_isdigit(c) == 1)
 		return (c - '0');
 	else if (c == ' ')
-		return (2);
+		return (-1);
 	else if ((c == 'N' || c == 'W' || c == 'E' || c == 'S')
 		&& map_data->dac.play_or == 0)
 	{
@@ -45,7 +45,7 @@ int	transform_to_map(char c, int char_pos, t_mapdata *map_data, t_smu *smu)
 		map_data->raw_data.p_pos_x = char_pos;
 		map_data->raw_data.p_pos_y = smu->i;
 		map_data->dac.play_or = 1;
-		return (3);
+		return (0);
 	}
 	else if ((c == 'N' || c == 'W' || c == 'E' || c == 'S')
 		&& map_data->dac.play_or == 1)
