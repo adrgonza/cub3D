@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:30:26 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/05/25 15:07:44 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/05/26 01:06:47 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	game_launch(t_game	*game)
 	(void)game;
 }
 
-void	raycast()
+void	raycast(t_cubdat *cubdat)
 {
 	t_game game;
 

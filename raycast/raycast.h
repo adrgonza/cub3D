@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:31:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/05/25 12:25:53 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/05/26 01:08:10 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct game {
 	int		t_size;
 }	t_game;
 
-void	raycast();
+
 int		exit_game(t_game *game);
 void	minimap_init(t_game *game);
 

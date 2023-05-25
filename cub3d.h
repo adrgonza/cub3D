@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/05/26 00:51:21 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/05/26 01:09:52 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 # define CUB3D_H
 
 # include "parser/parser.h"
+# include "raycast/raycast.h"
 
 # include <unistd.h>
+# include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <limits.h>
@@ -63,5 +65,10 @@ void	close_file(int file_fd);
 ///////////////////////////////////////////
 void	freedom(char **matrix);
 void	double_freedom(char **matrix, char *line);
+
+///////////////////////////////////////////
+//	raycast.c
+///////////////////////////////////////////
+void	raycast(t_cubdat *cubdat);
 
 #endif
