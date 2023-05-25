@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   errmanag.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:07:11 by marvin            #+#    #+#             */
-/*   Updated: 2023/03/05 20:07:11 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/25 18:19:38 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
 /*
-	If errmanag pass, parser is called
+	If errmanag pass, return 1, else 0
 */
-void	errmanag(int argc, char *argv[])
+int	errmanag(int argc, char *argv[])
 {
 	if (argc != 2)
 	{
@@ -24,7 +24,7 @@ void	errmanag(int argc, char *argv[])
 	}
 	printf("Route: %s\n", argv[1]);
 	check_file_ext(argv[1], ".cub");
-	parser(argv[1]);
+	return (1);
 }
 
 /*
