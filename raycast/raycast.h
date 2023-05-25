@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   raycast.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/05 19:00:46 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/05/24 10:35:04 by adrgonza         ###   ########.fr       */
+/*   Created: 2023/05/24 10:31:37 by adrgonza          #+#    #+#             */
+/*   Updated: 2023/05/25 12:25:53 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef RAYCAST_H
+# define RAYCAST_H
 
-int	main(int argc, char *argv[])
-{
+#include "../cub3d.h"
 
-	printf("\t\033[0;35m----> Cub3d <----\033[0m\n");
-	errmanag(argc, argv);
-	//system("leaks cub3d");
-	raycast();
-	printf("\033[0;35m      ----> Cub3d END <----\033[0m\n");
-	(void)argc;
-	(void)argv;
-	return (0);
-}
+typedef struct game {
+	void	*mlx;
+	void	*wido;
+	void	*t_north;
+	void	*t_east;
+	void	*t_west;
+	void	*t_south;
+	int		t_size;
+}	t_game;
+
+void	raycast();
+int		exit_game(t_game *game);
+void	minimap_init(t_game *game);
+
+# endif
