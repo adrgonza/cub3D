@@ -6,13 +6,13 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:22:36 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/25 18:34:33 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/05/25 19:01:21 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../parser.h"
 
-// Print the int **map values
+// Print the int **map values (t_mapdata *map_data)
 void	print_map_values(t_mapdata *map_data)
 {
 	int	h;
@@ -55,13 +55,13 @@ void	read_file(int file_fd, t_mapdata *map_data)
 		c++;
 	}
 	map_data->fmap = find_map(map_data->filename);
-	printf("Map_height --> %d\n", map_data->fmap.height);
-	printf("Map_width --> %d\n", map_data->fmap.width);
-	printf("Map_l_start --> %d\n", map_data->fmap.l_start);
+	//printf("Map_height --> %d\n", map_data->fmap.height);
+	//printf("Map_width --> %d\n", map_data->fmap.width);
+	//printf("Map_l_start --> %d\n", map_data->fmap.l_start);
 	save_map(map_data);
-	print_map_values(map_data);
-	printf("\033[0;35mPLAYER: POS_X --> %d POS_Y --> %d\033[0m\n",
-		map_data->raw_data.p_pos_x, map_data->raw_data.p_pos_y);
+	//print_map_values(map_data);
+	//printf("\033[0;35mPLAYER: POS_X --> %d POS_Y --> %d\033[0m\n",
+	//	map_data->raw_data.p_pos_x, map_data->raw_data.p_pos_y);
 	//map_checker(map_data);
 	// if (map_compatible_line("   111  0  00") == 1)
 		// printf("dataline COMPATIBLE\n");

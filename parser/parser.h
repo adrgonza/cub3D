@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/05/25 18:27:24 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/05/25 19:02:05 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,59 +81,60 @@ typedef struct s_mapdata
 ///////////////////////////////////////////
 //	parser.c
 ///////////////////////////////////////////
-void	parser(char *cub_file);
+t_cubdat	parser(char *cub_file);
+t_cubdat	mapdat_to_cubdat(t_mapdata *mapdata);
 
 ///////////////////////////////////////////
 //	parser_err_msg.c
 ///////////////////////////////////////////
-void	errmsg_two_ids(char *type_err);
+void		errmsg_two_ids(char *type_err);
 
 ///////////////////////////////////////////
 //	read_file.c
 ///////////////////////////////////////////
-void	read_file(int file_fd, t_mapdata *map_data);
-void	print_map_values(t_mapdata *map_data);
+void		read_file(int file_fd, t_mapdata *map_data);
+void		print_map_values(t_mapdata *map_data);
 
 ///////////////////////////////////////////
 //	find_map.c
 ///////////////////////////////////////////
-int		map_compatible_line(char *data_line);
-int		compare_line_size(int l_len, char *data_line);
-t_fmap	find_map(char *filename);
+int			map_compatible_line(char *data_line);
+int			compare_line_size(int l_len, char *data_line);
+t_fmap		find_map(char *filename);
 
 ///////////////////////////////////////////
 //	save_map.c
 ///////////////////////////////////////////
-void	save_map(t_mapdata *map_data);
-void	set_gnl_to_mapinit(char *filename, int init_line, t_smu *smu);
-void	allocate_data_map(t_mapdata *map_data, t_smu *smu);
-int		transform_to_map(char c, int char_pos, t_mapdata *map_data, t_smu *smu);
+void		save_map(t_mapdata *map_data);
+void		set_gnl_to_mapinit(char *filename, int init_line, t_smu *smu);
+void		allocate_data_map(t_mapdata *map_data, t_smu *smu);
+int			transform_to_map(char c, int char_pos, t_mapdata *map_data, t_smu *smu);
 
 ///////////////////////////////////////////
 //	other_utils.c
 ///////////////////////////////////////////
-int		ft_hasany(char c, char *set);
-int		char_to_int(char c);
+int			ft_hasany(char c, char *set);
+int			char_to_int(char c);
 
 ///////////////////////////////////////////
 //	data_assigner.c
 ///////////////////////////////////////////
-int		data_assigner(char *data, t_mapdata *map_data);
-void	assigner(char *identifier, char *data, t_mapdata *map_data);
-void	col_asign(t_rgbcol *col, char *data, int *id_dac);
-void	rute_asign(char **rawmap_id, char *data, int *id_dac);
+int			data_assigner(char *data, t_mapdata *map_data);
+void		assigner(char *identifier, char *data, t_mapdata *map_data);
+void		col_asign(t_rgbcol *col, char *data, int *id_dac);
+void		rute_asign(char **rawmap_id, char *data, int *id_dac);
 
 ///////////////////////////////////////////
 //	assigner_checkers.c
 ///////////////////////////////////////////
-void	init_checker_dac(t_mapdata *map_data);
-int		check_identifier(char *identifier);
-int		check_color(char *color);
+void		init_checker_dac(t_mapdata *map_data);
+int			check_identifier(char *identifier);
+int			check_color(char *color);
 
 ///////////////////////////////////////////
 //	map_checker.c
 ///////////////////////////////////////////
-int		map_checker(t_mapdata *map_data);
+int			map_checker(t_mapdata *map_data);
 
 
 #endif

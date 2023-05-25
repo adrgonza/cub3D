@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/05/25 18:24:12 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/05/25 19:01:41 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,21 @@
 # include "libs/libft/libft.h"
 # include "libs/key_macos.h"
 
-// typedef struct s_cubdat
-// {
-	// char		*no_route;
-	// char		*so_route;
-	// char		*we_route;
-	// char		*ea_route;
-	// char		play_orient;
-	// int			p_pos_x;
-	// int			p_pos_y;
-	// t_rgbcol	f_col;
-	// t_rgbcol	c_col;
-	// int			**map;
-// }				t_cubdat;
+typedef struct s_cubdat
+{
+	char		*no_route;
+	char		*so_route;
+	char		*we_route;
+	char		*ea_route;
+	char		play_orient;
+	int			p_pos_x;
+	int			p_pos_y;
+	t_rgbcol	f_col;
+	t_rgbcol	c_col;
+	int			map_height;
+	int			map_width;
+	int			**map;
+}				t_cubdat;
 
 ///////////////////////////////////////////
 //	errmanag.c
