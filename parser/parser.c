@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:02:22 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/25 18:55:58 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/05/25 23:08:29 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ static void	data_printer(t_mapdata map_data)
 
 /* Free of data raw_map
 */
-static void	datafree(t_mapdata map_data)
-{
-	free(map_data.raw_data.no_route);
-	free(map_data.raw_data.ea_route);
-	free(map_data.raw_data.we_route);
-	free(map_data.raw_data.so_route);
-}
+//static void	datafree(t_mapdata map_data)
+//{
+//	free(map_data.raw_data.no_route);
+//	free(map_data.raw_data.ea_route);
+//	free(map_data.raw_data.we_route);
+//	free(map_data.raw_data.so_route);
+//}
 
 t_cubdat	mapdat_to_cubdat(t_mapdata *mapdata)
 {
@@ -52,8 +52,8 @@ t_cubdat	mapdat_to_cubdat(t_mapdata *mapdata)
 	cubdat.play_orient = mapdata->raw_data.play_orient;
 	cubdat.p_pos_x = mapdata->raw_data.p_pos_x;
 	cubdat.p_pos_y = mapdata->raw_data.p_pos_y;
-	cubdat.f_col = mapdata->raw_data.f_col;
-	cubdat.c_col = mapdata->raw_data.c_col;
+	cubdat.f_col = &mapdata->raw_data.f_col;
+	cubdat.c_col = &mapdata->raw_data.c_col;
 	cubdat.map_height = mapdata->fmap.height;
 	cubdat.map_width = mapdata->fmap.width;
 	cubdat.map = mapdata->raw_data.map;
@@ -75,6 +75,6 @@ t_cubdat	parser(char *cub_file)
 	data_printer(map_data);
 	close_file(fd_map);
 	cubdat = mapdat_to_cubdat(&map_data);
-	datafree(map_data);
+	//datafree(map_data);
 	return (cubdat);
 }

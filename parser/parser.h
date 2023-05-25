@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/05/25 19:02:05 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/05/25 22:58:38 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <math.h>
 # include "../libs/libft/libft.h"
 # include "utils/map_functions_data.h"
+
+typedef struct s_cubdat t_cubdat;
 
 // Struct for util find_map
 typedef struct s_fmap

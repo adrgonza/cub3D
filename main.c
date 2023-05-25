@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 19:00:46 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/05/25 19:01:08 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/05/25 23:08:26 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@ static void	print_cubdata_values(t_cubdat cubdat)
 	printf("-->    MAP SAVED END    <--\n");
 	printf("Map_height --> %d\n", cubdat.map_height);
 	printf("Map_width --> %d\n", cubdat.map_width);
+	printf("NO data from RAW_DATA --> %s\n", cubdat.no_route);
+	printf("EA data from RAW_DATA --> %s\n", cubdat.ea_route);
+	printf("WE data from RAW_DATA --> %s\n", cubdat.we_route);
+	printf("SO data from RAW_DATA --> %s\n", cubdat.so_route);
+	printf("[F] COLOR --> R: %d | G: %d | B: %d\n", cubdat.f_col->r, cubdat.f_col->g,
+		cubdat.f_col->b);
+	printf("[C] COLOR --> R: %d | G: %d | B: %d\n", cubdat.c_col->r, cubdat.c_col->g,
+		cubdat.c_col->b);
 }
 
 int	main(int argc, char *argv[])
