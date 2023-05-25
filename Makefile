@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 14:59:15 by mcordoba          #+#    #+#              #
-#    Updated: 2023/05/24 17:50:44 by adrgonza         ###   ########.fr        #
+#    Updated: 2023/05/02 13:28:07 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,7 @@ SRC_PARSER =	parser/parser.c \
 				parser/utils/other_utils.c \
 				parser/utils/save_map.c
 
-SRC_RAYCAST =	raycast/raycast.c \
-				raycast/tools.c \
-				raycast/minimap.c \
+SRC_RAYCAST =	
 
 NAME = cub3d
 
@@ -43,7 +41,7 @@ RM = rm -f
 
 CC = gcc
 
-CFLAGS = -lmlx -framework OpenGL -framework AppKit # -I. -g3 -Wall -Werror -Wextra -Imlx
+CFLAGS = -Wall -Werror -Wextra # -I. -g3 -Wall -Werror -Wextra -Imlx
 
 CFNAME = -o $(NAME)
 
