@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:02:22 by marvin            #+#    #+#             */
-/*   Updated: 2023/03/05 20:02:22 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/26 00:47:56 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,30 @@ static void	datafree(t_mapdata map_data)
 	free(map_data.raw_data.so_route);
 }
 
-void	parser(char *cub_file)
+t_cubdat	mapdat_to_cubdat(t_mapdata *mapdata)
+{
+	t_cubdat	cubdat;
+
+	cubdat.no_route = mapdata->raw_data.no_route;
+	cubdat.so_route = mapdata->raw_data.so_route;
+	cubdat.we_route = mapdata->raw_data.we_route;
+	cubdat.ea_route = mapdata->raw_data.ea_route;
+	cubdat.play_orient = mapdata->raw_data.play_orient;
+	cubdat.p_pos_x = mapdata->raw_data.p_pos_x;
+	cubdat.p_pos_y = mapdata->raw_data.p_pos_y;
+	cubdat.f_col = &mapdata->raw_data.f_col;
+	cubdat.c_col = &mapdata->raw_data.c_col;
+	cubdat.map_height = mapdata->fmap.height;
+	cubdat.map_width = mapdata->fmap.width;
+	cubdat.map = mapdata->raw_data.map;
+	return (cubdat);
+}
+
+// Parse .cub file and return a t_cubdat
+t_cubdat	parser(char *cub_file)
 {
 	t_mapdata	map_data;
+	t_cubdat	cubdat;
 	int			fd_map;
 
 	map_data.init = 1;
@@ -53,5 +74,7 @@ void	parser(char *cub_file)
 	read_file(fd_map, &map_data);
 	data_printer(map_data);
 	close_file(fd_map);
+	cubdat = mapdat_to_cubdat(&map_data);
 	datafree(map_data);
+	return (cubdat);
 }
