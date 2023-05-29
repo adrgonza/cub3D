@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:31:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/05/29 19:55:54 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/05/30 01:12:19 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,18 @@
 
 typedef struct s_cubdat t_cubdat;
 
+typedef struct keys {
+	int	w;
+	int a;
+	int s;
+	int d;
+	int right;
+	int left;
+}	t_keys;
+
 typedef struct game {
 	t_cubdat	*cubdat;
+	t_keys		*keys;
 	void		*mlx;
 	void		*wido;
 	void		*t_plyr;
@@ -40,7 +50,11 @@ typedef struct game {
 
 int		exit_game(t_game *game);
 void	minimap_init(t_game *game);
-int	print_minimap(void *data);
+int		print_minimap(void *data);
 int		check_map(t_game *game, int y, int x);
+void	draw_line(t_game *game);
+void	draw_square(t_game *game);
+int		key_released(int key);
+int		key_press(int key, t_game *game);
 
 # endif

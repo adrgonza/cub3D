@@ -6,7 +6,7 @@
 #    By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 14:59:15 by mcordoba          #+#    #+#              #
-#    Updated: 2023/05/27 17:07:05 by adrgonza         ###   ########.fr        #
+#    Updated: 2023/05/30 01:04:05 by adrgonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SRC_PARSER =	parser/parser.c \
 SRC_RAYCAST =	raycast/raycast.c \
 				raycast/tools.c \
 				raycast/minimap.c \
-				raycast/game.c \
+				raycast/key_manage.c \
+				raycast/draw_polygons.c \
 
 NAME = cub3d
 
