@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:36:36 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/05/30 00:58:13 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/05/30 01:41:21 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,11 @@ void	print_minimap2(t_game *game, int i, int **map)
 	}
 }
 
-int	print_minimap(void *data)
+void	print_minimap(t_game *game)
 {
-	t_game	*game;
 	int	**map;
 	int i;
 
-	game = (t_game *)data;
 	game->map_posx = 0;
 	map = game->map;
 	i = -1;
@@ -52,9 +50,6 @@ int	print_minimap(void *data)
 		print_minimap2(game, i, map);
 		game->map_posx += 16;
 	}
-	draw_line(game);
-	draw_square(game);
-	return (0);
 }
 
 void	import_sources(t_game *game)

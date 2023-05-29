@@ -6,12 +6,22 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:30:26 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/05/30 01:12:06 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/05/30 01:42:16 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycast.h"
 
+int	game_loop(void *data)
+{
+	t_game	*game;
+
+	game = (t_game *)data;
+	key_actions(game);
+	print_minimap(game);
+	draw_line(game);
+	draw_square(game);
+}
 
 void	init_data(t_game *game, t_cubdat *cubdat, t_keys *keys)
 {
@@ -33,10 +43,9 @@ void	raycast(t_cubdat *cubdat)
 
 	init_data(&game, cubdat, &keys);
 	minimap_init(&game);
-	mlx_key_hook(game.wido, key_released, NULL);
 	mlx_hook(game.wido, 2, 1L << 0, key_press, &game);
-	mlx_hook(game.wido, 2, 1L << 0, key_press, &game);
+	mlx_key_hook(game.wido, key_released, &game);
 	mlx_hook(game.wido, 17, 0, exit_game, &game);
-	mlx_loop_hook(game.mlx, print_minimap, (void *)&game);
+	mlx_loop_hook(game.mlx, game_loop, (void *)&game);
 	mlx_loop(game.mlx);
 }

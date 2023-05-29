@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:31:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/05/30 01:12:19 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/05/30 01:33:18 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,12 @@ typedef struct game {
 
 int		exit_game(t_game *game);
 void	minimap_init(t_game *game);
-int		print_minimap(void *data);
+void	print_minimap(t_game *game);
 int		check_map(t_game *game, int y, int x);
 void	draw_line(t_game *game);
 void	draw_square(t_game *game);
-int		key_released(int key);
+int		key_released(int key, t_game *game);
 int		key_press(int key, t_game *game);
+int		key_actions(t_game *game);
 
 # endif
