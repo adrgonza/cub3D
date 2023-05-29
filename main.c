@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 19:00:46 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/05/25 23:08:26 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/29 21:07:11 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ static void	print_cubdata_values(t_cubdat cubdat)
 	printf("EA data from RAW_DATA --> %s\n", cubdat.ea_route);
 	printf("WE data from RAW_DATA --> %s\n", cubdat.we_route);
 	printf("SO data from RAW_DATA --> %s\n", cubdat.so_route);
-	printf("[F] COLOR --> R: %d | G: %d | B: %d\n", cubdat.f_col->r, cubdat.f_col->g,
-		cubdat.f_col->b);
-	printf("[C] COLOR --> R: %d | G: %d | B: %d\n", cubdat.c_col->r, cubdat.c_col->g,
-		cubdat.c_col->b);
+	printf("[F] COLOR --> R: %d | G: %d | B: %d\n", cubdat.f_col.r, cubdat.f_col.g,
+		cubdat.f_col.b);
+	printf("[C] COLOR --> R: %d | G: %d | B: %d\n", cubdat.c_col.r, cubdat.c_col.g,
+		cubdat.c_col.b);
 }
 
 int	main(int argc, char *argv[])
@@ -54,8 +54,10 @@ int	main(int argc, char *argv[])
 
 	printf("\t\033[0;35m----> Cub3d <----\033[0m\n");
 	if (errmanag(argc, argv))
+	{
 		cubdat = parser(argv[1]);
-	print_cubdata_values(cubdat);
+		print_cubdata_values(cubdat);
+	}
 	//system("leaks cub3d");
 	printf("\033[0;35m      ----> Cub3d END <----\033[0m\n");
 	(void)argc;

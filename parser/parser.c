@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:02:22 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/25 23:08:29 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/29 21:07:56 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,18 @@ static void	data_printer(t_mapdata map_data)
 //	free(map_data.raw_data.so_route);
 //}
 
+// Transform t_rgbcol to t_col struct
+static t_col		rgbcol_to_col(t_rgbcol rgbcol)
+{
+	t_col	col;
+
+	col.r = rgbcol.r;
+	col.g = rgbcol.g;
+	col.b = rgbcol.b;
+	return (col);
+}
+
+// Transform t_mapdat to t_cubdat
 t_cubdat	mapdat_to_cubdat(t_mapdata *mapdata)
 {
 	t_cubdat	cubdat;
@@ -52,8 +64,8 @@ t_cubdat	mapdat_to_cubdat(t_mapdata *mapdata)
 	cubdat.play_orient = mapdata->raw_data.play_orient;
 	cubdat.p_pos_x = mapdata->raw_data.p_pos_x;
 	cubdat.p_pos_y = mapdata->raw_data.p_pos_y;
-	cubdat.f_col = &mapdata->raw_data.f_col;
-	cubdat.c_col = &mapdata->raw_data.c_col;
+	cubdat.f_col = rgbcol_to_col(mapdata->raw_data.f_col);
+	cubdat.c_col = rgbcol_to_col(mapdata->raw_data.c_col);
 	cubdat.map_height = mapdata->fmap.height;
 	cubdat.map_width = mapdata->fmap.width;
 	cubdat.map = mapdata->raw_data.map;
