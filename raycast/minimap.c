@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:36:36 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/05/26 15:04:04 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/05/29 19:55:10 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,45 +17,43 @@ int	check_map(t_game *game, int y, int x)
 	return (1);
 }
 
-void	print_minimap2(t_game *game, int i, int **map, int x)
+void	print_minimap2(t_game *game, int i, int **map)
 {
 	int	j;
-	int	y;
 
-	y = game->plyr_y - 2;
 	j = -1;
-	while(++j < 5)
+	while(++j < game->cubdat->map_width - 1)
 	{
-		if (map[y][x] >= 1)
-			mlx_put_image_to_window(game->mlx, game->wido, game->t_wall, game->map_posx, game->map_posy);
-		else if (map[y][x] == -1)
-			mlx_put_image_to_window(game->mlx, game->wido, game->t_south, game->map_posx, game->map_posy);
-		else if (map[y][x] == 0)
-			mlx_put_image_to_window(game->mlx, game->wido, game->t_floor, game->map_posx, game->map_posy);
-		if (i == 2 && j == 2)
-			mlx_put_image_to_window(game->mlx, game->wido, game->t_plyr, game->map_posx, game->map_posy);
+		if (j < 0 || j > game->cubdat->map_width - 2 || i < 0 || i > game->cubdat->map_height - 1)
+			mlx_put_image_to_window(game->mlx, game->wido, game->t_wall, game->map_posy, game->map_posx);
+		else if (map[i][j] >= 1)
+			mlx_put_image_to_window(game->mlx, game->wido, game->t_wall, game->map_posy, game->map_posx);
+		else if (map[i][j] == -1)
+			mlx_put_image_to_window(game->mlx, game->wido, game->t_south, game->map_posy, game->map_posx);
+		else if (map[i][j] == 0)
+			mlx_put_image_to_window(game->mlx, game->wido, game->t_floor, game->map_posy, game->map_posx);
 		game->map_posy += 16;
-		y++;
 	}
 }
 
-void	print_minimap(t_game *game)
+int	print_minimap(void *data)
 {
+	t_game	*game;
 	int	**map;
 	int i;
-	int plyr_x;
 
-	plyr_x = game->plyr_x -2;
-	map = game->cubdat->map;
+	game = (t_game *)data;
+	game->map_posx = 1;
+	map = game->map;
 	i = -1;
-	while(++i < 5)
+	while(++i < game->cubdat->map_height)
 	{
-		print_minimap2(game, i, map, plyr_x);
-		game->map_posy = 25;
+		game->map_posy = 1;
+		print_minimap2(game, i, map);
 		game->map_posx += 16;
-		plyr_x++;
 	}
-	game->map_posx = 960;
+	mlx_put_image_to_window(game->mlx, game->wido, game->t_plyr, game->p_x, game->p_y);
+	return (0);
 }
 
 void	import_sources(t_game *game)

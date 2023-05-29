@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_assigner.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:17:25 by marvin            #+#    #+#             */
-/*   Updated: 2023/03/05 21:17:25 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/29 20:35:29 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	data_assigner(char *data, t_mapdata *map_data)
 		assigner(split_data[0], split_data[1], map_data);
 		return (1);
 	}
-	return (0);
 	freedom(split_data);
+	return (0);
 }
 
 /* Find identifier and put the data into
@@ -55,7 +55,7 @@ void	rute_asign(char **rawmap_id, char *data, int *id_dac)
 	if (*id_dac == 0)
 	{
 		*rawmap_id = malloc(ft_strlen(data) * sizeof(char *));
-		ft_strlcpy(*rawmap_id, data, ft_strlen(data) - 1);
+		ft_strlcpy(*rawmap_id, data, ft_strlen(data));
 		*id_dac = 1;
 	}
 	else if (*id_dac == 1)

@@ -1,0 +1,17 @@
+NO ./textures/test/north_spritex64.xpm
+SO ./textures/test/south_spritex64.xpm
+WE ./textures/test/west_spritex64.xpm
+EA ./textures/test/east_spritex64.xpm
+F 220,100,0
+C 225,30,0
+0000000001111
+1000000001001
+1111111110001
+1000000000001
+1000000000001
+1000111110001
+10001   10001
+10001   10001
+1000111110001
+1000000000N01
+1111111111111

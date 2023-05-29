@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 19:00:46 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/05/26 01:18:52 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/05/29 20:43:14 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	print_cubdata_values(t_cubdat cubdat)
 	int	w;
 
 	h = 0;
+	printf("################# DATA INTO MAAAIN #################\n");
 	printf("-->      MAP SAVED      <--\n");
 	printf("\t\033[0;35mPLAY ORIENT --> %c <--\033[0m\n",
 		cubdat.play_orient);
@@ -38,6 +39,15 @@ static void	print_cubdata_values(t_cubdat cubdat)
 	printf("-->    MAP SAVED END    <--\n");
 	printf("Map_height --> %d\n", cubdat.map_height);
 	printf("Map_width --> %d\n", cubdat.map_width);
+	printf("NO data from RAW_DATA --> %s\n", cubdat.no_route);
+	printf("EA data from RAW_DATA --> %s\n", cubdat.ea_route);
+	printf("WE data from RAW_DATA --> %s\n", cubdat.we_route);
+	printf("SO data from RAW_DATA --> %s\n", cubdat.so_route);
+	printf("[F] COLOR --> R: %d | G: %d | B: %d\n", cubdat.f_col.r, cubdat.f_col.g,
+		cubdat.f_col.b);
+	printf("[C] COLOR --> R: %d | G: %d | B: %d\n", cubdat.c_col.r, cubdat.c_col.g,
+		cubdat.c_col.b);
+	printf("###################################################\n");
 }
 
 int	main(int argc, char *argv[])

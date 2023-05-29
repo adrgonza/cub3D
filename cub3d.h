@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/05/26 01:09:52 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/05/29 20:43:36 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,14 @@
 # include "libs/libft/libft.h"
 # include "libs/key_macos.h"
 
-typedef struct s_rgbcol t_rgbcol;
+//typedef struct s_rgbcol t_rgbcol;
+
+typedef	struct s_col
+{
+	int			r;
+	int			g;
+	int			b;
+}				t_col;
 
 typedef struct s_cubdat
 {
@@ -36,8 +43,8 @@ typedef struct s_cubdat
 	char		play_orient;
 	int			p_pos_x;
 	int			p_pos_y;
-	t_rgbcol	*f_col;
-	t_rgbcol	*c_col;
+	t_col		f_col;
+	t_col		c_col;
 	int			map_height;
 	int			map_width;
 	int			**map;
