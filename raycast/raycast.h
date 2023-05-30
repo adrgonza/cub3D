@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:31:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/05/30 01:33:18 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/05/30 18:00:29 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,24 @@ typedef struct keys {
 	int left;
 }	t_keys;
 
+typedef struct rays {
+	int		r;
+	int		mx;
+	int		my;
+	int		mp;
+	int		dof;
+	float	rx;
+	float	ry;
+	float	ra;
+	float	xo;
+	float	yo;
+	float	a_tan;
+}	t_rays;
+
 typedef struct game {
 	t_cubdat	*cubdat;
 	t_keys		*keys;
+	t_rays		*rays;
 	void		*mlx;
 	void		*wido;
 	void		*t_plyr;
@@ -57,5 +72,6 @@ void	draw_square(t_game *game);
 int		key_released(int key, t_game *game);
 int		key_press(int key, t_game *game);
 int		key_actions(t_game *game);
+void	draw_rays(t_game *game, t_rays *rays);
 
 # endif

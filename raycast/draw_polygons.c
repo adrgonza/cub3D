@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 23:54:46 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/05/30 00:56:50 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:24:08 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	draw_line(t_game *game)
 	int		y;
 	int		i;
 
-	radian = game->p_angle * (PI/20); /* converts de angle to a radians */
+	radian = game->p_angle * (PI / 180); /* converts de angle to a radians */
 	i = -1;
 	while (i++ < 10)
 	{
@@ -38,10 +38,10 @@ void	draw_square(t_game *game)
 
 	start_x = game->p_x - 2.5;
 	start_y = game->p_y - 2.5;
-	y = start_y - 1;
+	y = start_y - 0.5;
 	while (++y < start_y + 5)
 	{
-		x = start_x - 1;
+		x = start_x - 0.5;
 		while (++x < start_x + 5)
 		{
 			mlx_pixel_put(game->mlx, game->wido, x, y, 0xFFFFFF);
