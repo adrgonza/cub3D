@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 01:01:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/05/30 18:30:45 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/05/30 19:17:05 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	key_actions(t_game *game)
 	float angle;
 
 	angle = game->p_angle * PI / 180.0f;
-	move_step =  0.9f;
+	move_step =  0.6f;
 	if (game->keys->w == 1)
 	{
 		new_x = game->p_x + cos(angle) * move_step;
