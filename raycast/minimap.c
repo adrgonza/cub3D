@@ -6,13 +6,13 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:36:36 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/05/31 11:36:59 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/01 03:50:28 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycast.h"
 
-int	check_map(t_game *game, int y, int x)
+int	check_map(t_game *game, float y, float x)
 {
 	return (1);
 }

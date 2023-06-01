@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:30:26 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/05/31 11:43:13 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/01 03:32:06 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	game_loop(void *data)
 
 	game = (t_game *)data;
 	key_actions(game);
+	draw_3d(game);
 	print_minimap(game);
 	draw_line(game);
 	draw_square(game);
@@ -49,6 +50,7 @@ void	raycast(t_cubdat *cubdat)
 	t_game	game;
 
 	init_data(&game, cubdat, &keys);
+	draw_sky_floor(&game);
 	minimap_init(&game);
 	mlx_hook(game.wido, 2, 1L << 0, key_press, &game);
 	mlx_key_hook(game.wido, key_released, &game);
