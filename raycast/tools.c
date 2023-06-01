@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:44:18 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/02 01:01:51 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/02 01:37:37 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ void	init_data(t_game *game, t_cubdat *cubdat, t_keys *keys)
 	game->map = cubdat->map; /* get the map */
 	game->p_x = cubdat->p_pos_x * 16; /* player start position x */
 	game->p_y = cubdat->p_pos_y * 16; /* player start position x */
+	import_map_sources(game); /* init and print map */
 }
 
 int	exit_game(t_game *game)
 {
-	mlx_destroy_window(game->mlx, game->wido);
-	//free (game->cubdat->);
-	//freedom(game->cubdat->map);
+	mlx_destroy_window(game->mlx, game->wido); /* destroy window */
 	exit(0);
 }

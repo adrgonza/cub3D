@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:36:36 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/02 00:51:24 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/02 01:38:15 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,11 @@ void	print_minimap(t_game *game)
 		print_minimap2(game, i, map);
 		game->map_posx += 16;
 	}
+	draw_square(game);
+	draw_line(game);
 }
 
-void	import_sources(t_game *game)
+void	import_map_sources(t_game *game)
 {
 	int size;
 
@@ -65,10 +67,4 @@ void	import_sources(t_game *game)
 		printf("ERROR.. NO TEXTURES FOUND");
 		exit_game(game);
 	}
-}
-
-void	minimap_init(t_game *game)
-{
-	import_sources(game);
-	print_minimap(game);
 }
