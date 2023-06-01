@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:31:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/02 00:41:30 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/02 01:02:48 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		key_released(int key, t_game *game);
 int		key_press(int key, t_game *game);
 int		key_actions(t_game *game);
 void	draw_rays(t_game *game);
-void	draw_3d(t_game *game);
 void	draw_sky_floor(t_game *game);
+void	init_data(t_game *game, t_cubdat *cubdat, t_keys *keys);
 
 # endif
