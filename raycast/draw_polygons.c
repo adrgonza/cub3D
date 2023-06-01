@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 23:54:46 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/01 02:58:24 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/01 10:59:56 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ void	draw_square(t_game *game)
 	{
 		x = start_x - 0.5;
 		while (++x < start_x + 5)
-		{
 			mlx_pixel_put(game->mlx, game->wido, x, y, 0xFFFFFF);
-		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:30:26 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/01 03:32:06 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/02 00:52:07 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ int	game_loop(void *data)
 
 	game = (t_game *)data;
 	key_actions(game);
-	draw_3d(game);
 	print_minimap(game);
-	draw_line(game);
-	draw_square(game);
 	draw_rays(game);
 	return (0);
 }

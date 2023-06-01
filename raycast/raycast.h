@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:31:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/01 03:44:29 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/02 00:41:30 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct game {
 	void		*t_floor;
 	void		*t_wall;
 	void		*t_south;
+	void		*background;
 	int			**map;
 	float		p_x;
 	float		p_y;
