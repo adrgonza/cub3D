@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:30:26 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/05 14:18:22 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/05 14:46:56 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	game_loop(void *data)
 	key_actions(game);
 	mlx_put_image_to_window(game->mlx, game->wido, game->background, 0, 0);
 	draw_rays(game);
-	print_minimap(game);
+	//print_minimap(game);
 	return (0);
 }
 

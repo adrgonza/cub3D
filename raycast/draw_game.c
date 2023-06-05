@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 01:00:09 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/05 14:34:17 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/05 21:26:51 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@ void draw_rays(t_game *game)
 	column = -1;
 	while (++column < 1080)
 	{
-		float angle = radian + atan((column - 540) / 320.0);
+		float angle = radian + atan((column - 540) / 390.0);
 		float distance = 0.0;
 		float delta_x = cos(angle);
 		float delta_y = sin(angle);
 		while (game->map[(int)p_y / 16][(int)p_x / 16] != 1)
 		{
-			p_x += delta_x;
-			p_y += delta_y;
-			distance += 0.01;
+			p_x += delta_x * 0.1;
+			p_y += delta_y * 0.1;
+			distance += 0.001;
 		}
 		float wall_height = (720 / distance) * 0.12;
 		int wall_start = (720 - wall_height) / 2;
@@ -70,10 +70,8 @@ void draw_rays(t_game *game)
 		p_y = -1;
 		while (++p_y < 720)
 			if (p_y >= wall_start && p_y <= wall_end)
-				mlx_pixel_put(game->mlx, game->wido, column, p_y, 0x8b0000); // Pared (blanco)
+				mlx_pixel_put(game->mlx, game->wido, column, p_y, 0x8b0000);
 		p_x = game->p_x;
 		p_y = game->p_y;
 	}
 }
-
-
