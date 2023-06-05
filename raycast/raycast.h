@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:31:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/02 01:36:54 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/05 12:38:54 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,13 @@ typedef struct game {
 	void		*t_wall;
 	void		*t_south;
 	void		*background;
+	unsigned char		*bkgrn_data;
+	int			bpp;
+	int			l_size;
+	int			endian;
 	int			**map;
 	float		p_x;
 	float		p_y;
-	float		p_dx;
-	float		p_dy;
 	float		p_angle;
 	int			map_posx;
 	int			map_posy;

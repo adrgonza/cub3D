@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:44:18 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/02 01:37:37 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/05 14:19:48 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ void	init_data(t_game *game, t_cubdat *cubdat, t_keys *keys)
 	game->p_x = cubdat->p_pos_x * 16; /* player start position x */
 	game->p_y = cubdat->p_pos_y * 16; /* player start position x */
 	import_map_sources(game); /* init and print map */
+	game->background = mlx_new_image(game->mlx, 1080, 720);
+	game->bkgrn_data = mlx_get_data_addr(game->background, &game->bpp, &game->l_size, &game->endian);
+	draw_sky_floor(game);
+
 }
 
 int	exit_game(t_game *game)

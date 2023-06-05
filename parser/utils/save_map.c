@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 21:15:48 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/25 18:32:07 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/05 11:40:39 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	set_gnl_to_mapinit(char *filename, int init_line, t_smu *smu)
 {
 	int	i;
-	
+
 	i = 0;
 	smu->map_line = NULL;
 	smu->ffd = open_file_and_check_ext(filename, ".cub");
@@ -59,7 +59,7 @@ void	allocate_data_map(t_mapdata *map_data, t_smu *smu)
 	int		j;
 
 	j = 0;
-	while (j < map_data->fmap.width - 1)
+	while (j <= map_data->fmap.width - 1)
 	{
 		//printf("point --> %d\n", smu->map_line[j] - '0');
 		map_data->raw_data.map[smu->i][j] = transform_to_map(smu->map_line[j], j, map_data, smu);
@@ -71,7 +71,7 @@ void	allocate_data_map(t_mapdata *map_data, t_smu *smu)
 void	save_map(t_mapdata *map_data)
 {
 	t_smu	smu;
-	
+
 	smu.i = 0;
 	set_gnl_to_mapinit(map_data->filename, map_data->fmap.l_start, &smu);
 	map_data->raw_data.map = malloc(map_data->fmap.height * sizeof(int *));
