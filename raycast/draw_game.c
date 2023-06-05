@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 01:00:09 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/05 21:26:51 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/05 22:09:35 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,21 @@ void draw_rays(t_game *game)
 		float delta_y = sin(angle);
 		while (game->map[(int)p_y / 16][(int)p_x / 16] != 1)
 		{
-			p_x += delta_x * 0.1;
-			p_y += delta_y * 0.1;
-			distance += 0.001;
+			p_x += delta_x * 0.01;
+			p_y += delta_y * 0.01;
+			distance += sqrt(delta_x * delta_x + delta_y * delta_y) * 0.000001; // Corrección de distancia
 		}
-		float wall_height = (720 / distance) * 0.12;
+		float wall_height = (720 / (distance * cos(angle - radian))) * 0.001; // Corrección de altura
 		int wall_start = (720 - wall_height) / 2;
 		int wall_end = wall_start + wall_height;
 		p_y = -1;
 		while (++p_y < 720)
+		{
 			if (p_y >= wall_start && p_y <= wall_end)
 				mlx_pixel_put(game->mlx, game->wido, column, p_y, 0x8b0000);
+		}
 		p_x = game->p_x;
 		p_y = game->p_y;
 	}
 }
+
