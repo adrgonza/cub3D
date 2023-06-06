@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 01:00:09 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/06 12:05:14 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/06 13:22:52 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,13 @@ void	draw_sky_floor(t_game *game)
 
 void draw_rays(t_game *game)
 {
+	int	cord;
 	int column;
 	float radian;
 	float p_x;
 	float p_y;
 
+	cord = 0;
 	radian = game->p_angle * (PI / 180);
 	p_x = game->p_x;
 	p_y = game->p_y;
@@ -64,6 +66,15 @@ void draw_rays(t_game *game)
 			p_y += delta_y * 0.01;
 			distance += sqrt(delta_x * delta_x + delta_y * delta_y) * 0.000001;
 		}
+		if ((p_y - (int)p_y) * 10 < 0.1)
+			cord = 1;
+		if ((p_x - (int)p_x) * 10 > 9.9)
+			cord = 2;
+		if ((p_y - (int)p_y) * 10 > 9.9)
+			cord = 3;
+		if ((p_x - (int)p_x) * 10 < 0.1)
+			cord = 4;
+		printf("p_y--%f\np_x--%f\n", p_y, p_x);
 		float wall_height = (720 / (distance * cos(angle - radian))) * 0.001;
 		int wall_start = (720 - wall_height) / 2;
 		int wall_end = wall_start + wall_height;
@@ -71,7 +82,12 @@ void draw_rays(t_game *game)
 		while (++p_y < 720)
 		{
 			if (p_y >= wall_start && p_y <= wall_end)
-				mlx_pixel_put(game->mlx, game->wido, column, p_y, 0x8b0000);
+			{
+				if (cord == 1 || cord == 3)
+					mlx_pixel_put(game->mlx, game->wido, column, p_y, 0x8b0000);
+				else
+					mlx_pixel_put(game->mlx, game->wido, column, p_y, 0x610000);
+			}
 		}
 		p_x = game->p_x;
 		p_y = game->p_y;

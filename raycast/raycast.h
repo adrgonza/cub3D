@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:31:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/05 12:38:54 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/06 12:31:49 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,25 @@ typedef struct keys {
 }	t_keys;
 
 typedef struct game {
-	t_cubdat	*cubdat;
-	t_keys		*keys;
-	void		*mlx;
-	void		*wido;
-	void		*t_plyr;
-	void		*t_floor;
-	void		*t_wall;
-	void		*t_south;
-	void		*background;
-	unsigned char		*bkgrn_data;
-	int			bpp;
-	int			l_size;
-	int			endian;
-	int			**map;
-	float		p_x;
-	float		p_y;
-	float		p_angle;
-	int			map_posx;
-	int			map_posy;
+	t_cubdat		*cubdat;
+	t_keys			*keys;
+	void			*mlx;
+	void			*wido;
+	void			*t_plyr;
+	void			*t_floor;
+	void			*t_wall;
+	void			*t_south;
+	void			*background;
+	unsigned char	*bkgrn_data;
+	int				bpp;
+	int				l_size;
+	int				endian;
+	int				**map;
+	float			p_x;
+	float			p_y;
+	float			p_angle;
+	int				map_posx;
+	int				map_posy;
 }	t_game;
 
 int		exit_game(t_game *game);

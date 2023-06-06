@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:36:36 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/06 12:21:47 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/06 12:27:24 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	check_map(t_game *game, float y, float x)
 {
-	printf("y = %f\nx = %f\nmap = %d\n", x/16, y/16, game->map[0][0]);
-	if (game->map[(int)y / 16][(int)x / 16] > 0)
+	if (game->map[(int)y / 16][(int)x / 16] > 0) /* colitions */
 		return (0);
 	return (1);
 }
