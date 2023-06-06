@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:27:28 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/06 17:22:24 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/06 17:54:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	error_msg_exit(char *err_msg, int exit_code)
 	exit (exit_code);
 }
 
-void	error_no_player(char *err_msg, int exit_code, int **map)
+void	error_no_player(int **map)
 {
-	printf("%s\n", err_msg);
+	printf("%s\n", "error: map: no player identifier");
 	free_map(map);
-	exit (exit_code);
+	exit (1);
 }

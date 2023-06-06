@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/06/06 17:21:49 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/06 17:54:07 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		check_file_ext(char *file, char *ext);
 //	error_messages.c
 ///////////////////////////////////////////
 void	error_msg_exit(char *err_msg, int exit_code);
-void	error_no_player(char *err_msg, int exit_code, int **map);
+void	error_no_player(int **map);
 
 ///////////////////////////////////////////
 //	file_manager.c

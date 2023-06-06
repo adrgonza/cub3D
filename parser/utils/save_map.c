@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 21:15:48 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/06 17:28:19 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/06 21:01:05 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,20 +97,18 @@ void	save_map(t_mapdata *map_data)
 		error_msg_exit("error: save_map: cannot allocate memory map", 1);
 	while (smu.i < map_data->fmap.height)
 	{
-		map_data->raw_data.map[smu.i] = malloc(map_data->fmap.width * sizeof(int) - 1);
+		map_data->raw_data.map[smu.i] = malloc(map_data->fmap.width
+			* sizeof(int) - 1);
 		if (!map_data->raw_data.map[smu.i])
 			error_msg_exit("error: save_map: cannot allocate memory map", 1);
 		smu.map_line = get_next_line(smu.ffd);
 		if (!smu.map_line || smu.map_line == NULL)
-		{
-			free(smu.map_line);
-			return ;
-		}
+			return (free(smu.map_line));
 		allocate_data_map(map_data, &smu);
 		free(smu.map_line);
 		smu.i++;
 	}
 	if (map_data->dac.play_or == 0)
-		error_no_player("error: map: no player identifier", 1, map_data->raw_data.map);
+		error_no_player(map_data->raw_data.map);
 	close(smu.ffd);
 }
