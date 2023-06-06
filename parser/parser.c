@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:02:22 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/06 21:04:08 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/06 23:17:54 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ t_cubdat	parser(char *cub_file)
 	t_mapdata	map_data;
 	t_cubdat	cubdat;
 	int			fd_map;
+	//int			**mapcpy;
 
 	map_data.init = 1;
 	printf("Parser\n");
@@ -87,6 +88,10 @@ t_cubdat	parser(char *cub_file)
 	data_printer(map_data);
 	close_file(fd_map);
 	cubdat = mapdat_to_cubdat(&map_data);
+	//mapcpy = NULL;
+	//map_copyer(cubdat.map, mapcpy, cubdat.map_height, cubdat.map_width);
+	//printf("Map_cheker --> %d\n", map_checker(cubdat.map,
+	//	cubdat.p_pos_x, cubdat.p_pos_y));
 	//datafree(map_data);
 	return (cubdat);
 }

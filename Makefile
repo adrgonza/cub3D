@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 14:59:15 by mcordoba          #+#    #+#              #
-#    Updated: 2023/06/06 17:06:49 by marvin           ###   ########.fr        #
+#    Updated: 2023/06/06 22:12:33 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRC_PARSER =	parser/parser.c \
 				parser/utils/parser_err_msg.c \
 				parser/utils/find_map.c \
 				parser/utils/other_utils.c \
-				parser/utils/save_map.c
+				parser/utils/save_map.c \
+				parser/utils/map_checker.c
 
 SRC_RAYCAST =	
 
