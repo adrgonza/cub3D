@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/05/29 21:00:34 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:21:49 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int		check_file_ext(char *file, char *ext);
 //	error_messages.c
 ///////////////////////////////////////////
 void	error_msg_exit(char *err_msg, int exit_code);
+void	error_no_player(char *err_msg, int exit_code, int **map);
 
 ///////////////////////////////////////////
 //	file_manager.c
@@ -70,5 +71,6 @@ void	close_file(int file_fd);
 ///////////////////////////////////////////
 void	freedom(char **matrix);
 void	double_freedom(char **matrix, char *line);
+void	free_map(int **map);
 
 #endif

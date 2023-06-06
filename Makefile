@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 14:59:15 by mcordoba          #+#    #+#              #
-#    Updated: 2023/06/06 16:52:12 by marvin           ###   ########.fr        #
+#    Updated: 2023/06/06 17:06:49 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ RM = rm -f
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3 # -I. -g3 -Wall -Werror -Wextra -Imlx
+CFLAGS = -Wall -Werror -Wextra -g3 #-fsanitize=address #-g3 # -I. -g3 -Wall -Werror -Wextra -Imlx
 
 CFNAME = -o $(NAME)
 
