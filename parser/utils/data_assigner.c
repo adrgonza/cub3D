@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_assigner.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:17:25 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/29 20:53:28 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:36:43 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ int	data_assigner(char *data, t_mapdata *map_data)
 	if (check_identifier(split_data[0]) == 1)
 	{
 		assigner(split_data[0], split_data[1], map_data);
+		freedom(split_data);
 		return (1);
 	}
-	return (0);
 	freedom(split_data);
+	return (0);
 }
 
 /* Find identifier and put the data into

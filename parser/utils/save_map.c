@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 21:15:48 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/06 17:23:13 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/06 17:28:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	save_map(t_mapdata *map_data)
 		if (!map_data->raw_data.map[smu.i])
 			error_msg_exit("error: save_map: cannot allocate memory map", 1);
 		smu.map_line = get_next_line(smu.ffd);
-		if (!smu.map_line)
+		if (!smu.map_line || smu.map_line == NULL)
 		{
 			free(smu.map_line);
 			return ;
