@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 01:00:09 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/05 22:09:35 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/06 12:05:14 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void draw_rays(t_game *game)
 	column = -1;
 	while (++column < 1080)
 	{
-		float angle = radian + atan((column - 540) / 390.0);
+		float angle = radian + atan((column - 540) / 480.0); // modifica anchura del bloque
 		float distance = 0.0;
 		float delta_x = cos(angle);
 		float delta_y = sin(angle);
@@ -62,9 +62,9 @@ void draw_rays(t_game *game)
 		{
 			p_x += delta_x * 0.01;
 			p_y += delta_y * 0.01;
-			distance += sqrt(delta_x * delta_x + delta_y * delta_y) * 0.000001; // Corrección de distancia
+			distance += sqrt(delta_x * delta_x + delta_y * delta_y) * 0.000001;
 		}
-		float wall_height = (720 / (distance * cos(angle - radian))) * 0.001; // Corrección de altura
+		float wall_height = (720 / (distance * cos(angle - radian))) * 0.001;
 		int wall_start = (720 - wall_height) / 2;
 		int wall_end = wall_start + wall_height;
 		p_y = -1;
