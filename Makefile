@@ -6,7 +6,7 @@
 #    By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 14:59:15 by mcordoba          #+#    #+#              #
-#    Updated: 2023/06/05 18:41:09 by adrgonza         ###   ########.fr        #
+#    Updated: 2023/06/09 15:25:43 by adrgonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,10 +29,9 @@ SRC_RAYCAST =	raycast/raycast.c \
 				raycast/tools.c \
 				raycast/minimap.c \
 				raycast/key_manage.c \
-				raycast/draw_polygons.c \
 				raycast/draw_game.c \
 
-NAME = cub3d
+NAME = cub3D
 
 SEARCH = cub3d.h
 

@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 21:15:48 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/05 11:40:39 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/09 15:10:24 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,30 @@ int	transform_to_map(char c, int char_pos, t_mapdata *map_data, t_smu *smu)
 void	allocate_data_map(t_mapdata *map_data, t_smu *smu)
 {
 	int		j;
+	int		data_transform;
+	int		width;
+	int		find_lb;
 
 	j = 0;
-	while (j <= map_data->fmap.width - 1)
+	find_lb = 0;
+	width = map_data->fmap.width;
+	if (smu->map_line == NULL)
+		return ;
+	while (j < width - 1)
 	{
-		//printf("point --> %d\n", smu->map_line[j] - '0');
-		map_data->raw_data.map[smu->i][j] = transform_to_map(smu->map_line[j], j, map_data, smu);
+		if (find_lb == 0)
+		{
+			if (smu->map_line[j] == '\n' || smu->map_line[j] == '\0')
+				find_lb++;
+			//printf("point --> %d\n", smu->map_line[j] - '0');
+			data_transform = transform_to_map(smu->map_line[j], j, map_data, smu);
+			map_data->raw_data.map[smu->i][j] = data_transform;
+		}
+		else if (find_lb != 0)
+		{
+			data_transform = transform_to_map('\0', j, map_data, smu);
+			map_data->raw_data.map[smu->i][j] = data_transform;
+		}
 		j++;
 	}
 }

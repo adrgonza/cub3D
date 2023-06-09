@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:36:36 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/06 12:27:24 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/07 18:56:20 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ void	import_map_sources(t_game *game)
 {
 	int size;
 
-	game->t_plyr = mlx_xpm_file_to_image(game->mlx, "raycast/test/plyr.xpm", &size, &size);
-	game->t_floor = mlx_xpm_file_to_image(game->mlx, "raycast/test/floor.xpm", &size, &size);
-	game->t_wall = mlx_xpm_file_to_image(game->mlx, "raycast/test/wall.xpm", &size, &size);
-	game->t_south = mlx_xpm_file_to_image(game->mlx, "raycast/test/wall.xpm", &size, &size);
+	game->t_plyr = mlx_xpm_file_to_image(game->mlx, "test_maps/textures/test/plyr.xpm", &size, &size);
+	game->t_floor = mlx_xpm_file_to_image(game->mlx, "test_maps/textures/test/floor.xpm", &size, &size);
+	game->t_wall = mlx_xpm_file_to_image(game->mlx, "test_maps/textures/test/wall.xpm", &size, &size);
+	game->t_south = mlx_xpm_file_to_image(game->mlx, "test_maps/textures/test/wall.xpm", &size, &size);
 	if (!game->t_plyr || !game->t_floor || !game->t_wall || !game->t_south)
 	{
 		printf("ERROR.. NO TEXTURES FOUND");

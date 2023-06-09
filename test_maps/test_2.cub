@@ -1,7 +1,7 @@
-NO ./textures/test/north_spritex64.xpm
-SO ./textures/test/south_spritex64.xpm
-WE ./textures/test/west_spritex64.xpm
-EA ./textures/test/east_spritex64.xpm
+NO /test_maps/textures/test/north_spritex64.xpm
+SO /test_maps/textures/test/south_spritex64.xpm
+WE /test_maps/textures/test/west_spritex64.xpm
+EA /test_maps/textures/test/east_spritex64.xpm
 F 220,100,0
 C 225,30,0
         1111111111111111111111111
@@ -14,7 +14,7 @@ C 225,30,0
 11110111111111011101010010001
 11000000110101011100000010001
 10000000000000001100000010001
-10000000000000001101010010001
+10000000000000001101010000001
 11000001110101011111011110N0111
 11110111 1110101 101111010001
 11111111 1111111 111111111111

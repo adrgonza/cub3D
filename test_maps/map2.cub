@@ -4,7 +4,7 @@ WE ./textures/test/west_spritex64.xpm
 EA ./textures/test/east_spritex64.xpm
 F 220,100,0
 C 225,30,0
-0000000001111
+0000000001110
 1000000001001
 1111111110001
 1000000000001
