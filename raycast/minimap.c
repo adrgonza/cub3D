@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:36:36 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/07 18:56:20 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/10 21:03:52 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void	print_minimap2(t_game *game, int i, int **map)
 	while(++j < game->cubdat->map_width - 1)
 	{
 		if (j < 0 || j > game->cubdat->map_width - 2 || i < 0 || i > game->cubdat->map_height - 1)
-			mlx_put_image_to_window(game->mlx, game->wido, game->t_wall, game->map_posy, game->map_posx);
+			mlx_put_image_to_window(game->mlx, game->window, game->t_wall, game->map_posy, game->map_posx);
 		else if (map[i][j] >= 1)
-			mlx_put_image_to_window(game->mlx, game->wido, game->t_wall, game->map_posy, game->map_posx);
+			mlx_put_image_to_window(game->mlx, game->window, game->t_wall, game->map_posy, game->map_posx);
 		else if (map[i][j] == -1)
-			mlx_put_image_to_window(game->mlx, game->wido, game->t_south, game->map_posy, game->map_posx);
+			mlx_put_image_to_window(game->mlx, game->window, game->t_south, game->map_posy, game->map_posx);
 		else if (map[i][j] == 0)
-			mlx_put_image_to_window(game->mlx, game->wido, game->t_floor, game->map_posy, game->map_posx);
+			mlx_put_image_to_window(game->mlx, game->window, game->t_floor, game->map_posy, game->map_posx);
 		game->map_posy += 16;
 	}
 }
