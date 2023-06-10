@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:31:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/09 14:22:47 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:29:46 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ typedef struct game {
 	int				map_posy;
 	void 			*textures[4];
 	int			*texture_data[4];
-	void			*new_tex[4];
-	int			*new_text_data[4];
 }	t_game;
 
 int		exit_game(t_game *game);

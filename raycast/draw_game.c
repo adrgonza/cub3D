@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 01:00:09 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/09 15:25:09 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:58:49 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	draw_sky_floor(t_game *game)
 	int x;
 	int y;
 
+	game->bkgrn_data = mlx_get_data_addr(game->background, &game->bpp, &game->l_size, &game->endian);
 	y = -1;
 	while (++y < 360)
 	{
@@ -84,12 +85,16 @@ void draw_rays(t_game *game)
 	float p_x;
 	float p_y;
 	int tex_x, tex_y;
+	int		*texture_data;
+	int		*bkgrn_data;
+	int		color;
 
 	cord = 1;
 	radian = game->p_angle * (PI / 180);
 	p_x = game->p_x;
 	p_y = game->p_y;
 	column = -1;
+	bkgrn_data = (int *)game->bkgrn_data; // Get the data address at the beginning
 	while (++column < 1080)
 	{
 		float angle = radian + atan((column - 540) / 480.0); // modifica anchura del bloque
@@ -116,7 +121,7 @@ void draw_rays(t_game *game)
 			if (cell_y < 0.5)
 				cord = 2;
 			else
-        		cord = 3;
+				cord = 3;
 		}
 		float wall_height = (720 / (distance * cos(angle - radian))) * 0.001;
 		int wall_start = (720 - wall_height) / 2;
@@ -130,11 +135,13 @@ void draw_rays(t_game *game)
 				if (cord % 2 == 0) // norte y sur
     				tex_x = (int)(64 * ((p_x / 16) - (int)(p_x / 16)));
 				else // este y oeste
-    				tex_x = (int)(64 * ((p_y / 16) - (int)(p_y / 16)));
+    			 	tex_x = (int)(64 * ((p_y / 16) - (int)(p_y / 16)));
 				if (tex_x < 0) tex_x = 0;
 				if (tex_x > 63) tex_x = 63;
-				int color = ((int *)game->new_text_data[cord - 1])[tex_y * 64 + tex_x];
-				mlx_pixel_put(game->mlx, game->wido, column, y, color);
+
+				texture_data = (int *)game->texture_data[cord - 1];
+				color = texture_data[tex_y * 64 + tex_x];
+				bkgrn_data[y * 1080 + column] = mlx_get_color_value(game->mlx, color);
 			}
 		}
 		p_x = game->p_x;
