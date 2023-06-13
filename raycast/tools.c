@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:44:18 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/10 21:07:00 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/13 12:26:48 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	init_data(t_game *game, t_cubdat *cubdat, t_keys *keys)
 	import_map_sources(game); /* init and print map */
 	game->background_img = mlx_new_image(game->mlx, 1080, 720);
 	game->background_data = mlx_get_data_addr(game->background_img, &game->background_bpp, &game->background_size, &game->background_endian);
-	//draw_sky_floor(game);
 	game->textures[0] = mlx_xpm_file_to_image(game->mlx, "test_maps/textures/test/north.xpm", &tex_width, &tex_height);
 	game->textures[1] = mlx_xpm_file_to_image(game->mlx, "test_maps/textures/test/east.xpm", &tex_width, &tex_height);
 	game->textures[2] = mlx_xpm_file_to_image(game->mlx, "test_maps/textures/test/south.xpm", &tex_width, &tex_height);

@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:31:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/10 21:08:23 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/12 22:35:25 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../cub3d.h"
 # include <math.h>
+#include <float.h>
 
 #define PI 3.1415926535
 
@@ -51,6 +52,7 @@ typedef struct game {
 	float			p_angle;
 	int				map_posx;
 	int				map_posy;
+	float			aux;
 }	t_game;
 
 int		exit_game(t_game *game);

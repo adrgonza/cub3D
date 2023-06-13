@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 01:00:09 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/10 21:07:12 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/13 12:17:02 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,41 @@ void	draw_sky_floor(t_game *game)
 	}
 }
 
+int	get_wall_orientation(float p_y, float p_x)
+{
+	float cell_x = (p_x / 16) - (int)(p_x / 16);
+	float cell_y = (p_y / 16) - (int)(p_y / 16);
+	printf("cell_y--%f\n", cell_y);
+	printf("cell_x--%f\n", cell_x);
+	if (cell_x < 0.5)
+	{
+		if (cell_y < 0.001)
+			return (4);
+		else
+			return (1);
+	}
+	if (cell_x > 0.5)
+	{
+		if (cell_y < 0.001)
+			return (4);
+		else
+			return (3);
+	}
+	return (0);
+}
+
 void draw_rays(t_game *game)
 {
-	int	cord;
-	int column;
-	float radian;
-	float p_x;
-	float p_y;
-	int tex_x, tex_y;
+	int		cord;
+	int		column;
+	int		tex_x, tex_y;
 	int		*texture_data;
 	int		*background_data;
 	int		color;
+	float	radian;
+	float	p_x;
+	float	p_y;
+	float	ray_angle;
 
 	cord = 1;
 	radian = game->p_angle * (PI / 180);
@@ -97,32 +121,42 @@ void draw_rays(t_game *game)
 	background_data = (int *)game->background_data; // Get the data address at the beginning
 	while (++column < 1080)
 	{
-		float angle = radian + atan((column - 540) / 480.0); // modifica anchura del bloque
-		float distance = 0.0;
+		float angle = radian + 0.95 * atan((column - 540) / 480.0); // change fov (not recommended)
+		double distance = 0.0;
 		float delta_x = cos(angle);
 		float delta_y = sin(angle);
 		while (game->map[(int)p_y / 16][(int)p_x / 16] != 1)
 		{
 			p_x += delta_x * 0.01;
 			p_y += delta_y * 0.01;
-			distance += sqrt(delta_x * delta_x + delta_y * delta_y) * 0.000001;
+			distance += sqrt(delta_x * delta_x + delta_y * delta_y) * 0.0000009;
 		}
 		float cell_x = (p_x / 16) - (int)(p_x / 16);
 		float cell_y = (p_y / 16) - (int)(p_y / 16);
-		if (cell_x < 0.5)
+		ray_angle = angle * (180 / PI); // convert radians to degrees
+		ray_angle = fmod(ray_angle, 360.0);
+		if (ray_angle < 0)
+			ray_angle += 360.0;
+		printf("angle--%f\n", ray_angle);
+		if (cell_x < 0.0007 || cell_x > 0.9993)
 		{
-			if (cell_y < 0.5)
-				cord = 1;
-			else
-			cord = 4;
+			cord = 1;
+			if (ray_angle >= 90 && ray_angle <= 270)
+				cord = 3;
+			if (game->map[(int)p_y / 16][((int)p_x / 16) + 1] == 1 && game->map[(int)p_y / 16][((int)p_x / 16) - 1])
+			{
+				cord = 2;
+				if (ray_angle < 180)
+					cord = 4;
+			}
 		}
 		else
 		{
-			if (cell_y < 0.5)
-				cord = 2;
-			else
-				cord = 3;
+			cord = 2;
+			if (ray_angle < 180)
+				cord = 4;
 		}
+		game->aux = cell_x;
 		float wall_height = (720 / (distance * cos(angle - radian))) * 0.001;
 		int wall_start = (720 - wall_height) / 2;
 		int wall_end = wall_start + wall_height;
