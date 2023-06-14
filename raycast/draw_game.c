@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 01:00:09 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/13 12:17:02 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/14 13:17:08 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,109 +77,89 @@ void	draw_sky_floor(t_game *game)
 	}
 }
 
-int	get_wall_orientation(float p_y, float p_x)
+int	get_wall_orientation(float p_y, float p_x, float angle, t_game *game)
 {
+	float	ray_angle;
 	float cell_x = (p_x / 16) - (int)(p_x / 16);
 	float cell_y = (p_y / 16) - (int)(p_y / 16);
-	printf("cell_y--%f\n", cell_y);
-	printf("cell_x--%f\n", cell_x);
-	if (cell_x < 0.5)
+	ray_angle = angle * (180 / PI); // convert radians to degrees
+	ray_angle = fmod(ray_angle, 360.0);
+	if (ray_angle < 0)
+		ray_angle += 360.0;
+	if (cell_x < 0.0007 || cell_x > 0.9993)
 	{
-		if (cell_y < 0.001)
-			return (4);
-		else
-			return (1);
-	}
-	if (cell_x > 0.5)
-	{
-		if (cell_y < 0.001)
-			return (4);
-		else
+		if (game->map[(int)p_y / 16][((int)p_x / 16) + 1] == 1 && game->map[(int)p_y / 16][((int)p_x / 16) - 1])
+		{
+			if (ray_angle < 180)
+				 return (4);
+			return (2);
+		}
+		if (ray_angle >= 90 && ray_angle <= 270)
 			return (3);
+		return (1);
 	}
-	return (0);
+	else
+	{
+		if (ray_angle < 180)
+			return (4);
+		return (2);
+	}
+}
+
+void	print_walls(t_game *game, t_rays *rays)
+{
+	int		tex_x, tex_y;
+	float wall_height = (720 / (rays->distance * cos(rays->angle - rays->radian))) * 0.001;
+	int wall_start = (720 - wall_height) / 2;
+	int wall_end = wall_start + wall_height;
+	int y = -1;
+	int		*texture_data;
+	while (++y < 720)
+	{
+		if (y >= wall_start && y <= wall_end && rays->cord > 0 && rays->cord < 5)
+		{
+			tex_y = (int)(64 * ((y - wall_start) / wall_height));
+			if (rays->cord % 2 == 0)
+				tex_x = (int)(64 * ((rays->p_x / 16) - (int)(rays->p_x / 16)));
+			else
+			 	tex_x = (int)(64 * ((rays->p_y / 16) - (int)(rays->p_y / 16)));
+			if (tex_x < 0)
+				tex_x = 0;
+			if (tex_x > 63)
+				tex_x = 63;
+			texture_data = (int *)game->texture_data[rays->cord - 1];
+			rays->color = texture_data[tex_y * 64 + tex_x];
+			rays->background_data[y * 1080 + rays->column] = mlx_get_color_value(game->mlx, rays->color);
+		}
+	}
 }
 
 void draw_rays(t_game *game)
 {
-	int		cord;
-	int		column;
-	int		tex_x, tex_y;
-	int		*texture_data;
-	int		*background_data;
-	int		color;
-	float	radian;
-	float	p_x;
-	float	p_y;
-	float	ray_angle;
+	t_rays	rays;
 
-	cord = 1;
-	radian = game->p_angle * (PI / 180);
-	p_x = game->p_x;
-	p_y = game->p_y;
-	column = -1;
-	background_data = (int *)game->background_data; // Get the data address at the beginning
-	while (++column < 1080)
+	rays.cord = 1;
+	rays.radian = game->p_angle * (PI / 180);
+	rays.p_x = game->p_x;
+	rays.p_y = game->p_y;
+	rays.column = -1;
+	rays.background_data = (int *)game->background_data; // Get the data address at the beginning
+	while (++rays.column < 1080)
 	{
-		float angle = radian + 0.95 * atan((column - 540) / 480.0); // change fov (not recommended)
-		double distance = 0.0;
-		float delta_x = cos(angle);
-		float delta_y = sin(angle);
-		while (game->map[(int)p_y / 16][(int)p_x / 16] != 1)
+		rays.angle = rays.radian + 0.95 * atan((rays.column - 540) / 480.0); // change fov (not recommended)
+		rays.distance = 0.0;
+		rays.delta_x = cos(rays.angle);
+		rays.delta_y = sin(rays.angle);
+		while (game->map[(int)rays.p_y / 16][(int)rays.p_x / 16] != 1)
 		{
-			p_x += delta_x * 0.01;
-			p_y += delta_y * 0.01;
-			distance += sqrt(delta_x * delta_x + delta_y * delta_y) * 0.0000009;
+			rays.p_x += rays.delta_x * 0.01;
+			rays.p_y += rays.delta_y * 0.01;
+			rays.distance += sqrt(rays.delta_x * rays.delta_x + rays.delta_y * rays.delta_y) * 0.0000009;
 		}
-		float cell_x = (p_x / 16) - (int)(p_x / 16);
-		float cell_y = (p_y / 16) - (int)(p_y / 16);
-		ray_angle = angle * (180 / PI); // convert radians to degrees
-		ray_angle = fmod(ray_angle, 360.0);
-		if (ray_angle < 0)
-			ray_angle += 360.0;
-		printf("angle--%f\n", ray_angle);
-		if (cell_x < 0.0007 || cell_x > 0.9993)
-		{
-			cord = 1;
-			if (ray_angle >= 90 && ray_angle <= 270)
-				cord = 3;
-			if (game->map[(int)p_y / 16][((int)p_x / 16) + 1] == 1 && game->map[(int)p_y / 16][((int)p_x / 16) - 1])
-			{
-				cord = 2;
-				if (ray_angle < 180)
-					cord = 4;
-			}
-		}
-		else
-		{
-			cord = 2;
-			if (ray_angle < 180)
-				cord = 4;
-		}
-		game->aux = cell_x;
-		float wall_height = (720 / (distance * cos(angle - radian))) * 0.001;
-		int wall_start = (720 - wall_height) / 2;
-		int wall_end = wall_start + wall_height;
-		int y = -1;
-		while (++y < 720)
-		{
-			if (y >= wall_start && y <= wall_end && cord > 0 && cord < 5)
-			{
-				tex_y = (int)(64 * ((y - wall_start) / wall_height));
-				if (cord % 2 == 0) // norte y sur
-    				tex_x = (int)(64 * ((p_x / 16) - (int)(p_x / 16)));
-				else // este y oeste
-    			 	tex_x = (int)(64 * ((p_y / 16) - (int)(p_y / 16)));
-				if (tex_x < 0) tex_x = 0;
-				if (tex_x > 63) tex_x = 63;
-
-				texture_data = (int *)game->texture_data[cord - 1];
-				color = texture_data[tex_y * 64 + tex_x];
-				background_data[y * 1080 + column] = mlx_get_color_value(game->mlx, color);
-			}
-		}
-		p_x = game->p_x;
-		p_y = game->p_y;
+		rays.cord = get_wall_orientation(rays.p_y, rays.p_x, rays.angle, game);
+		print_walls(game, &rays);
+		rays.p_x = game->p_x;
+		rays.p_y = game->p_y;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:31:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/12 22:35:25 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/14 13:16:00 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,20 @@
 
 typedef struct s_cubdat t_cubdat;
 
+typedef struct rays {
+	int		cord;
+	int		column;
+	int		*background_data;
+	int		color;
+	float	radian;
+	float angle;
+	double distance;
+	float	p_x;
+	float	p_y;
+	float delta_x;
+	float delta_y;
+}	t_rays;
+
 typedef struct keys {
 	int	w;
 	int	a;
@@ -33,6 +47,7 @@ typedef struct keys {
 typedef struct game {
 	t_cubdat		*cubdat;
 	t_keys			*keys;
+	t_rays			*rays;
 	void			*mlx;
 	void			*window;
 	void			*textures[4];
@@ -52,7 +67,6 @@ typedef struct game {
 	float			p_angle;
 	int				map_posx;
 	int				map_posy;
-	float			aux;
 }	t_game;
 
 int		exit_game(t_game *game);
