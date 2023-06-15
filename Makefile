@@ -6,7 +6,7 @@
 #    By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 14:59:15 by mcordoba          #+#    #+#              #
-#    Updated: 2023/06/09 15:25:43 by adrgonza         ###   ########.fr        #
+#    Updated: 2023/06/14 20:41:29 by adrgonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ RM = rm -f
 
 CC = gcc
 
-CFLAGS = -g -lmlx -framework OpenGL -framework AppKit #-fsanitize=address # -I. -g3 -Wall -Werror -Wextra -Imlx
+CFLAGS = -O3 -g -lmlx -framework OpenGL -framework AppKit -fsanitize=address # -I. -g3 -Wall -Werror -Wextra -Imlx
 
 CFNAME = -o $(NAME)
 

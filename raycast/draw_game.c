@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 01:00:09 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/14 13:17:08 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/15 00:26:47 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	draw_line(t_game *game)
 
 	radian = game->p_angle * (PI / 180); /* converts de angle to a radians */
 	i = -1;
-	while (i++ < 10)
+	while (i++ < 8)
 	{
 		x = game->p_x + i * cos(radian);
 		y = game->p_y + i * sin(radian);
@@ -59,9 +59,9 @@ void	draw_sky_floor(t_game *game)
 		for (x = 0; x < 1080; x++)
 		{
 			int position = (y * game->background_size) + (x * (game->background_bpp / 8));
-			game->background_data[position] = (unsigned char)255; // Asignar componente rojo (0-255)
-			game->background_data[position + 1] = (unsigned char)100; // Asignar componente verde (0-255)
-			game->background_data[position + 2] = (unsigned char)100; // Asignar componente azul (0-255)
+			game->background_data[position] = (unsigned char)game->cubdat->c_col.b; // Asignar componente rojo (0-255)
+			game->background_data[position + 1] = (unsigned char)game->cubdat->c_col.g; // Asignar componente verde (0-255)
+			game->background_data[position + 2] = (unsigned char)game->cubdat->c_col.r; // Asignar componente azul (0-255)
 		}
 	}
 	y = 359;
@@ -70,9 +70,9 @@ void	draw_sky_floor(t_game *game)
 		for (x = 0; x < 1080; x++)
 		{
 			int position = (y * game->background_size) + (x * (game->background_bpp / 8));
-			game->background_data[position] = 100; // Asignar componente rojo (0-255)
-			game->background_data[position + 1] = 100; // Asignar componente verde (0-255)
-			game->background_data[position + 2] = 100; // Asignar componente azul (0-255)
+			game->background_data[position] = (unsigned char)game->cubdat->f_col.b; // Asignar componente rojo (0-255)
+			game->background_data[position + 1] = (unsigned char)game->cubdat->f_col.g; // Asignar componente verde (0-255)
+			game->background_data[position + 2] = (unsigned char)game->cubdat->f_col.r; // Asignar componente azul (0-255)
 		}
 	}
 }
@@ -127,6 +127,10 @@ void	print_walls(t_game *game, t_rays *rays)
 				tex_x = 0;
 			if (tex_x > 63)
 				tex_x = 63;
+			if (tex_y > 63)
+				tex_y = 63;
+			if (tex_y < 0)
+				tex_y = 0;
 			texture_data = (int *)game->texture_data[rays->cord - 1];
 			rays->color = texture_data[tex_y * 64 + tex_x];
 			rays->background_data[y * 1080 + rays->column] = mlx_get_color_value(game->mlx, rays->color);

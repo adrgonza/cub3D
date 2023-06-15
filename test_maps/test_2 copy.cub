@@ -2,8 +2,8 @@ NO ./textures/test/north_spritex64.xpm
 SO ./textures/test/south_spritex64.xpm
 WE ./textures/test/west_spritex64.xpm
 EA ./textures/test/east_spritex64.xpm
-F 220,100,0
-C 225,30,0
+F 220,100,200
+C 0,0,255
 1111111111111
 1000000000001
 10000001N1001
