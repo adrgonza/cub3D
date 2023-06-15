@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:02:22 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/06 23:17:54 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/15 18:08:04 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,10 @@ t_cubdat	parser(char *cub_file)
 	close_file(fd_map);
 	cubdat = mapdat_to_cubdat(&map_data);
 	//mapcpy = NULL;
-	//map_copyer(cubdat.map, mapcpy, cubdat.map_height, cubdat.map_width);
-	//printf("Map_cheker --> %d\n", map_checker(cubdat.map,
-	//	cubdat.p_pos_x, cubdat.p_pos_y));
+	//map_copyer(cubdat.map, &mapcpy, cubdat.map_height, cubdat.map_width);
+	printf("Map_cheker --> %d\n", map_checker(cubdat.map,
+		cubdat.p_pos_x, cubdat.p_pos_y));
+	renormalize_map(cubdat.map, cubdat.map_width, cubdat.map_height);
 	//datafree(map_data);
 	return (cubdat);
 }
