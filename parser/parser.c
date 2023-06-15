@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:02:22 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/15 18:08:04 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:24:31 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ t_cubdat	parser(char *cub_file)
 	cubdat = mapdat_to_cubdat(&map_data);
 	//mapcpy = NULL;
 	//map_copyer(cubdat.map, &mapcpy, cubdat.map_height, cubdat.map_width);
-	printf("Map_cheker --> %d\n", map_checker(cubdat.map,
-		cubdat.p_pos_x, cubdat.p_pos_y));
+	if (map_checker(cubdat.map, cubdat.p_pos_x, cubdat.p_pos_y) != 1)
+		error_msg_exit("error: map_checker: map no compatible", 1);
 	renormalize_map(cubdat.map, cubdat.map_width, cubdat.map_height);
 	//datafree(map_data);
 	return (cubdat);
