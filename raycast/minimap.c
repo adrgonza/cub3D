@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:36:36 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/14 23:56:00 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/18 16:28:26 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print_minimap2(t_game *game, int i, int **map)
 	int	j;
 
 	j = -1;
-	while(++j < 7)
+	while(++j < game->cubdat->map_width)
 	{
 		if (j < 0 || j > game->cubdat->map_width - 2 || i < 0 || i > game->cubdat->map_height - 1)
 			mlx_put_image_to_window(game->mlx, game->window, game->t_wall, game->map_posy, game->map_posx);
@@ -46,7 +46,7 @@ void	print_minimap(t_game *game)
 	game->map_posx = 0;
 	map = game->map;
 	i = -1;
-	while(++i < 7)
+	while(++i < game->cubdat->map_height)
 	{
 		game->map_posy = 0;
 		print_minimap2(game, i, map);

@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 01:00:09 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/15 00:26:47 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/18 16:29:22 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,14 @@ int	get_wall_orientation(float p_y, float p_x, float angle, t_game *game)
 	float	ray_angle;
 	float cell_x = (p_x / 16) - (int)(p_x / 16);
 	float cell_y = (p_y / 16) - (int)(p_y / 16);
+
 	ray_angle = angle * (180 / PI); // convert radians to degrees
 	ray_angle = fmod(ray_angle, 360.0);
 	if (ray_angle < 0)
 		ray_angle += 360.0;
 	if (cell_x < 0.0007 || cell_x > 0.9993)
 	{
-		if (game->map[(int)p_y / 16][((int)p_x / 16) + 1] == 1 && game->map[(int)p_y / 16][((int)p_x / 16) - 1])
+		if (game->map[(int)p_y / 16][((int)p_x / 16) + 1] && game->map[(int)p_y / 16][((int)p_x / 16) + 1] == 1 && (int)p_x / 16 > 0 && game->map[(int)p_y / 16][((int)p_x / 16) - 1] && game->map[(int)p_y / 16][((int)p_x / 16) - 1] == 1)
 		{
 			if (ray_angle < 180)
 				 return (4);
@@ -104,6 +105,7 @@ int	get_wall_orientation(float p_y, float p_x, float angle, t_game *game)
 			return (4);
 		return (2);
 	}
+	return (1);
 }
 
 void	print_walls(t_game *game, t_rays *rays)
@@ -154,7 +156,7 @@ void draw_rays(t_game *game)
 		rays.distance = 0.0;
 		rays.delta_x = cos(rays.angle);
 		rays.delta_y = sin(rays.angle);
-		while (game->map[(int)rays.p_y / 16][(int)rays.p_x / 16] != 1)
+		while ((int)rays.p_x / 16 < game->cubdat->map_width - 2 && (int)rays.p_x / 16 > 0 &&  (int)rays.p_y / 16 >= 0 && (int)rays.p_y / 16 < game->cubdat->map_height && game->map[(int)rays.p_y / 16][(int)rays.p_x / 16] != 1) //&& (int)rays.p_y / 16 > 0 && (int)rays.p_y / 16 < game->cubdat->map_height && (int)rays.p_x / 16 > 0 && (int)rays.p_x / 16 < game->cubdat->map_width);
 		{
 			rays.p_x += rays.delta_x * 0.01;
 			rays.p_y += rays.delta_y * 0.01;
