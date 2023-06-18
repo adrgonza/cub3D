@@ -1,0 +1,12 @@
+NO ./textures/desert/north.xpm
+SO ./textures/desert/south.xpm
+WE ./textures/desert/west.xpm
+EA ./textures/desert/east.xpm
+F 194,178,128
+C 154,202,231
+1111111111111
+1000000000001
+10000001N1001
+1000000100001
+1000000000001
+1111111111111

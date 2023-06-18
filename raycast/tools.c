@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:44:18 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/13 12:26:48 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/18 19:09:33 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	init_data(t_game *game, t_cubdat *cubdat, t_keys *keys)
 	int j = 0;
 	int	tex_width, tex_height;
 
+	//printf("%s\n", cubdat->ea_route);
 	ft_bzero(game, sizeof(*game)); /* init all vars */
 	game->mlx = mlx_init(); /* mlx init */
 	game->window = mlx_new_window(game->mlx, 1080, 720, "Midland v0.01"); /* create  the window */
@@ -28,13 +29,13 @@ void	init_data(t_game *game, t_cubdat *cubdat, t_keys *keys)
 	game->map = cubdat->map; /* get the map */
 	game->p_x = cubdat->p_pos_x * 16; /* player start position x */
 	game->p_y = cubdat->p_pos_y * 16; /* player start position x */
-	import_map_sources(game); /* init and print map */
+	//import_map_sources(game); /* init and print map */
 	game->background_img = mlx_new_image(game->mlx, 1080, 720);
 	game->background_data = mlx_get_data_addr(game->background_img, &game->background_bpp, &game->background_size, &game->background_endian);
-	game->textures[0] = mlx_xpm_file_to_image(game->mlx, "test_maps/textures/test/north.xpm", &tex_width, &tex_height);
-	game->textures[1] = mlx_xpm_file_to_image(game->mlx, "test_maps/textures/test/east.xpm", &tex_width, &tex_height);
-	game->textures[2] = mlx_xpm_file_to_image(game->mlx, "test_maps/textures/test/south.xpm", &tex_width, &tex_height);
-	game->textures[3] = mlx_xpm_file_to_image(game->mlx, "test_maps/textures/test/west.xpm", &tex_width, &tex_height);
+	game->textures[0] = mlx_xpm_file_to_image(game->mlx, cubdat->no_route, &tex_width, &tex_height);
+	game->textures[1] = mlx_xpm_file_to_image(game->mlx, cubdat->ea_route, &tex_width, &tex_height);
+	game->textures[2] = mlx_xpm_file_to_image(game->mlx, cubdat->so_route, &tex_width, &tex_height);
+	game->textures[3] = mlx_xpm_file_to_image(game->mlx, cubdat->we_route, &tex_width, &tex_height);
 	i = -1;
 	while (++i < 4)
 		game->texture_data[i] = (int *)mlx_get_data_addr(game->textures[i], &game->background_bpp, &game->background_size, &game->background_endian);

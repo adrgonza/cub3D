@@ -1,0 +1,12 @@
+NO ./textures/ruin/north.xpm
+SO ./textures/ruin/south.xpm
+WE ./textures/ruin/west.xpm
+EA ./textures/ruin/east.xpm
+F 86,125,70
+C 192,192,192
+1111111111111
+1000000000001
+10000001N1001
+1000000100001
+1000000000001
+1111111111111
