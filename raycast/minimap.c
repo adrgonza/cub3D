@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:36:36 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/18 19:37:35 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/18 23:57:35 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	check_map(t_game *game, float y, float x)
 {
-	if ((int)y / 16 <= 0 || (int)y / 16 > game->cubdat->map_height)
+	if ((int)y / 16 <= 0 || (int)y / 16 > game->cubdat->map_height - 2)
 		return (0);
-	if ((int)x / 16 <= 0 || (int)x / 16 > game->cubdat->map_width)
+	if ((int)x / 16 <= 0 || (int)x / 16 > game->cubdat->map_width - 3)
 		return (0);
-	if (game->map[(int)y / 16][(int)x / 16] > 0) /* colitions */
+	if (game->map[(int)y / 16][(int)x / 16] > 0)
 		return (0);
 	return (1);
 }

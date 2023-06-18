@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:44:18 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/18 19:09:33 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/18 23:50:49 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ void	init_data(t_game *game, t_cubdat *cubdat, t_keys *keys)
 	int	i;
 	int y;
 	int	x;
-	int j = 0;
-	int	tex_width, tex_height;
+	int	tex_width;
+	int	tex_height;
 
-	//printf("%s\n", cubdat->ea_route);
 	ft_bzero(game, sizeof(*game)); /* init all vars */
 	game->mlx = mlx_init(); /* mlx init */
 	game->window = mlx_new_window(game->mlx, 1080, 720, "Midland v0.01"); /* create  the window */
