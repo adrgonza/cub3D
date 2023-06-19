@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_assigner.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:17:25 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/19 18:14:38 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/19 19:50:36 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,16 @@ int	data_assigner(char *data, t_mapdata *map_data)
 	char	**split_data;
 
 	split_data = ft_split(data, ' ');
-	if (!split_data)
-		error_msg_exit("error: data_assigner: memory error", 1);
-	if (check_identifier(split_data[0]) == 1 && split_data[1] != NULL)
+	if (check_identifier(split_data[0]) == 1)
 	{
-		assigner(split_data[0], split_data[1], map_data);
-		free(split_data[0]);
+		printf("%s-->\n", split_data[0]);
+		if (split_data[1])
+			assigner(split_data[0], split_data[1], map_data);
+		else
+		{
+			exit(0);
+		}
+		//freedom(split_data);
 		return (1);
 	}
 	freedom(split_data);
@@ -36,20 +40,17 @@ int	data_assigner(char *data, t_mapdata *map_data)
 */
 void	assigner(char *identifier, char *data, t_mapdata *map_data)
 {
-	int	id_len;
-
-	id_len = (int)ft_strlen(identifier);
-	if (ft_strncmp(identifier, "NO", id_len) == 0 && data != NULL)
+	if (ft_strncmp(identifier, "NO", 2) == 0 && data != NULL)
 		rute_asign(&map_data->raw_data.no_route, data, &map_data->dac.no_rut);
-	else if (ft_strncmp(identifier, "EA", id_len) == 0 && data != NULL)
+	else if (ft_strncmp(identifier, "EA", 2) == 0 && data != NULL)
 		rute_asign(&map_data->raw_data.ea_route, data, &map_data->dac.ea_rut);
-	else if (ft_strncmp(identifier, "WE", id_len) == 0 && data != NULL)
+	else if (ft_strncmp(identifier, "WE", 2) == 0 && data != NULL)
 		rute_asign(&map_data->raw_data.we_route, data, &map_data->dac.we_rut);
-	else if (ft_strncmp(identifier, "SO", id_len) == 0 && data != NULL)
+	else if (ft_strncmp(identifier, "SO", 2) == 0 && data != NULL)
 		rute_asign(&map_data->raw_data.so_route, data, &map_data->dac.so_rut);
-	else if (ft_strncmp(identifier, "F", id_len) == 0 && data != NULL)
+	else if (ft_strncmp(identifier, "F", 1) == 0 && data != NULL)
 		col_asign(&map_data->raw_data.f_col, data, &map_data->dac.f_col);
-	else if (ft_strncmp(identifier, "C", id_len) == 0 && data != NULL)
+	else if (ft_strncmp(identifier, "C", 1) == 0 && data != NULL)
 		col_asign(&map_data->raw_data.c_col, data, &map_data->dac.c_col);
 }
 
@@ -62,7 +63,6 @@ void	rute_asign(char **rawmap_id, char *data, int *id_dac)
 	{
 		*rawmap_id = malloc(ft_strlen(data) * sizeof(char *));
 		ft_strlcpy(*rawmap_id, data, ft_strlen(data));
-		free(data);
 		*id_dac = 1;
 	}
 	else if (*id_dac == 1)
@@ -74,12 +74,15 @@ void	rute_asign(char **rawmap_id, char *data, int *id_dac)
 void	col_asign(t_rgbcol *col, char *data, int *id_dac)
 {
 	char	**split_data;
+	int i = 0;
 
 	split_data = ft_split(data, ',');
+	while (split_data && split_data[i])
+		i++;
 	free(data);
-	if (*id_dac == 0 && split_data != NULL
-		&& split_data[0] && split_data[1]
-		&& split_data[2] && !split_data[3])
+	if (i != 3)
+		exit(0);
+	if (*id_dac == 0)
 	{
 		col->r = check_color(split_data[0]);
 		col->g = check_color(split_data[1]);

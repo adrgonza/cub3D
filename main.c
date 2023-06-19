@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 19:00:46 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/06/19 17:46:11 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/19 02:03:48 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Print all data of cubdat
 void	leaks()
 {
-	//system("leaks -q cub3d");
+	system("leaks -q cub3D");
 }
 
 static void	print_cubdata_values(t_cubdat cubdat)
@@ -65,9 +65,10 @@ int	main(int argc, char *argv[])
 	{
 		cubdat = parser(argv[1]);
 		print_cubdata_values(cubdat);
-		leaks();
+		//leaks();
 		raycast(&cubdat);
 	}
+	//system("leaks cub3d");
 	printf("\033[0;35m      ----> Cub3d END <----\033[0m\n");
 	(void)argc;
 	(void)argv;

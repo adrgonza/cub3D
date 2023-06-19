@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:31:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/19 13:47:00 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/19 18:12:08 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_cubdat t_cubdat;
 typedef struct rays {
 	int		cord;
 	int		column;
-	int		*background_data;
+	int		*img_data;
 	int		color;
 	float	radian;
 	float angle;
@@ -50,17 +50,17 @@ typedef struct game {
 	t_rays			*rays;
 	void			*mlx;
 	void			*window;
-	void			*textures[4];
-	int				*texture_data[4];
+	void			*txt[4];
+	int				*txt_data[4];
 	void			*t_plyr;
 	void			*t_floor;
 	void			*t_wall;
 	void			*t_south;
-	void			*background_img;
-	char			*background_data;
-	int				background_bpp;
-	int				background_size;
-	int				background_endian;
+	void			*img_img;
+	char			*img_data;
+	int				img_bpp;
+	int				img_size;
+	int				img_endian;
 	int				**map;
 	float			p_x;
 	float			p_y;

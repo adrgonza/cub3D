@@ -6,51 +6,58 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:44:18 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/19 13:48:07 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/19 18:51:36 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycast.h"
 
-void	init_data(t_game *game, t_cubdat *cubdat, t_keys *keys)
+void	import_textures(t_game *g, t_cubdat *c)
 {
-	int	i;
-	int y;
-	int	x;
-	int	tex_width;
 	int	tex_height;
+	int	tex_width;
+	int	i;
 
-	ft_bzero(game, sizeof(*game)); /* init all vars */
-	game->mlx = mlx_init(); /* mlx init */
-	game->window = mlx_new_window(game->mlx, 1080, 720, "Midland v0.31"); /* create  the window */
-	game->cubdat = cubdat; /* save de adress of the parser struct */
-	game->keys = keys;	/* save the adres for keys structure */
-	game->map = cubdat->map; /* get the map */
-	game->p_x = cubdat->p_pos_x * 16; /* player start position x */
-	game->p_y = cubdat->p_pos_y * 16; /* player start position x */
-	game->prevmouse_x = -1;
-	game->background_img = mlx_new_image(game->mlx, 1080, 720);
-	game->background_data = mlx_get_data_addr(game->background_img, &game->background_bpp, &game->background_size, &game->background_endian);
-	game->textures[0] = mlx_xpm_file_to_image(game->mlx, cubdat->no_route, &tex_width, &tex_height);
-	game->textures[1] = mlx_xpm_file_to_image(game->mlx, cubdat->ea_route, &tex_width, &tex_height);
-	game->textures[2] = mlx_xpm_file_to_image(game->mlx, cubdat->so_route, &tex_width, &tex_height);
-	game->textures[3] = mlx_xpm_file_to_image(game->mlx, cubdat->we_route, &tex_width, &tex_height);
-	if (!game->textures[0] || !game->textures[1] || !game->textures[2] || !game->textures[3])
+	g->img_img = mlx_new_image(g->mlx, 1080, 720);
+	g->img_data = mlx_get_data_addr(g->img_img, &g->img_bpp, &g->img_size, &g->img_endian);
+	g->txt[0] = mlx_xpm_file_to_image(g->mlx, c->no_route, &tex_width, &tex_height);
+	g->txt[1] = mlx_xpm_file_to_image(g->mlx, c->ea_route, &tex_width, &tex_height);
+	g->txt[2] = mlx_xpm_file_to_image(g->mlx, c->so_route, &tex_width, &tex_height);
+	g->txt[3] = mlx_xpm_file_to_image(g->mlx, c->we_route, &tex_width, &tex_height);
+	if (!g->txt[0] || !g->txt[1] || !g->txt[2] || !g->txt[3])
 	{
-		printf("Error.. No textures found\n");
-		exit_game(game);
+		printf("Error.. No txt found\n");
+		exit_game(g);
 	}
 	i = -1;
 	while (++i < 4)
-		game->texture_data[i] = (int *)mlx_get_data_addr(game->textures[i], &game->background_bpp, &game->background_size, &game->background_endian);
+		g->txt_data[i] = (int *)mlx_get_data_addr(g->txt[i],
+				&g->img_bpp, &g->img_size, &g->img_endian);
 }
 
-int	exit_game(t_game *game)
+void	init_data(t_game *g, t_cubdat *c, t_keys *keys)
 {
-	t_cubdat *cubdat;
+	int	y;
+	int	x;
 
-	cubdat = game->cubdat;
-	mlx_destroy_image(game->mlx, game->background_img);
-	mlx_destroy_window(game->mlx, game->window); /* destroy window */
+	ft_bzero(g, sizeof(*g)); /* init all vars */
+	g->mlx = mlx_init(); /* mlx init */
+	g->window = mlx_new_window(g->mlx, 1080, 720, "Midland v0.31");
+	g->cubdat = c; /* save de adress of the parser struct */
+	g->keys = keys; /* save the adres for keys structure */
+	g->map = c->map; /* get the map */
+	g->p_x = c->p_pos_x * 16; /* player start position x */
+	g->p_y = c->p_pos_y * 16; /* player start position x */
+	g->prevmouse_x = -1; /* for mouse */
+	import_textures(g, c);
+}
+
+int	exit_game(t_game *g)
+{
+	t_cubdat	*c;
+
+	c = g->cubdat;
+	mlx_destroy_image(g->mlx, g->img_img);
+	mlx_destroy_window(g->mlx, g->window);
 	exit(0);
 }
