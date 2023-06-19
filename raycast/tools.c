@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:44:18 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/18 23:50:49 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/19 00:17:53 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ void	init_data(t_game *game, t_cubdat *cubdat, t_keys *keys)
 
 int	exit_game(t_game *game)
 {
+	t_cubdat *cubdat;
+
+	cubdat = game->cubdat;
+	mlx_destroy_image(game->mlx, game->background_img);
 	mlx_destroy_window(game->mlx, game->window); /* destroy window */
 	exit(0);
 }

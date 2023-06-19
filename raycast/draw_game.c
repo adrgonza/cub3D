@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 01:00:09 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/18 23:51:48 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/19 02:44:58 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	get_wall_orientation(float p_y, float p_x, float angle, t_game *game)
 		ray_angle += 360.0;
 	if (cell_x < 0.0007 || cell_x > 0.9993)
 	{
-		if ((int)p_y / 16 > 0 && (int)p_x / 16 > 0 && (int)p_x / 16 < game->cubdat->map_width - 2 && game->map[(int)p_y / 16][((int)p_x / 16) + 1] == 1 && game->map[(int)p_y / 16][((int)p_x / 16) - 1] && game->map[(int)p_y / 16][((int)p_x / 16) - 1] == 1)
+		if ((int)p_y / 16 >= 0 && (int)p_x / 16 > 0 && (int)p_x / 16 < game->cubdat->map_width - 2 && game->map[(int)p_y / 16][((int)p_x / 16) + 1] == 1 && game->map[(int)p_y / 16][((int)p_x / 16) - 1] && game->map[(int)p_y / 16][((int)p_x / 16) - 1] == 1)
 		{
 			if (ray_angle < 180)
 				 return (4);

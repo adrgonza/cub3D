@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 01:01:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/06 12:15:22 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/19 02:42:52 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,13 @@ int	key_press(int key, t_game *game)
 {
 	if (key == K_ESC)
 		exit_game(game);
-	if (key == 13)
+	if (key == K_W)
 		game->keys->w = 1;
-	if (key == 1)
+	if (key == K_S)
 		game->keys->s = 1;
-	if (key == 0)
+	if (key == K_A)
 		game->keys->a = 1;
-	if (key == 2)
+	if (key == K_D)
 		game->keys->d = 1;
 	if (key == 123)
 		game->keys->left = 1;
