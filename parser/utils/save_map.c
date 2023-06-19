@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 21:15:48 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/25 18:32:07 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/06 23:16:50 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	transform_to_map(char c, int char_pos, t_mapdata *map_data, t_smu *smu)
 {
 	if (ft_isdigit(c) == 1)
 		return (c - '0');
-	else if (c == ' ')
+	else if (c == ' ' || c == '\0' || c == '\n')
 		return (-1);
 	else if ((c == 'N' || c == 'W' || c == 'E' || c == 'S')
 		&& map_data->dac.play_or == 0)
@@ -57,12 +57,30 @@ int	transform_to_map(char c, int char_pos, t_mapdata *map_data, t_smu *smu)
 void	allocate_data_map(t_mapdata *map_data, t_smu *smu)
 {
 	int		j;
+	int		data_transform;
+	int		width;
+	int		find_lb;
 
 	j = 0;
-	while (j < map_data->fmap.width - 1)
+	find_lb = 0;
+	width = map_data->fmap.width;
+	if (smu->map_line == NULL)
+		return ;
+	while (j < width - 1)
 	{
-		//printf("point --> %d\n", smu->map_line[j] - '0');
-		map_data->raw_data.map[smu->i][j] = transform_to_map(smu->map_line[j], j, map_data, smu);
+		if (find_lb == 0)
+		{
+			if (smu->map_line[j] == '\n' || smu->map_line[j] == '\0')
+				find_lb++;
+			//printf("point --> %d\n", smu->map_line[j] - '0');
+			data_transform = transform_to_map(smu->map_line[j], j, map_data, smu);
+			map_data->raw_data.map[smu->i][j] = data_transform;
+		}
+		else if (find_lb != 0)
+		{
+			data_transform = transform_to_map('\0', j, map_data, smu);
+			map_data->raw_data.map[smu->i][j] = data_transform;
+		}
 		j++;
 	}
 }
@@ -79,15 +97,18 @@ void	save_map(t_mapdata *map_data)
 		error_msg_exit("error: save_map: cannot allocate memory map", 1);
 	while (smu.i < map_data->fmap.height)
 	{
-		map_data->raw_data.map[smu.i] = malloc(map_data->fmap.width * sizeof(int) - 1);
+		map_data->raw_data.map[smu.i] = malloc(map_data->fmap.width
+			* sizeof(int) - 1);
 		if (!map_data->raw_data.map[smu.i])
 			error_msg_exit("error: save_map: cannot allocate memory map", 1);
 		smu.map_line = get_next_line(smu.ffd);
+		if (!smu.map_line || smu.map_line == NULL)
+			return (free(smu.map_line));
 		allocate_data_map(map_data, &smu);
 		free(smu.map_line);
 		smu.i++;
 	}
 	if (map_data->dac.play_or == 0)
-		error_msg_exit("error: map: no player identifier", 1);
+		error_no_player(map_data->raw_data.map);
 	close(smu.ffd);
 }

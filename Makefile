@@ -6,7 +6,7 @@
 #    By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 14:59:15 by mcordoba          #+#    #+#              #
-#    Updated: 2023/05/26 01:09:28 by adrgonza         ###   ########.fr        #
+#    Updated: 2023/06/16 09:44:25 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,13 +23,14 @@ SRC_PARSER =	parser/parser.c \
 				parser/utils/parser_err_msg.c \
 				parser/utils/find_map.c \
 				parser/utils/other_utils.c \
-				parser/utils/save_map.c
+				parser/utils/save_map.c \
+				parser/utils/map_checker.c
 
 SRC_RAYCAST =	raycast/raycast.c \
 				raycast/tools.c \
 				raycast/minimap.c \
 
-NAME = cub3d
+NAME = cub3D
 
 SEARCH = cub3d.h
 
@@ -43,7 +44,7 @@ RM = rm -f
 
 CC = gcc
 
-CFLAGS = -lmlx -framework OpenGL -framework AppKit # -I. -g3 -Wall -Werror -Wextra -Imlx
+CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address #-g3 # -I. -g3 -Wall -Werror -Wextra -Imlx
 
 CFNAME = -o $(NAME)
 

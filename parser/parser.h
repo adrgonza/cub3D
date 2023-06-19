@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/05/26 00:53:36 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/16 09:43:36 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ int			transform_to_map(char c, int char_pos, t_mapdata *map_data, t_smu *smu);
 ///////////////////////////////////////////
 int			ft_hasany(char c, char *set);
 int			char_to_int(char c);
+void		map_copyer(int **map, int ***map_cpy, int height, int width);
 
 ///////////////////////////////////////////
 //	data_assigner.c
@@ -136,7 +137,8 @@ int			check_color(char *color);
 ///////////////////////////////////////////
 //	map_checker.c
 ///////////////////////////////////////////
-int			map_checker(t_mapdata *map_data);
+int			map_checker(int **map, int ply_px, int ply_py);
+void		renormalize_map(int **map, int width, int height);
 
 
 #endif

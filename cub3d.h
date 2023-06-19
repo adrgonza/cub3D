@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/05/26 01:09:52 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:54:07 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,15 @@
 # include "libs/libft/libft.h"
 # include "libs/key_macos.h"
 
-typedef struct s_rgbcol t_rgbcol;
+// Color struct
+typedef struct s_col
+{
+	int	r;
+	int	g;
+	int	b;
+}				t_col;
 
+// Main data struct for raycaster
 typedef struct s_cubdat
 {
 	char		*no_route;
@@ -36,8 +43,8 @@ typedef struct s_cubdat
 	char		play_orient;
 	int			p_pos_x;
 	int			p_pos_y;
-	t_rgbcol	*f_col;
-	t_rgbcol	*c_col;
+	t_col		f_col;
+	t_col		c_col;
 	int			map_height;
 	int			map_width;
 	int			**map;
@@ -53,6 +60,7 @@ int		check_file_ext(char *file, char *ext);
 //	error_messages.c
 ///////////////////////////////////////////
 void	error_msg_exit(char *err_msg, int exit_code);
+void	error_no_player(int **map);
 
 ///////////////////////////////////////////
 //	file_manager.c
@@ -65,6 +73,7 @@ void	close_file(int file_fd);
 ///////////////////////////////////////////
 void	freedom(char **matrix);
 void	double_freedom(char **matrix, char *line);
+void	free_map(int **map);
 
 ///////////////////////////////////////////
 //	raycast.c
