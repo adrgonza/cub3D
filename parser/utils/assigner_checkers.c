@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assigner_checkers.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:18:52 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/02 14:47:33 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/19 18:13:20 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,14 @@ int	check_color(char *color)
 	if (color != NULL)
 	{
 		c_value = ft_atoi(color);
-		if (c_value > 255)
-			return (255);
-		else if (c_value < 0)
-			return (0);
-		else
-			return (c_value);
+		if (c_value <= 0 || c_value >= 255)
+			error_msg_exit("error: color: error on color range", 1);
+		//if (c_value > 255)
+		//	return (255);
+		//else if (c_value < 0)
+		//	return (0);
+		//else
+		//	return (c_value);
 	}
 	return (0);
 }
