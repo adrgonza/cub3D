@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:17:25 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/19 19:50:36 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/19 20:43:34 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@ int	data_assigner(char *data, t_mapdata *map_data)
 		if (split_data[1])
 			assigner(split_data[0], split_data[1], map_data);
 		else
-		{
-			exit(0);
-		}
+			error_msg_exit("error: data_assigner: bad id", 1);
 		//freedom(split_data);
 		return (1);
 	}
@@ -81,7 +79,7 @@ void	col_asign(t_rgbcol *col, char *data, int *id_dac)
 		i++;
 	free(data);
 	if (i != 3)
-		exit(0);
+		error_msg_exit("error: color: more value arguments", 1);
 	if (*id_dac == 0)
 	{
 		col->r = check_color(split_data[0]);

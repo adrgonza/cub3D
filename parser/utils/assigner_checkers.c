@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:18:52 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/19 20:35:21 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/19 20:37:44 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int	check_color(char *color)
 
 	printf("COLOR_STR --> %s|\n", color);
 	i = -1;
+	if (ft_strlen(color) < 2)
+		error_msg_exit("error: color: bad value", 1);
 	while (color[++i])
 	{
 		if (i == ft_strlen(color) - 1)
