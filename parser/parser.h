@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/06/15 18:08:00 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/16 09:43:36 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ int			check_color(char *color);
 ///////////////////////////////////////////
 //	map_checker.c
 ///////////////////////////////////////////
-int			map_checker(int **map, int player_px, int player_py);
+int			map_checker(int **map, int ply_px, int ply_py);
 void		renormalize_map(int **map, int width, int height);
 
 

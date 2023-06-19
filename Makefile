@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 14:59:15 by mcordoba          #+#    #+#              #
-#    Updated: 2023/06/15 17:39:38 by mcordoba         ###   ########.fr        #
+#    Updated: 2023/06/16 09:44:25 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC_PARSER =	parser/parser.c \
 
 SRC_RAYCAST =	
 
-NAME = cub3d
+NAME = cub3D
 
 SEARCH = cub3d.h
 
