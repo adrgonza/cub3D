@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:18:52 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/19 20:02:24 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/19 20:35:21 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,22 @@ int	check_identifier(char *identifier)
 int	check_color(char *color)
 {
 	int	c_value;
-	printf("hola\n");
+	int	i;
 
+	printf("COLOR_STR --> %s|\n", color);
+	i = -1;
+	while (color[++i])
+	{
+		if (i == ft_strlen(color) - 1)
+			break ;
+		if ((color[i] < '0' || color[i] > '9'))
+			error_msg_exit("error: color: bad value", 1);
+
+	}
 	if (color != NULL)
 	{
 		c_value = ft_atoi(color);
+		printf("atoi --> %d\n", c_value);
 		if (c_value < 0 || c_value > 255)
 			error_msg_exit("error: color: bad color value", 1);
 	}
