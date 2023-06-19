@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/06/06 17:54:07 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/10 18:14:10 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@
 # include "libs/libft/libft.h"
 # include "libs/key_macos.h"
 
-// Color struct
-typedef struct s_col
+//typedef struct s_rgbcol t_rgbcol;
+
+typedef	struct s_col
 {
-	int	r;
-	int	g;
-	int	b;
+	int			r;
+	int			g;
+	int			b;
 }				t_col;
 
-// Main data struct for raycaster
 typedef struct s_cubdat
 {
 	char		*no_route;

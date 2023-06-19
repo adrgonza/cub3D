@@ -6,7 +6,7 @@
 #    By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 14:59:15 by mcordoba          #+#    #+#              #
-#    Updated: 2023/06/16 09:44:25 by marvin           ###   ########.fr        #
+#    Updated: 2023/06/19 13:19:45 by adrgonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ SRC_PARSER =	parser/parser.c \
 SRC_RAYCAST =	raycast/raycast.c \
 				raycast/tools.c \
 				raycast/minimap.c \
+				raycast/key_manage.c \
+				raycast/draw_game.c \
 
 NAME = cub3D
 
@@ -44,7 +46,7 @@ RM = rm -f
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address #-g3 # -I. -g3 -Wall -Werror -Wextra -Imlx
+CFLAGS = -O3 -g -lmlx -framework OpenGL -framework AppKit #-fsanitize=address  #-I. -g3 -Wall -Werror -Wextra -Imlx
 
 CFNAME = -o $(NAME)
 

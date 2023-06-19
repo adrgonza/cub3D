@@ -16,7 +16,7 @@
 void	set_gnl_to_mapinit(char *filename, int init_line, t_smu *smu)
 {
 	int	i;
-	
+
 	i = 0;
 	smu->map_line = NULL;
 	smu->ffd = open_file_and_check_ext(filename, ".cub");
@@ -89,7 +89,7 @@ void	allocate_data_map(t_mapdata *map_data, t_smu *smu)
 void	save_map(t_mapdata *map_data)
 {
 	t_smu	smu;
-	
+
 	smu.i = 0;
 	set_gnl_to_mapinit(map_data->filename, map_data->fmap.l_start, &smu);
 	map_data->raw_data.map = malloc(map_data->fmap.height * sizeof(int *));

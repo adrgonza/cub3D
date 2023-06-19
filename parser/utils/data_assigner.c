@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   data_assigner.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:17:25 by marvin            #+#    #+#             */
 /*   Updated: 2023/06/19 10:33:27 by marvin           ###   ########.fr       */
@@ -70,6 +70,7 @@ void	col_asign(t_rgbcol *col, char *data, int *id_dac)
 	char	**split_data;
 
 	split_data = ft_split(data, ',');
+	free(data);
 	if (*id_dac == 0)
 	{
 		col->r = check_color(split_data[0]);

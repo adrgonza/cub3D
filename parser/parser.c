@@ -21,6 +21,7 @@ static void	data_printer(t_mapdata map_data)
 
 	f_color = map_data.raw_data.f_col;
 	c_color = map_data.raw_data.c_col;
+	printf("################# DATA INTO PARSER #################\n");
 	printf("NO data from RAW_DATA --> %s\n", map_data.raw_data.no_route);
 	printf("EA data from RAW_DATA --> %s\n", map_data.raw_data.ea_route);
 	printf("WE data from RAW_DATA --> %s\n", map_data.raw_data.we_route);
@@ -29,6 +30,7 @@ static void	data_printer(t_mapdata map_data)
 		f_color.b);
 	printf("[C] COLOR --> R: %d | G: %d | B: %d\n", c_color.r, c_color.g,
 		c_color.b);
+	printf("####################################################\n");
 }
 
 /* Free of data raw_map
