@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:36:36 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/18 23:57:35 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/19 13:12:32 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,4 @@ void	print_minimap(t_game *game)
 	}
 	draw_square(game);
 	draw_line(game);
-}
-
-void	import_map_sources(t_game *game)
-{
-	int size;
-
-	game->t_plyr = mlx_xpm_file_to_image(game->mlx, "test_maps/textures/test/plyr.xpm", &size, &size);
-	game->t_floor = mlx_xpm_file_to_image(game->mlx, "test_maps/textures/test/floor.xpm", &size, &size);
-	game->t_wall = mlx_xpm_file_to_image(game->mlx, "test_maps/textures/test/wall.xpm", &size, &size);
-	game->t_south = mlx_xpm_file_to_image(game->mlx, "test_maps/textures/test/wall.xpm", &size, &size);
-	if (!game->t_plyr || !game->t_floor || !game->t_wall || !game->t_south)
-	{
-		printf("ERROR.. NO TEXTURES FOUND");
-		exit_game(game);
-	}
 }
