@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_assigner.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:17:25 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/19 17:22:56 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/19 19:50:36 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,15 @@ int	data_assigner(char *data, t_mapdata *map_data)
 	char	**split_data;
 
 	split_data = ft_split(data, ' ');
-	if (check_identifier(split_data[0]) == 1 && split_data[1] != NULL)
+	if (check_identifier(split_data[0]) == 1)
 	{
-		assigner(split_data[0], split_data[1], map_data);
+		printf("%s-->\n", split_data[0]);
+		if (split_data[1])
+			assigner(split_data[0], split_data[1], map_data);
+		else
+		{
+			exit(0);
+		}
 		//freedom(split_data);
 		return (1);
 	}
@@ -68,9 +74,14 @@ void	rute_asign(char **rawmap_id, char *data, int *id_dac)
 void	col_asign(t_rgbcol *col, char *data, int *id_dac)
 {
 	char	**split_data;
+	int i = 0;
 
 	split_data = ft_split(data, ',');
+	while (split_data && split_data[i])
+		i++;
 	free(data);
+	if (i != 3)
+		exit(0);
 	if (*id_dac == 0)
 	{
 		col->r = check_color(split_data[0]);
