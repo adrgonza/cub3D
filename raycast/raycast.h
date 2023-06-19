@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:31:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/19 00:10:41 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/19 13:47:00 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct game {
 	float			p_angle;
 	int				map_posx;
 	int				map_posy;
+	int				prevmouse_x;
 }	t_game;
 
 int		exit_game(t_game *game);

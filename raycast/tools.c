@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:44:18 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/19 13:23:19 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/19 13:48:07 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	init_data(t_game *game, t_cubdat *cubdat, t_keys *keys)
 	game->map = cubdat->map; /* get the map */
 	game->p_x = cubdat->p_pos_x * 16; /* player start position x */
 	game->p_y = cubdat->p_pos_y * 16; /* player start position x */
+	game->prevmouse_x = -1;
 	game->background_img = mlx_new_image(game->mlx, 1080, 720);
 	game->background_data = mlx_get_data_addr(game->background_img, &game->background_bpp, &game->background_size, &game->background_endian);
 	game->textures[0] = mlx_xpm_file_to_image(game->mlx, cubdat->no_route, &tex_width, &tex_height);
