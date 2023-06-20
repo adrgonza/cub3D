@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assigner_checkers.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:18:52 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/19 20:48:11 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/20 18:42:09 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	check_color(char *color)
 	int	c_value;
 	int	i;
 
-	printf("COLOR_STR --> %s|\n", color);
 	i = -1;
 	if (ft_strlen(color) < 2)
 		error_msg_exit("error: color: bad value", 1);
@@ -61,12 +60,10 @@ int	check_color(char *color)
 			break ;
 		if ((color[i] < '0' || color[i] > '9'))
 			error_msg_exit("error: color: bad value", 1);
-
 	}
 	if (color != NULL)
 	{
 		c_value = ft_atoi(color);
-		printf("atoi --> %d\n", c_value);
 		if (c_value < 0 || c_value > 255)
 			error_msg_exit("error: color: bad color value", 1);
 	}
