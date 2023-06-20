@@ -89,9 +89,7 @@ int	get_wall_orientation(float p_y, float p_x, float angle, t_game *g)
 		ray_angle += 360.0;
 	if (cell_x < 0.0007 || cell_x > 0.9993)
 	{
-		if ((int)p_y / 16 >= 0 && (int)p_x / 16 > 0 && (int)p_x
-			/ 16 < g->cubdat->map_width - 2 && g->map[(int)p_y / 16][((int)p_x
-				/ 16) + 1] == 1 && g->map[(int)p_y / 16][((int)p_x / 16) - 1]
+		if ((int)p_y / 16 > 0 && (int)p_x / 16 > 0 && (int)p_x / 16 < g->cubdat->map_width - 2 && g->map[(int)p_y / 16][((int)p_x / 16) + 1] == 1 && g->map[(int)p_y / 16][((int)p_x / 16) - 1]
 			&& g->map[(int)p_y / 16][((int)p_x / 16) - 1] == 1)
 		{
 			if (ray_angle < 180)
