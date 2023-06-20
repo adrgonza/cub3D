@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:22:36 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/25 19:01:21 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/19 21:03:54 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,11 @@ void	read_file(int file_fd, t_mapdata *map_data)
 	{
 		data_line = get_next_line(file_fd);
 		if (data_line != NULL)
+		{
+			if (check_identifier(data_line) == 0 && map_compatible_line(data_line) == 0)
+				error_msg_exit("error: bad data on .cub", 1);
 			data_assigner(data_line, map_data);
+		}
 		free(data_line);
 		c++;
 	}

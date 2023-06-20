@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:17:25 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/19 20:43:34 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/19 20:56:22 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 int	data_assigner(char *data, t_mapdata *map_data)
 {
 	char	**split_data;
+	int i = -1;
 
 	split_data = ft_split(data, ' ');
 	if (check_identifier(split_data[0]) == 1)
@@ -30,6 +31,7 @@ int	data_assigner(char *data, t_mapdata *map_data)
 		//freedom(split_data);
 		return (1);
 	}
+	
 	freedom(split_data);
 	return (0);
 }
