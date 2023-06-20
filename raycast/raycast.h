@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:31:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/20 03:46:05 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/20 23:12:04 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,10 @@ typedef struct game {
 	int				map_posx;
 	int				map_posy;
 	int				prevmouse_x;
+	float			k_fas;
+	float			k_new_x;
+	float			k_new_y;
+	float			k_angle;
 }	t_game;
 
 int		exit_game(t_game *game);
@@ -78,7 +82,7 @@ void	draw_line(t_game *game);
 void	draw_square(t_game *game);
 int		key_released(int key, t_game *game);
 int		key_press(int key, t_game *game);
-int		key_actions(t_game *game);
+void	key_actions(t_game *game);
 void	draw_rays(t_game *game);
 void	draw_sky_floor(t_game *game);
 void	init_data(t_game *game, t_cubdat *cubdat, t_keys *keys);

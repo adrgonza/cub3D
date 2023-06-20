@@ -6,61 +6,14 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 01:01:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/20 03:50:40 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/20 23:11:40 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycast.h"
 
-int	key_actions(t_game *game)
+void	key_tools2(t_game *game)
 {
-	float	move_step;
-	float	new_x;
-	float	new_y;
-	float	angle;
-
-	angle = game->p_angle * PI / 180.0f;
-	move_step = 0.35f;
-	if (game->keys->w == 1)
-	{
-		new_x = game->p_x + cos(angle) * move_step;
-		new_y = game->p_y + sin(angle) * move_step;
-		if (check_map(game, new_y, new_x))
-		{
-			game->p_x = new_x;
-			game->p_y = new_y;
-		}
-	}
-	if (game->keys->s == 1)
-	{
-		new_x = game->p_x - cos(angle) * move_step;
-		new_y = game->p_y - sin(angle) * move_step;
-		if (check_map(game, new_y, new_x))
-		{
-			game->p_x = new_x;
-			game->p_y = new_y;
-		}
-	}
-	if (game->keys->a == 1)
-	{
-		new_x = game->p_x - cos(angle + PI / 2) * move_step;
-		new_y = game->p_y - sin(angle + PI / 2) * move_step;
-		if (check_map(game, new_y, new_x))
-		{
-			game->p_x = new_x;
-			game->p_y = new_y;
-		}
-	}
-	if (game->keys->d == 1)
-	{
-		new_x = game->p_x + cos(angle + PI / 2) * move_step;
-		new_y = game->p_y + sin(angle + PI / 2) * move_step;
-		if (check_map(game, new_y, new_x))
-		{
-			game->p_x = new_x;
-			game->p_y = new_y;
-		}
-	}
 	if (game->keys->left == 1)
 	{
 		game->p_angle -= 1.9f;
@@ -73,7 +26,58 @@ int	key_actions(t_game *game)
 		if (game->p_angle >= 360.0f)
 			game->p_angle -= 360.0f;
 	}
-	return (1);
+}
+
+void	key_tools(t_game *game)
+{
+	if (game->keys->a == 1)
+	{
+		game->k_new_x = game->p_x - cos(game->k_angle + PI / 2) * game->k_fas;
+		game->k_new_y = game->p_y - sin(game->k_angle + PI / 2) * game->k_fas;
+		if (check_map(game, game->k_new_y, game->k_new_x))
+		{
+			game->p_x = game->k_new_x;
+			game->p_y = game->k_new_y;
+		}
+	}
+	if (game->keys->d == 1)
+	{
+		game->k_new_x = game->p_x + cos(game->k_angle + PI / 2) * game->k_fas;
+		game->k_new_y = game->p_y + sin(game->k_angle + PI / 2) * game->k_fas;
+		if (check_map(game, game->k_new_y, game->k_new_x))
+		{
+			game->p_x = game->k_new_x;
+			game->p_y = game->k_new_y;
+		}
+	}
+}
+
+void	key_actions(t_game *game)
+{
+	game->k_angle = game->p_angle * PI / 180.0f;
+	game->k_fas = 0.35f;
+	if (game->keys->w == 1)
+	{
+		game->k_new_x = game->p_x + cos(game->k_angle) * game->k_fas;
+		game->k_new_y = game->p_y + sin(game->k_angle) * game->k_fas;
+		if (check_map(game, game->k_new_y, game->k_new_x))
+		{
+			game->p_x = game->k_new_x;
+			game->p_y = game->k_new_y;
+		}
+	}
+	if (game->keys->s == 1)
+	{
+		game->k_new_x = game->p_x - cos(game->k_angle) * game->k_fas;
+		game->k_new_y = game->p_y - sin(game->k_angle) * game->k_fas;
+		if (check_map(game, game->k_new_y, game->k_new_x))
+		{
+			game->p_x = game->k_new_x;
+			game->p_y = game->k_new_y;
+		}
+	}
+	key_tools(game);
+	key_tools2(game);
 }
 
 int	key_press(int key, t_game *game)
