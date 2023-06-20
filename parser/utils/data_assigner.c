@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_assigner.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:17:25 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/19 20:56:22 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/20 19:19:40 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	assigner(char *identifier, char *data, t_mapdata *map_data)
 		col_asign(&map_data->raw_data.c_col, data, &map_data->dac.c_col);
 }
 
+
 /* Assign route data to their id in raw_map struct. Program is exited if data
 	was allocated before
 */
@@ -61,6 +62,8 @@ void	rute_asign(char **rawmap_id, char *data, int *id_dac)
 {
 	if (*id_dac == 0)
 	{
+		if (ends_with(data, ".xpm\n") != 0)
+			error_msg_exit("error: sprite: bad sprite extension", 1);
 		*rawmap_id = malloc(ft_strlen(data) * sizeof(char *));
 		ft_strlcpy(*rawmap_id, data, ft_strlen(data));
 		*id_dac = 1;

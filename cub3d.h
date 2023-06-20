@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/06/10 18:14:10 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/20 19:18:53 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct s_cubdat
 ///////////////////////////////////////////
 int		errmanag(int argc, char *argv[]);
 int		check_file_ext(char *file, char *ext);
+int		check_texture_ext(char *route, char *ext);
+int		ends_with(char *str, char *end);
 
 ///////////////////////////////////////////
 //	error_messages.c

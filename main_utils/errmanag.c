@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:07:11 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/25 18:19:38 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/20 19:18:31 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	errmanag(int argc, char *argv[])
 
 /*
 	Check file extension
+	Return 1 if its correct
+	0 if its bad
 */
 int	check_file_ext(char *route, char *ext)
 {
@@ -44,6 +46,44 @@ int	check_file_ext(char *route, char *ext)
 			printf("Map error, bust be: .cub\n");
 			exit (0);
 		}
+		ext_len--;
+		route_len--;
+	}
+	return (1);
+}
+
+// Chechs if a string ends with another string (♥️ @dangonza)
+// Returns 0 if true, different value otherwise
+int	ends_with(char *str, char *end)
+{
+	size_t	str_length;
+	size_t	end_length;
+
+	if (!str || !end)
+		return (1);
+	str_length = ft_strlen(str);
+	end_length = ft_strlen(end);
+	if (end_length > str_length)
+		return (1);
+	return (ft_strncmp(str + (str_length - end_length), end, end_length));
+}
+
+/*
+	Check file texture extension
+	Return 1 if its correct
+	0 if its bad
+*/
+int	check_texture_ext(char *route, char *ext)
+{
+	int	route_len;
+	int	ext_len;
+
+	route_len = (int)ft_strlen(route) - 1;
+	ext_len = (int)ft_strlen(ext) - 1;
+	while (ext_len > 0)
+	{
+		if (route[route_len - 1] != ext[ext_len - 1])
+			error_msg_exit("error: sprite: bad sprite extension", 1);
 		ext_len--;
 		route_len--;
 	}
