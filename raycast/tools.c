@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:44:18 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/19 18:51:36 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/20 03:44:04 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 void	import_textures(t_game *g, t_cubdat *c)
 {
-	int	tex_height;
-	int	tex_width;
+	int	tx_h;
+	int	tx_w;
 	int	i;
 
-	g->img_img = mlx_new_image(g->mlx, 1080, 720);
-	g->img_data = mlx_get_data_addr(g->img_img, &g->img_bpp, &g->img_size, &g->img_endian);
-	g->txt[0] = mlx_xpm_file_to_image(g->mlx, c->no_route, &tex_width, &tex_height);
-	g->txt[1] = mlx_xpm_file_to_image(g->mlx, c->ea_route, &tex_width, &tex_height);
-	g->txt[2] = mlx_xpm_file_to_image(g->mlx, c->so_route, &tex_width, &tex_height);
-	g->txt[3] = mlx_xpm_file_to_image(g->mlx, c->we_route, &tex_width, &tex_height);
+	g->img = mlx_new_image(g->mlx, 1080, 720);
+	g->img_data = mlx_get_data_addr(g->img,
+			&g->img_bpp, &g->img_size, &g->img_end);
+	g->txt[0] = mlx_xpm_file_to_image(g->mlx, c->no_route, &tx_w, &tx_h);
+	g->txt[1] = mlx_xpm_file_to_image(g->mlx, c->ea_route, &tx_w, &tx_h);
+	g->txt[2] = mlx_xpm_file_to_image(g->mlx, c->so_route, &tx_w, &tx_h);
+	g->txt[3] = mlx_xpm_file_to_image(g->mlx, c->we_route, &tx_w, &tx_h);
 	if (!g->txt[0] || !g->txt[1] || !g->txt[2] || !g->txt[3])
 	{
 		printf("Error.. No txt found\n");
@@ -32,7 +33,7 @@ void	import_textures(t_game *g, t_cubdat *c)
 	i = -1;
 	while (++i < 4)
 		g->txt_data[i] = (int *)mlx_get_data_addr(g->txt[i],
-				&g->img_bpp, &g->img_size, &g->img_endian);
+				&g->img_bpp, &g->img_size, &g->img_end);
 }
 
 void	init_data(t_game *g, t_cubdat *c, t_keys *keys)
@@ -57,7 +58,7 @@ int	exit_game(t_game *g)
 	t_cubdat	*c;
 
 	c = g->cubdat;
-	mlx_destroy_image(g->mlx, g->img_img);
+	mlx_destroy_image(g->mlx, g->img);
 	mlx_destroy_window(g->mlx, g->window);
 	exit(0);
 }

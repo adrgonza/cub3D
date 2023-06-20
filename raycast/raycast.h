@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:31:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/19 18:12:08 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/20 03:46:05 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # include "../cub3d.h"
 # include <math.h>
-#include <float.h>
+# include <float.h>
 
-#define PI 3.1415926535
+# define PI	3.1415926535
 
-typedef struct s_cubdat t_cubdat;
+typedef struct s_cubdat	t_cubdat;
 
 typedef struct rays {
 	int		cord;
@@ -27,12 +27,12 @@ typedef struct rays {
 	int		*img_data;
 	int		color;
 	float	radian;
-	float angle;
-	double distance;
+	float	angle;
+	double	distance;
 	float	p_x;
 	float	p_y;
-	float delta_x;
-	float delta_y;
+	float	delta_x;
+	float	delta_y;
 }	t_rays;
 
 typedef struct keys {
@@ -56,11 +56,11 @@ typedef struct game {
 	void			*t_floor;
 	void			*t_wall;
 	void			*t_south;
-	void			*img_img;
+	void			*img;
 	char			*img_data;
 	int				img_bpp;
 	int				img_size;
-	int				img_endian;
+	int				img_end;
 	int				**map;
 	float			p_x;
 	float			p_y;
@@ -83,4 +83,4 @@ void	draw_rays(t_game *game);
 void	draw_sky_floor(t_game *game);
 void	init_data(t_game *game, t_cubdat *cubdat, t_keys *keys);
 
-# endif
+#endif

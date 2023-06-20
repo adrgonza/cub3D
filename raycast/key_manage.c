@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 01:01:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/19 13:07:35 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/20 03:50:40 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int	key_actions(t_game *game)
 	float	move_step;
 	float	new_x;
 	float	new_y;
-	float angle;
+	float	angle;
 
 	angle = game->p_angle * PI / 180.0f;
-	move_step =  0.35f;
+	move_step = 0.35f;
 	if (game->keys->w == 1)
 	{
 		new_x = game->p_x + cos(angle) * move_step;
@@ -95,7 +95,7 @@ int	key_press(int key, t_game *game)
 	return (0);
 }
 
-int key_released(int key, t_game *game)
+int	key_released(int key, t_game *game)
 {
 	if (key == 13)
 		game->keys->w = 0;

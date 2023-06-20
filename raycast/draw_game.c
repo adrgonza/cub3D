@@ -53,8 +53,8 @@ void	draw_sky_floor(t_game *g)
 	int	x;
 	int	position;
 
-	g->img_data = mlx_get_data_addr(g->img_img,
-			&g->img_bpp, &g->img_size, &g->img_endian);
+	g->img_data = mlx_get_data_addr(g->img,
+			&g->img_bpp, &g->img_size, &g->img_end);
 	y = -1;
 	while (++y < 720)
 	{
@@ -118,8 +118,9 @@ void	print_walls(t_game *g, t_rays *rays)
 	int		wall_end;
 	int		y;
 	int		*txt_data;
+	int		tex_x;
+	int		tex_y;
 
-	int tex_x, tex_y;
 	wall_height = (720 / (rays->distance * cos(rays->angle - rays->radian)))
 		* 0.001;
 	wall_start = (720 - wall_height) / 2;
@@ -171,7 +172,7 @@ void	draw_rays(t_game *g)
 		while ((int)rays.p_x / 16 < g->cubdat->map_width - 2 && (int)rays.p_x
 			/ 16 > 0 && (int)rays.p_y / 16 > 0 && (int)rays.p_y
 			/ 16 < g->cubdat->map_height && g->map[(int)rays.p_y
-			/ 16][(int)rays.p_x / 16] != 1)
+				/ 16][(int)rays.p_x / 16] != 1)
 		{
 			rays.p_x += rays.delta_x * 0.01;
 			rays.p_y += rays.delta_y * 0.01;
