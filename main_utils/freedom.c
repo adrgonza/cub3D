@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   freedom.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 00:08:19 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/21 16:26:52 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:32:22 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ void	double_freedom(char **matrix, char *line)
 {
 	freedom(matrix);
 	free(line);
+}
+
+/* Error message and freee*/
+void	err_free_exit_msg(char *str_free, char *msg, int err)
+{
+	free(str_free);
+	error_msg_exit(msg, err);
 }
 
 /* Liberate map memory*/

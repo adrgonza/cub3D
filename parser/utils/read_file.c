@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:22:36 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/21 17:12:46 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:35:22 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,12 @@ void	read_file(int file_fd, t_mapdata *map_data)
 		{
 			if (check_id(data_line) == 0 && mapl_compat(data_line) == 0
 				&& ft_strncmp(data_line, "\n", 1) != 0)
-			{
-				free(data_line);
-				error_msg_exit("error: bad data on .cub", 1);
-			}
+				err_free_exit_msg(data_line, "error: bad data on .cub", 1);
 			if (data_assigner(data_line, map_data) == 1)
 				nb_ids++;
 		}
 		if (mapl_compat(data_line) == 1 && nb_ids != 6)
-		{
-			free(data_line);
-			error_msg_exit("error: read_file: map before or ID lost", 1);
-		}
+			err_free_exit_msg(data_line, "error: map before or ID lost", 1);
 		free(data_line);
 	}
 	map_data->fmap = find_map(map_data->filename);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/06/21 16:09:37 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:36:24 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,17 @@ int		open_file_and_check_ext(char *file, char *ext);
 void	close_file(int file_fd);
 
 ///////////////////////////////////////////
-//	file_manager.c
+//	freedom.c
 ///////////////////////////////////////////
 void	freedom(char **matrix);
 void	double_freedom(char **matrix, char *line);
 void	free_map(int **map);
+void	err_free_exit_msg(char *str_free, char *msg, int err);
 
 ///////////////////////////////////////////
 //	raycast.c
 ///////////////////////////////////////////
 void	raycast(t_cubdat *cubdat);
-void	leaks();
+void	leaks(void);
 
 #endif
