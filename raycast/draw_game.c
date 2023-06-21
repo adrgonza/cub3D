@@ -12,24 +12,15 @@
 
 #include "raycast.h"
 
-int	get_wall_orientation(float p_y, float p_x, float angle, t_game *g)
+int	get_wall_orientation(t_game *g, t_rays *r, float ray_angle)
 {
-	float	ray_angle;
-	float	cell_x;
-	float	cell_y;
-
-	cell_x = (p_x / 16) - (int)(p_x / 16);
-	cell_y = (p_y / 16) - (int)(p_y / 16);
-	ray_angle = angle * (180 / PI);
-	ray_angle = fmod(ray_angle, 360.0);
-	if (ray_angle < 0)
-		ray_angle += 360.0;
-	if (cell_x < 0.0007 || cell_x > 0.9993)
+	if (r->cell_x < 0.0007 || r->cell_x > 0.9993)
 	{
-		if ((int)p_y / 16 >= 0 && (int)p_x / 16 > 0 && (int)p_x
-			/ 16 < g->cubdat->map_width - 2 && g->map[(int)p_y / 16][((int)p_x
-				/ 16) + 1] == 1 && g->map[(int)p_y / 16][((int)p_x / 16) - 1]
-			&& g->map[(int)p_y / 16][((int)p_x / 16) - 1] == 1)
+		if ((int)r->p_y / 16 >= 0 && (int)r->p_x / 16 > 0
+			&& (int)r->p_x / 16 < g->cubdat->map_width - 2
+			&& g->map[(int)r->p_y / 16][((int)r->p_x / 16) + 1] == 1
+			&& g->map[(int)r->p_y / 16][((int)r->p_x / 16) - 1]
+			&& g->map[(int)r->p_y / 16][((int)r->p_x / 16) - 1] == 1)
 		{
 			if (ray_angle < 180)
 				return (4);
@@ -48,45 +39,72 @@ int	get_wall_orientation(float p_y, float p_x, float angle, t_game *g)
 	return (1);
 }
 
-void	print_walls(t_game *g, t_rays *rays)
+void	print_walls_tools(t_game *g, t_rays *rays, int y)
 {
-	float	wall_height;
-	int		wall_start;
-	int		wall_end;
-	int		y;
-	int		*txt_data;
 	int		tex_x;
 	int		tex_y;
+	int		*txt_data;
 
-	wall_height = (720 / (rays->distance * cos(rays->angle - rays->radian)))
+	tex_y = (int)(64 * ((y - rays->wall_start) / rays->wall_height));
+	if (rays->cord % 2 == 0)
+		tex_x = (int)(64 * ((rays->p_x / 16) - (int)(rays->p_x / 16)));
+	else
+		tex_x = (int)(64 * ((rays->p_y / 16) - (int)(rays->p_y / 16)));
+	if (tex_x < 0)
+		tex_x = 0;
+	if (tex_x > 63)
+		tex_x = 63;
+	if (tex_y > 63)
+		tex_y = 63;
+	if (tex_y < 0)
+		tex_y = 0;
+	txt_data = (int *)g->txt_data[rays->cord - 1];
+	rays->color = txt_data[tex_y * 64 + tex_x];
+	rays->img_data[y * 1080
+		+ rays->column] = mlx_get_color_value(g->mlx, rays->color);
+}
+
+void	print_walls(t_game *g, t_rays *r)
+{
+	int		y;
+
+	r->wall_height = (720 / (r->distance * cos(r->angle - r->radian)))
 		* 0.001;
-	wall_start = (720 - wall_height) / 2;
-	wall_end = wall_start + wall_height;
+	r->wall_start = (720 - r->wall_height) / 2;
+	r->wall_end = r->wall_start + r->wall_height;
 	y = -1;
 	while (++y < 720)
 	{
-		if (y >= wall_start && y <= wall_end && rays->cord > 0
-			&& rays->cord < 5)
-		{
-			tex_y = (int)(64 * ((y - wall_start) / wall_height));
-			if (rays->cord % 2 == 0)
-				tex_x = (int)(64 * ((rays->p_x / 16) - (int)(rays->p_x / 16)));
-			else
-				tex_x = (int)(64 * ((rays->p_y / 16) - (int)(rays->p_y / 16)));
-			if (tex_x < 0)
-				tex_x = 0;
-			if (tex_x > 63)
-				tex_x = 63;
-			if (tex_y > 63)
-				tex_y = 63;
-			if (tex_y < 0)
-				tex_y = 0;
-			txt_data = (int *)g->txt_data[rays->cord - 1];
-			rays->color = txt_data[tex_y * 64 + tex_x];
-			rays->img_data[y * 1080
-				+ rays->column] = mlx_get_color_value(g->mlx, rays->color);
-		}
+		if (y >= r->wall_start && y <= r->wall_end && r->cord > 0
+			&& r->cord < 5)
+			print_walls_tools(g, r, y);
 	}
+	r->p_x = g->p_x;
+	r->p_y = g->p_y;
+}
+
+void	trace_rays(t_game *g, t_rays *rays)
+{
+	float	ray_angle;
+
+	while ((int)rays->p_x / 16 < g->cubdat->map_width - 2
+		&& (int)rays->p_x / 16 > 0 && (int)rays->p_y / 16 > 0
+		&& (int)rays->p_y / 16 < g->cubdat->map_height
+		&& g->map[(int)rays->p_y / 16][(int)rays->p_x / 16] != 1)
+	{
+		rays->p_x += rays->delta_x * 0.01;
+		rays->p_y += rays->delta_y * 0.01;
+		rays->distance += sqrt(rays->delta_x * rays->delta_x + rays->delta_y
+				* rays->delta_y) * 0.0000009;
+	}
+	rays->cell_x = (rays->p_x / 16) - (int)(rays->p_x / 16);
+	rays->cell_y = (rays->p_y / 16) - (int)(rays->p_y / 16);
+	ray_angle = rays->angle * (180 / PI);
+	ray_angle = fmod(ray_angle, 360.0);
+	if (ray_angle < 0)
+		ray_angle += 360.0;
+	rays->cord = get_wall_orientation(g, rays, ray_angle);
+	print_walls(g, rays);
 }
 
 void	draw_rays(t_game *g)
@@ -105,19 +123,6 @@ void	draw_rays(t_game *g)
 		rays.distance = 0.0;
 		rays.delta_x = cos(rays.angle);
 		rays.delta_y = sin(rays.angle);
-		while ((int)rays.p_x / 16 < g->cubdat->map_width - 2 && (int)rays.p_x
-			/ 16 > 0 && (int)rays.p_y / 16 > 0 && (int)rays.p_y
-			/ 16 < g->cubdat->map_height && g->map[(int)rays.p_y
-				/ 16][(int)rays.p_x / 16] != 1)
-		{
-			rays.p_x += rays.delta_x * 0.01;
-			rays.p_y += rays.delta_y * 0.01;
-			rays.distance += sqrt(rays.delta_x * rays.delta_x + rays.delta_y
-					* rays.delta_y) * 0.0000009;
-		}
-		rays.cord = get_wall_orientation(rays.p_y, rays.p_x, rays.angle, g);
-		print_walls(g, &rays);
-		rays.p_x = g->p_x;
-		rays.p_y = g->p_y;
+		trace_rays(g, &rays);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:31:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/20 23:12:04 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/21 12:49:38 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ typedef struct rays {
 	float	p_y;
 	float	delta_x;
 	float	delta_y;
+	float	wall_height;
+	int		wall_start;
+	int		wall_end;
+	float	cell_x;
+	float	cell_y;
 }	t_rays;
 
 typedef struct keys {
