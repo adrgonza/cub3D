@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:22:36 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/21 13:17:37 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:55:12 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	print_map_values(t_mapdata *map_data)
 void	read_file(int file_fd, t_mapdata *map_data)
 {
 	char	*data_line;
-	int		last_idline;
 	int		nb_ids;
 
 	nb_ids = 0;

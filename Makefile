@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+         #
+#    By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 14:59:15 by mcordoba          #+#    #+#              #
-#    Updated: 2023/06/21 15:47:07 by adrgonza         ###   ########.fr        #
+#    Updated: 2023/06/21 15:54:44 by mcordoba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ CC = gcc
 
 FLAGS_MLX = -lmlx -framework OpenGL -framework AppKit
 
-CFLAGS = -O3 -g -fsanitize=address #-Wall -Werror -Wextra
+CFLAGS = -O3 -g -fsanitize=address -Wall -Werror -Wextra
 
 CFNAME = -o $(NAME)
 

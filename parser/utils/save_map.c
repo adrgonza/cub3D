@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 21:15:48 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/21 13:24:03 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:56:31 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	allocate_data_map(t_mapdata *mdat, t_smu *sm)
 {
 	int		j;
 	int		data_transform;
-	int		width;
 	int		find_lb;
 
 	j = 0;

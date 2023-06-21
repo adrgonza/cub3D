@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:30:26 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/21 15:24:24 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:57:11 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,6 @@ void	import_textures(t_game *g, t_cubdat *c)
 
 void	init_data(t_game *g, t_cubdat *c, t_keys *keys)
 {
-	int	y;
-	int	x;
-
 	ft_bzero(g, sizeof(*g));
 	g->mlx = mlx_init();
 	g->window = mlx_new_window(g->mlx, 1080, 720, "Midland v0.31");

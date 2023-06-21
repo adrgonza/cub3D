@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:18:52 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/21 13:35:54 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:55:59 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,12 @@ int	check_color(char *color)
 	int	i;
 
 	i = -1;
+	c_value = 0;
 	if (ft_strlen(color) < 2)
 		error_msg_exit("error: color: bad value", 1);
 	while (color[++i])
 	{
-		if (i == ft_strlen(color) - 1)
+		if (i == (int)ft_strlen(color) - 1)
 			break ;
 		if ((color[i] < '0' || color[i] > '9'))
 			error_msg_exit("error: color: bad value", 1);

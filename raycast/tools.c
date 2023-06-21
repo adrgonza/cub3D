@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:44:18 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/21 13:16:27 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:57:43 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	mouse_move(int x, int y, t_game *game)
 			game->p_angle -= 360.0f;
 	}
 	game->prevmouse_x = x;
+	(void)y;
 	return (0);
 }
 
