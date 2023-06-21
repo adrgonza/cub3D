@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 21:15:48 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/06 23:16:50 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/21 13:24:03 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	set_gnl_to_mapinit(char *filename, int init_line, t_smu *smu)
 // If char is ' ', return 2
 // If char is player, return 3 & set orientation in raw_data (play_orient)
 // Program exited id exist duplicated player identifiers
-int	transform_to_map(char c, int char_pos, t_mapdata *map_data, t_smu *smu)
+int	trans_map(char c, int char_pos, t_mapdata *map_data, t_smu *smu)
 {
 	if (ft_isdigit(c) == 1)
 		return (c - '0');
@@ -54,7 +54,7 @@ int	transform_to_map(char c, int char_pos, t_mapdata *map_data, t_smu *smu)
 }
 
 // Alocate data in every point of map**
-void	allocate_data_map(t_mapdata *map_data, t_smu *smu)
+void	allocate_data_map(t_mapdata *mdat, t_smu *sm)
 {
 	int		j;
 	int		data_transform;
@@ -63,23 +63,21 @@ void	allocate_data_map(t_mapdata *map_data, t_smu *smu)
 
 	j = 0;
 	find_lb = 0;
-	width = map_data->fmap.width;
-	if (smu->map_line == NULL)
+	if (sm->map_line == NULL)
 		return ;
-	while (j < width - 1)
+	while (j < mdat->fmap.width - 1)
 	{
 		if (find_lb == 0)
 		{
-			if (smu->map_line[j] == '\n' || smu->map_line[j] == '\0')
+			if (sm->map_line[j] == '\n' || sm->map_line[j] == '\0')
 				find_lb++;
-			//printf("point --> %d\n", smu->map_line[j] - '0');
-			data_transform = transform_to_map(smu->map_line[j], j, map_data, smu);
-			map_data->raw_data.map[smu->i][j] = data_transform;
+			mdat->raw_data.map[sm->i][j] = trans_map(sm->map_line[j],
+					j, mdat, sm);
 		}
 		else if (find_lb != 0)
 		{
-			data_transform = transform_to_map('\0', j, map_data, smu);
-			map_data->raw_data.map[smu->i][j] = data_transform;
+			data_transform = trans_map('\0', j, mdat, sm);
+			mdat->raw_data.map[sm->i][j] = data_transform;
 		}
 		j++;
 	}
@@ -98,7 +96,7 @@ void	save_map(t_mapdata *map_data)
 	while (smu.i < map_data->fmap.height)
 	{
 		map_data->raw_data.map[smu.i] = malloc(map_data->fmap.width
-			* sizeof(int) - 1);
+				* sizeof(int) - 1);
 		if (!map_data->raw_data.map[smu.i])
 			error_msg_exit("error: save_map: cannot allocate memory map", 1);
 		smu.map_line = get_next_line(smu.ffd);

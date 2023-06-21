@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:02:22 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/15 18:24:31 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/21 12:40:36 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	data_printer(t_mapdata map_data)
 //}
 
 // Transform t_rgbcol to t_col struct
-static t_col		rgbcol_to_col(t_rgbcol rgbcol)
+static t_col	rgbcol_to_col(t_rgbcol rgbcol)
 {
 	t_col	col;
 
@@ -80,7 +80,6 @@ t_cubdat	parser(char *cub_file)
 	t_mapdata	map_data;
 	t_cubdat	cubdat;
 	int			fd_map;
-	//int			**mapcpy;
 
 	map_data.init = 1;
 	printf("Parser\n");
@@ -90,11 +89,8 @@ t_cubdat	parser(char *cub_file)
 	data_printer(map_data);
 	close_file(fd_map);
 	cubdat = mapdat_to_cubdat(&map_data);
-	//mapcpy = NULL;
-	//map_copyer(cubdat.map, &mapcpy, cubdat.map_height, cubdat.map_width);
 	if (map_checker(cubdat.map, cubdat.p_pos_x, cubdat.p_pos_y) != 1)
 		error_msg_exit("error: map_checker: map no compatible", 1);
 	renormalize_map(cubdat.map, cubdat.map_width, cubdat.map_height);
-	//datafree(map_data);
 	return (cubdat);
 }

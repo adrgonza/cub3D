@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:17:25 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/20 21:52:49 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/21 13:16:15 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,13 @@ int	data_assigner(char *data, t_mapdata *map_data)
 
 	i = -1;
 	split_data = ft_split(data, ' ');
-	if (check_identifier(split_data[0]) == 1)
+	if (check_id(split_data[0]) == 1)
 	{
 		printf("%s-->\n", split_data[0]);
 		if (split_data[1])
 			assigner(split_data[0], split_data[1], map_data);
 		else
 			error_msg_exit("error: data_assigner: bad id", 1);
-		//freedom(split_data);
 		return (1);
 	}
 	freedom(split_data);
@@ -54,7 +53,6 @@ void	assigner(char *identifier, char *data, t_mapdata *map_data)
 		col_asign(&map_data->raw_data.c_col, data, &map_data->dac.c_col);
 }
 
-
 /* Assign route data to their id in raw_map struct. Program is exited if data
 	was allocated before
 */
@@ -77,8 +75,9 @@ void	rute_asign(char **rawmap_id, char *data, int *id_dac)
 void	col_asign(t_rgbcol *col, char *data, int *id_dac)
 {
 	char	**split_data;
-	int i = 0;
+	int		i;
 
+	i = 0;
 	split_data = ft_split(data, ',');
 	while (split_data && split_data[i])
 		i++;

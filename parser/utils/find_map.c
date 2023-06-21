@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 00:56:57 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/01 21:06:43 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/21 13:12:12 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Check if the line contains a time of line compatible with a map
 // If data_line is "\n" return 0
 // If its true return(1) if not, return(0)
-int	map_compatible_line(char *data_line)
+int	mapl_compat(char *data_line)
 {
 	int	i;
 
@@ -69,14 +69,14 @@ t_fmap	find_map(char *filename)
 	while (data_line || fmu.i == 0)
 	{
 		data_line = get_next_line(fmu.ffd);
-		if (map_compatible_line(data_line) == 1)
+		if (mapl_compat(data_line) == 1)
 		{
 			if (fmu.flm_f++ == 0)
 				f_map.l_start = fmu.i;
 			f_map.width = compare_line_size(f_map.width, data_line);
 			f_map.height++;
 		}
-		else if (map_compatible_line(data_line) != 1 && fmu.flm_f > 0)
+		else if (mapl_compat(data_line) != 1 && fmu.flm_f > 0)
 		{
 			free(data_line);
 			close(fmu.ffd);

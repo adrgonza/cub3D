@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:18:52 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/20 21:06:28 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/21 13:13:16 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_checker_dac(t_mapdata *map_data)
 
 /* Check if identifier is equal. If its equal, return 1
 */
-int	check_identifier(char *identifier)
+int	check_id(char *identifier)
 {
 	if (ft_strncmp(identifier, "NO", 2) == 0
 		|| ft_strncmp(identifier, "EA", 2) == 0

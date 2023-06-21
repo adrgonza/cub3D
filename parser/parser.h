@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/06/20 19:18:42 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/21 13:13:28 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "../libs/libft/libft.h"
 # include "utils/map_functions_data.h"
 
-typedef struct s_cubdat t_cubdat;
+typedef struct s_cubdat	t_cubdat;
 
 // Struct for util find_map
 typedef struct s_fmap
@@ -100,7 +100,7 @@ void		print_map_values(t_mapdata *map_data);
 ///////////////////////////////////////////
 //	find_map.c
 ///////////////////////////////////////////
-int			map_compatible_line(char *data_line);
+int			mapl_compat(char *data_line);
 int			compare_line_size(int l_len, char *data_line);
 t_fmap		find_map(char *filename);
 
@@ -110,7 +110,7 @@ t_fmap		find_map(char *filename);
 void		save_map(t_mapdata *map_data);
 void		set_gnl_to_mapinit(char *filename, int init_line, t_smu *smu);
 void		allocate_data_map(t_mapdata *map_data, t_smu *smu);
-int			transform_to_map(char c, int char_pos, t_mapdata *map_data, t_smu *smu);
+int			trans_map(char c, int char_pos, t_mapdata *mdat, t_smu *sm);
 
 ///////////////////////////////////////////
 //	other_utils.c
@@ -131,7 +131,7 @@ void		rute_asign(char **rawmap_id, char *data, int *id_dac);
 //	assigner_checkers.c
 ///////////////////////////////////////////
 void		init_checker_dac(t_mapdata *map_data);
-int			check_identifier(char *identifier);
+int			check_id(char *identifier);
 int			check_color(char *color);
 
 ///////////////////////////////////////////
@@ -139,6 +139,5 @@ int			check_color(char *color);
 ///////////////////////////////////////////
 int			map_checker(int **map, int ply_px, int ply_py);
 void		renormalize_map(int **map, int width, int height);
-
 
 #endif

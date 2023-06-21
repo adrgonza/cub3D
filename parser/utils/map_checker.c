@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 22:00:06 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/16 09:46:27 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/21 12:47:54 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Checks if player is into walls. Return 1 if is true. 
 // Fill the original map with 5000
-int		map_checker(int **map, int ply_px, int ply_py)
+int	map_checker(int **map, int ply_px, int ply_py)
 {
 	int	**map_cpy;
 	int	res;
