@@ -6,7 +6,7 @@
 #    By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 14:59:15 by mcordoba          #+#    #+#              #
-#    Updated: 2023/06/21 16:45:35 by adrgonza         ###   ########.fr        #
+#    Updated: 2023/06/21 16:50:39 by adrgonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ CC = gcc
 
 FLAGS_MLX = -lmlx -framework OpenGL -framework AppKit
 
-CFLAGS = -O3 -g -fsanitize=address -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -O3 #-g #-fsanitize=address -Wall -Werror -Wextra
 
 CFNAME = -o $(NAME)
 
