@@ -6,7 +6,7 @@
 #    By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 14:59:15 by mcordoba          #+#    #+#              #
-#    Updated: 2023/06/19 15:56:57 by adrgonza         ###   ########.fr        #
+#    Updated: 2023/06/21 12:34:53 by mcordoba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ SRC_PARSER =	parser/parser.c \
 
 SRC_RAYCAST =	raycast/raycast.c \
 				raycast/tools.c \
-				raycast/minimap.c \
 				raycast/key_manage.c \
 				raycast/draw_game.c \
 
