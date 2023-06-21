@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:55:14 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/06/20 19:18:53 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:40:34 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 //typedef struct s_rgbcol t_rgbcol;
 
-typedef	struct s_col
+typedef struct s_col
 {
 	int			r;
 	int			g;

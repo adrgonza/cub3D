@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:18:52 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/21 13:13:16 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/21 13:35:54 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	check_color(char *color)
 	int	i;
 
 	i = -1;
-	printf("ATOI --> %d\n", ft_atoi(color));
 	if (ft_strlen(color) < 2)
 		error_msg_exit("error: color: bad value", 1);
 	while (color[++i])

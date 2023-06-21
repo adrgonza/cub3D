@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:27:53 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/20 18:57:30 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:39:59 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	open_file_and_check_ext(char *file, char *ext)
 {
-	int fd;
+	int	fd;
 
 	if (check_file_ext(file, ext) == 1)
 	{
