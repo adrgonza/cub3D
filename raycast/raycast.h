@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:31:37 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/21 12:49:38 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/21 13:16:03 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,16 +80,12 @@ typedef struct game {
 }	t_game;
 
 int		exit_game(t_game *game);
-void	print_minimap(t_game *game);
-void	import_map_sources(t_game *game);
 int		check_map(t_game *game, float y, float x);
-void	draw_line(t_game *game);
-void	draw_square(t_game *game);
 int		key_released(int key, t_game *game);
 int		key_press(int key, t_game *game);
 void	key_actions(t_game *game);
-void	draw_rays(t_game *game);
+void	cast_rays(t_game *game);
 void	draw_sky_floor(t_game *game);
-void	init_data(t_game *game, t_cubdat *cubdat, t_keys *keys);
+int		mouse_move(int x, int y, t_game *game);
 
 #endif

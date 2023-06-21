@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+         #
+#    By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 14:59:15 by mcordoba          #+#    #+#              #
-#    Updated: 2023/06/21 12:34:53 by mcordoba         ###   ########.fr        #
+#    Updated: 2023/06/21 15:47:07 by adrgonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,9 @@ RM = rm -f
 
 CC = gcc
 
-CFLAGS = -O3 -g -lmlx -framework OpenGL -framework AppKit -fsanitize=address  #-I. -g3 -Wall -Werror -Wextra -Imlx
+FLAGS_MLX = -lmlx -framework OpenGL -framework AppKit
+
+CFLAGS = -O3 -g -fsanitize=address #-Wall -Werror -Wextra
 
 CFNAME = -o $(NAME)
 
@@ -76,7 +78,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ_MAIN) $(OBJ_PARSER) $(OBJ_RAYCAST) $(SEARCH)
 	@make -C libs/libft
-	$(CC) $(CFLAGS) $(OBJ_MAIN) $(OBJ_PARSER) $(OBJ_RAYCAST) $(LIBFT_SRC) -L. $(CFNAME)
+	$(CC) $(FLAGS_MLX) $(CFLAGS) $(OBJ_MAIN) $(OBJ_PARSER) $(OBJ_RAYCAST) $(LIBFT_SRC) $(CFNAME)
 
 clean:
 	@make clean -C libs/libft

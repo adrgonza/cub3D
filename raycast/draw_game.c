@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_g.c                                        :+:      :+:    :+:   */
+/*   draw_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 01:00:09 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/19 18:14:04 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:31:23 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycast.h"
 
-int	get_wall_orientation(t_game *g, t_rays *r, float ray_angle)
+int	determine_wall_orientation(t_game *g, t_rays *r, float ray_angle)
 {
 	if (r->cell_x < 0.0007 || r->cell_x > 0.9993)
 	{
 		if ((int)r->p_y / 16 >= 0 && (int)r->p_x / 16 > 0
-			&& (int)r->p_x / 16 < g->cubdat->map_width - 2
+			&& (int)r->p_x / 16 < g->cubdat->map_width - 5
 			&& g->map[(int)r->p_y / 16][((int)r->p_x / 16) + 1] == 1
 			&& g->map[(int)r->p_y / 16][((int)r->p_x / 16) - 1]
 			&& g->map[(int)r->p_y / 16][((int)r->p_x / 16) - 1] == 1)
@@ -39,7 +39,7 @@ int	get_wall_orientation(t_game *g, t_rays *r, float ray_angle)
 	return (1);
 }
 
-void	print_walls_tools(t_game *g, t_rays *rays, int y)
+void	render_wall_texture(t_game *g, t_rays *rays, int y)
 {
 	int		tex_x;
 	int		tex_y;
@@ -64,7 +64,7 @@ void	print_walls_tools(t_game *g, t_rays *rays, int y)
 		+ rays->column] = mlx_get_color_value(g->mlx, rays->color);
 }
 
-void	print_walls(t_game *g, t_rays *r)
+void	render_walls(t_game *g, t_rays *r)
 {
 	int		y;
 
@@ -77,13 +77,13 @@ void	print_walls(t_game *g, t_rays *r)
 	{
 		if (y >= r->wall_start && y <= r->wall_end && r->cord > 0
 			&& r->cord < 5)
-			print_walls_tools(g, r, y);
+			render_wall_texture(g, r, y);
 	}
 	r->p_x = g->p_x;
 	r->p_y = g->p_y;
 }
 
-void	trace_rays(t_game *g, t_rays *rays)
+void	calculate_ray_path(t_game *g, t_rays *rays)
 {
 	float	ray_angle;
 
@@ -103,11 +103,12 @@ void	trace_rays(t_game *g, t_rays *rays)
 	ray_angle = fmod(ray_angle, 360.0);
 	if (ray_angle < 0)
 		ray_angle += 360.0;
-	rays->cord = get_wall_orientation(g, rays, ray_angle);
-	print_walls(g, rays);
+	//printf("hola\n");
+	rays->cord = determine_wall_orientation(g, rays, ray_angle);
+	render_walls(g, rays);
 }
 
-void	draw_rays(t_game *g)
+void	cast_rays(t_game *g)
 {
 	t_rays	rays;
 
@@ -123,6 +124,6 @@ void	draw_rays(t_game *g)
 		rays.distance = 0.0;
 		rays.delta_x = cos(rays.angle);
 		rays.delta_y = sin(rays.angle);
-		trace_rays(g, &rays);
+		calculate_ray_path(g, &rays);
 	}
 }
