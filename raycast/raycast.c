@@ -3,14 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:30:26 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/21 15:57:11 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/21 19:05:28 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycast.h"
+
+void	protect_map(t_game *game)
+{
+	int	h;
+	int	w;
+
+	w = -1;
+	while (++w < game->cubdat->map_width - 1)
+		if (game->map[0][w] == 0 || game->map[0][w] == -1)
+			game->map[0][w] = 1;
+	w = -1;
+	while (++w < game->cubdat->map_width - 1)
+		if (game->map[game->cubdat->map_height - 1][w] == 0
+		|| game->map[game->cubdat->map_height - 1][w] == -1)
+			game->map[game->cubdat->map_height - 1][w] = 1;
+	h = -1;
+	while (++h < game->cubdat->map_height -1)
+	{
+		if (game->map[h][0] == 0 || game->map[h][0] == -1)
+			game->map[h][0] = 1;
+	}
+	h = -1;
+	while (++h < game->cubdat->map_height -1)
+	{
+		if (game->map[h][game->cubdat->map_width - 2] == 0
+		|| game->map[h][game->cubdat->map_width - 2] == -1)
+			game->map[h][game->cubdat->map_width - 2] = 1;
+	}
+}
 
 int	game_loop(void *data)
 {
@@ -51,8 +80,6 @@ void	import_textures(t_game *g, t_cubdat *c)
 void	init_data(t_game *g, t_cubdat *c, t_keys *keys)
 {
 	ft_bzero(g, sizeof(*g));
-	g->mlx = mlx_init();
-	g->window = mlx_new_window(g->mlx, 1080, 720, "Midland v0.31");
 	g->cubdat = c;
 	g->keys = keys;
 	g->map = c->map;
@@ -67,6 +94,9 @@ void	init_data(t_game *g, t_cubdat *c, t_keys *keys)
 		g->p_angle = 180;
 	if (c->play_orient == 'S')
 		g->p_angle = 90;
+	protect_map(g);
+	g->mlx = mlx_init();
+	g->window = mlx_new_window(g->mlx, 1080, 720, "Midland v0.31");
 	import_textures(g, c);
 }
 

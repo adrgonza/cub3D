@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 01:00:09 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/21 16:18:32 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/21 19:00:18 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ int	determine_wall_orientation(t_game *g, t_rays *r, float ray_angle)
 {
 	if (r->cell_x < 0.0007 || r->cell_x > 0.9993)
 	{
-		if ((int)r->p_y / 16 >= 0 && (int)r->p_x / 16 > 0
+		if ((int)r->p_y / 16 > 0 && (int)r->p_x / 16 > 0
 			&& (int)r->p_x / 16 < g->cubdat->map_width - 5
+			&& (int)r->p_x / 16 < g->cubdat->map_height - 2
 			&& g->map[(int)r->p_y / 16][((int)r->p_x / 16) + 1] == 1
 			&& g->map[(int)r->p_y / 16][((int)r->p_x / 16) - 1]
 			&& g->map[(int)r->p_y / 16][((int)r->p_x / 16) - 1] == 1)
