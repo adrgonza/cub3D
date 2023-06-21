@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 19:00:46 by mcordoba          #+#    #+#             */
-/*   Updated: 2023/06/21 16:47:15 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/21 16:00:51 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,13 @@ int	main(int argc, char *argv[])
 {
 	t_cubdat	cubdat;
 
+	atexit(leaks);
 	printf("\t\033[0;35m----> Cub3d <----\033[0m\n");
 	if (errmanag(argc, argv))
 	{
 		cubdat = parser(argv[1]);
+		leaks();
+		printf("\n\n-----------------\n\n");
 		raycast(&cubdat);
 	}
 	printf("\033[0;35m      ----> Cub3d END <----\033[0m\n");
