@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:07:11 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/20 19:18:31 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:42:46 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	errmanag(int argc, char *argv[])
 		printf("Please, insert a valid map: 'map.cub'\n");
 		exit (0);
 	}
-	printf("Route: %s\n", argv[1]);
+	printf("Map opened: %s\n", argv[1]);
 	check_file_ext(argv[1], ".cub");
 	return (1);
 }

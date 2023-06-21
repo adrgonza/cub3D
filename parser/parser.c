@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:02:22 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/21 12:40:36 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:43:01 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ t_cubdat	parser(char *cub_file)
 	int			fd_map;
 
 	map_data.init = 1;
-	printf("Parser\n");
 	map_data.filename = cub_file;
 	fd_map = open_file_and_check_ext(cub_file, ".cub");
 	read_file(fd_map, &map_data);
