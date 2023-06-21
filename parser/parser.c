@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:02:22 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/21 15:43:01 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/21 16:46:07 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 /* Raw data printer
 */
-static void	data_printer(t_mapdata map_data)
-{
-	t_rgbcol	f_color;
-	t_rgbcol	c_color;
-
-	f_color = map_data.raw_data.f_col;
-	c_color = map_data.raw_data.c_col;
-	printf("################# DATA INTO PARSER #################\n");
-	printf("NO data from RAW_DATA --> %s\n", map_data.raw_data.no_route);
-	printf("EA data from RAW_DATA --> %s\n", map_data.raw_data.ea_route);
-	printf("WE data from RAW_DATA --> %s\n", map_data.raw_data.we_route);
-	printf("SO data from RAW_DATA --> %s\n", map_data.raw_data.so_route);
-	printf("[F] COLOR --> R: %d | G: %d | B: %d\n", f_color.r, f_color.g,
-		f_color.b);
-	printf("[C] COLOR --> R: %d | G: %d | B: %d\n", c_color.r, c_color.g,
-		c_color.b);
-	printf("####################################################\n");
-}
+//static void	data_printer(t_mapdata map_data)
+//{
+//	t_rgbcol	f_color;
+//	t_rgbcol	c_color;
+//
+//	f_color = map_data.raw_data.f_col;
+//	c_color = map_data.raw_data.c_col;
+//	printf("################# DATA INTO PARSER #################\n");
+//	printf("NO data from RAW_DATA --> %s\n", map_data.raw_data.no_route);
+//	printf("EA data from RAW_DATA --> %s\n", map_data.raw_data.ea_route);
+//	printf("WE data from RAW_DATA --> %s\n", map_data.raw_data.we_route);
+//	printf("SO data from RAW_DATA --> %s\n", map_data.raw_data.so_route);
+//	printf("[F] COLOR --> R: %d | G: %d | B: %d\n", f_color.r, f_color.g,
+//		f_color.b);
+//	printf("[C] COLOR --> R: %d | G: %d | B: %d\n", c_color.r, c_color.g,
+//		c_color.b);
+//	printf("####################################################\n");
+//}
 
 /* Free of data raw_map
 */
@@ -85,7 +85,6 @@ t_cubdat	parser(char *cub_file)
 	map_data.filename = cub_file;
 	fd_map = open_file_and_check_ext(cub_file, ".cub");
 	read_file(fd_map, &map_data);
-	data_printer(map_data);
 	close_file(fd_map);
 	cubdat = mapdat_to_cubdat(&map_data);
 	if (map_checker(cubdat.map, cubdat.p_pos_x, cubdat.p_pos_y) != 1)

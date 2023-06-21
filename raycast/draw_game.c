@@ -6,7 +6,7 @@
 /*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 01:00:09 by adrgonza          #+#    #+#             */
-/*   Updated: 2023/06/21 15:31:23 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/21 16:18:32 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ void	calculate_ray_path(t_game *g, t_rays *rays)
 	ray_angle = fmod(ray_angle, 360.0);
 	if (ray_angle < 0)
 		ray_angle += 360.0;
-	//printf("hola\n");
 	rays->cord = determine_wall_orientation(g, rays, ray_angle);
 	render_walls(g, rays);
 }

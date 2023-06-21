@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_assigner.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:17:25 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/21 13:16:15 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/21 16:37:46 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,22 @@ int	data_assigner(char *data, t_mapdata *map_data)
 
 	i = -1;
 	split_data = ft_split(data, ' ');
+	if (!split_data)
+		return (0);
 	if (check_id(split_data[0]) == 1)
 	{
-		printf("%s-->\n", split_data[0]);
 		if (split_data[1])
+		{
 			assigner(split_data[0], split_data[1], map_data);
+			free(split_data[0]);
+		}
 		else
+		{
+			freedom(split_data);
+			free(data);
 			error_msg_exit("error: data_assigner: bad id", 1);
+		}
+		free(split_data);
 		return (1);
 	}
 	freedom(split_data);
@@ -64,6 +73,7 @@ void	rute_asign(char **rawmap_id, char *data, int *id_dac)
 			error_msg_exit("error: sprite: bad sprite extension", 1);
 		*rawmap_id = malloc(ft_strlen(data) * sizeof(char *));
 		ft_strlcpy(*rawmap_id, data, ft_strlen(data));
+		free(data);
 		*id_dac = 1;
 	}
 	else if (*id_dac == 1)
