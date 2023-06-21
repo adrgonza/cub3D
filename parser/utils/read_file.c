@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:22:36 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/21 16:30:20 by adrgonza         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:12:46 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ void	read_file(int file_fd, t_mapdata *map_data)
 		{
 			if (check_id(data_line) == 0 && mapl_compat(data_line) == 0
 				&& ft_strncmp(data_line, "\n", 1) != 0)
-				{
-					free(data_line);
-					error_msg_exit("error: bad data on .cub", 1);
-				}
+			{
+				free(data_line);
+				error_msg_exit("error: bad data on .cub", 1);
+			}
 			if (data_assigner(data_line, map_data) == 1)
 				nb_ids++;
 		}

@@ -6,7 +6,7 @@
 /*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 21:15:48 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/21 15:56:31 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:22:53 by mcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ void	save_map(t_mapdata *map_data)
 		smu.map_line = get_next_line(smu.ffd);
 		if (!smu.map_line || smu.map_line == NULL)
 			return (free(smu.map_line));
+		if ((map_data->fmap.height * map_data->fmap.width) > 14444)
+			error_msg_exit("error: save_map: map too big", 1);
 		allocate_data_map(map_data, &smu);
 		free(smu.map_line);
 		smu.i++;
