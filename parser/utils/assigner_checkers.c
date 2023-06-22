@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assigner_checkers.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcordoba <mcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adrgonza <adrgonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:18:52 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/21 15:55:59 by mcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/22 11:47:29 by adrgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ int	check_color(char *color)
 
 	i = -1;
 	c_value = 0;
-	if (ft_strlen(color) < 2)
-		error_msg_exit("error: color: bad value", 1);
 	while (color[++i])
 	{
 		if (i == (int)ft_strlen(color) - 1)
