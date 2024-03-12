@@ -13,6 +13,8 @@ Welcome to Cub3D! This project focuses on creating a simple 3D game engine using
 
 ## Introduction
 
+<img width="1088" alt="Screen Shot 2024-03-12 at 7 43 59 PM" src="https://github.com/adrgonza/cub3D/assets/105714518/3769d71b-b1fd-4270-aefa-43bd6f0f69f3">
+
 Cub3D is a simple 3D game engine inspired by the classic Wolfenstein 3D. It uses raycasting to render a 3D environment from a 2D map, allowing the player to navigate through the game world and interact with objects. Cub3D provides a basic first-person perspective and supports features such as textured walls, sprite rendering, and simple collision detection.
 
 ## Usage
