@@ -18,9 +18,7 @@
 int	data_assigner(char *data, t_mapdata *map_data)
 {
 	char	**split_data;
-	int		i;
 
-	i = -1;
 	split_data = ft_split(data, ' ');
 	if (!split_data)
 		return (0);

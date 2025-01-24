@@ -17,7 +17,7 @@
 # include "raycast/raycast.h"
 
 # include <unistd.h>
-# include <mlx.h>
+# include "libs/minilibx/mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <limits.h>

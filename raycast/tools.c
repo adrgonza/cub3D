@@ -71,9 +71,7 @@ int	mouse_move(int x, int y, t_game *game)
 
 int	exit_game(t_game *g)
 {
-	t_cubdat	*c;
 
-	c = g->cubdat;
 	mlx_destroy_image(g->mlx, g->img);
 	mlx_destroy_window(g->mlx, g->window);
 	exit(0);

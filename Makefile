@@ -45,7 +45,7 @@ RM = rm -f
 
 CC = gcc
 
-FLAGS_MLX = -lmlx -framework OpenGL -framework AppKit
+FLAGS_MLX = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 CFLAGS = -Wall -Werror -Wextra -O3
 
@@ -53,7 +53,7 @@ CFNAME = -o $(NAME)
 
 LIBFT_SRC = libs/libft/libft.a
 
-# MINILIBX_SRC = libs/minilibx_macos/libmlx.a
+MLX_DIR = libs/minilibx
 
 all: $(NAME)
 
@@ -78,6 +78,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ_MAIN) $(OBJ_PARSER) $(OBJ_RAYCAST) $(SEARCH)
 	@make -C libs/libft
+	@$(MAKE) -C $(MLX_DIR)
 	$(CC) $(FLAGS_MLX) $(CFLAGS) $(OBJ_MAIN) $(OBJ_PARSER) $(OBJ_RAYCAST) $(LIBFT_SRC) $(CFNAME)
 
 clean:
